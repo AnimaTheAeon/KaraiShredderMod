@@ -90,11 +90,8 @@ v1.0 built the characters themselves:
 - the voice rules.
 
 It was built over several sessions:
-- **The original toolkit** is in [`v1.0-toolkit/`](v1.0-toolkit/), as it was written. It covers the pak2
-  reader and writer, the CFF0 record decrypter and editor, the boss-to-hero ability transplant, the
-  texture patcher and the Karai v4 record build.
-- **The later v1.0 build scripts** aren't in this repo. `docs/HISTORY.md`, `docs/FORMATS.md` and
-  `docs/KARAI_MOD_NOTES.md` describe what they change and how.
+- **Karai's build scripts and the original toolkit** are in [`v1.0-toolkit/`](v1.0-toolkit/), as they were written.
+- **Shredder's v1.0 build scripts** were lost. `docs/HISTORY.md` describes what they change.
 - **The v1.0 patches** are in the Nexus download. Every change after v1.0 is rebuilt from source here.
 
 The patch format is plain: each range lists its offset, the new bytes and the original bytes, so
