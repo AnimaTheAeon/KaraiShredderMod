@@ -1,0 +1,5 @@
+out/
+*.kpatch
+*.exe
+*.pak2
+__pycache__/
