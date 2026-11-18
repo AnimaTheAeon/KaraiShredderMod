@@ -1,0 +1,9 @@
+import pefile,capstone,sys
+pe=pefile.PE("/mnt/user-data/outputs/TMNTSF.exe.original-backup",fast_load=True)
+base=pe.OPTIONAL_HEADER.ImageBase
+md=capstone.Cs(capstone.CS_ARCH_X86,capstone.CS_MODE_64)
+def dis(va,n):
+    rva=va-base; off=pe.get_offset_from_rva(rva)
+    return list(md.disasm(pe.__data__[off:off+n],va))
+if __name__=='__main__':
+    for i in dis(int(sys.argv[1],16),int(sys.argv[2])): print(f'{i.address:x} {i.mnemonic} {i.op_str}')

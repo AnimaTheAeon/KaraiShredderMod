@@ -41,7 +41,9 @@ heroes stay as they are, and boss Karai and boss Shredder are not changed.
 | `src/pak.py`, `cff.py`, `tex.py`, `l8.py`, `hashes.py` | game file formats: pak2 archives, encrypted data records, BC1 textures, hashes |
 | `src/pe.py`, `disx.py`, `xref.py`, `pdata.py` | exe inspection (disassembly, cross-references) |
 | `src/emu*.py` | Unicorn emulation tests for the exe hooks |
+| `v1.0-toolkit/` | the original toolkit Karai was first built with (pak2, CFF0 records, ability transplant, textures) |
 | `docs/FORMATS.md` | the reverse-engineered file formats |
+| `docs/KARAI_MOD_NOTES.md` | build log from the Karai v1.0 work |
 | `docs/HISTORY.md` | what each version changed |
 
 See **[BUILD.md](BUILD.md)** for step-by-step build instructions.

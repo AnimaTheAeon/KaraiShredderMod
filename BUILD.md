@@ -89,7 +89,13 @@ v1.0 built the characters themselves:
 - the 9th/10th slot code;
 - the voice rules.
 
-It was built over several sessions, and that toolkit isn't in this repo yet. Its patches are in the Nexus
-download, and every change after v1.0 is rebuilt from source here. `docs/FORMATS.md` and `docs/HISTORY.md`
-describe what v1.0 changes and how. The patch format is plain: each range lists its offset, the new bytes
-and the original bytes, so any patch can be inspected or reversed with `src/kpatch.py`.
+It was built over several sessions:
+- **The original toolkit** is in [`v1.0-toolkit/`](v1.0-toolkit/), as it was written. It covers the pak2
+  reader and writer, the CFF0 record decrypter and editor, the boss-to-hero ability transplant, the
+  texture patcher and the Karai v4 record build.
+- **The later v1.0 build scripts** aren't in this repo. `docs/HISTORY.md`, `docs/FORMATS.md` and
+  `docs/KARAI_MOD_NOTES.md` describe what they change and how.
+- **The v1.0 patches** are in the Nexus download. Every change after v1.0 is rebuilt from source here.
+
+The patch format is plain: each range lists its offset, the new bytes and the original bytes, so
+`src/kpatch.py` can inspect or reverse any patch.
