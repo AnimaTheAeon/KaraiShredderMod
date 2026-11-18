@@ -1,0 +1,55 @@
+{
+ "version": "both",
+ "patches": {
+  "TMNTSF.exe": "exe_both_v1.0.kpatch",
+  "overhead.pak2": "overhead_both_v1.0.kpatch",
+  "dupes.pak2": "dupes_both.kpatch",
+  "default.pak2": "default_both.kpatch"
+ },
+ "overhead_order": [
+  "93237783703074b9",
+  "a292b7c27a9b157d",
+  "5635aea195a4e11c",
+  "070a475246230d1f",
+  "3d50408ab841b670",
+  "0e2ff051f6d864af",
+  "8e812a7312530c0f"
+ ],
+ "records": [
+  "93237783703074b9",
+  "a292b7c27a9b157d",
+  "5635aea195a4e11c",
+  "3d50408ab841b670",
+  "0e2ff051f6d864af"
+ ],
+ "textures_from_release": [
+  "070a475246230d1f",
+  "8e812a7312530c0f"
+ ],
+ "overhead_layout": {
+  "directory_offset": 396218368,
+  "moved": {
+   "0e2ff051f6d864af": [
+    395423744,
+    57344
+   ],
+   "070a475246230d1f": [
+    394735616,
+    647168
+   ],
+   "5635aea195a4e11c": [
+    394625024,
+    110592
+   ],
+   "3d50408ab841b670": [
+    395382784,
+    40960
+   ],
+   "8e812a7312530c0f": [
+    395481088,
+    737280
+   ]
+  },
+  "stale_blocks_from_release": []
+ }
+}

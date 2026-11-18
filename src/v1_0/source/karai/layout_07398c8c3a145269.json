@@ -1,0 +1,112 @@
+{
+ "comment": "v1.0 karai: select-screen layout insertions. Generated from the released patch by gen_source.py; build.py applies these edits (in order) to the original layout and must reproduce the release byte for byte. Paths are child indexes from the root; attributes are [attribute id, text] pairs.",
+ "ops": [
+  {
+   "op": "insert",
+   "parent_path": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "index": 8,
+   "element": {
+    "type": 11,
+    "name": "",
+    "attrs": [
+     [
+      66,
+      "QUAD_SLICE3_H"
+     ],
+     [
+      28,
+      "140"
+     ],
+     [
+      29,
+      "680"
+     ],
+     [
+      13,
+      "false"
+     ],
+     [
+      14,
+      "build://Multiplayer:Window_Banner_Raph"
+     ]
+    ],
+    "props": [],
+    "kids": []
+   }
+  },
+  {
+   "op": "insert",
+   "parent_path": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "index": 9,
+   "element": {
+    "type": 49,
+    "name": "",
+    "attrs": [],
+    "props": [],
+    "kids": [
+     {
+      "type": 77,
+      "name": "",
+      "attrs": [
+       [
+        78,
+        "8"
+       ],
+       [
+        79,
+        "#b02a3a"
+       ],
+       [
+        88,
+        "{Resource MoveInPortrait3}"
+       ],
+       [
+        27,
+        "SP8"
+       ],
+       [
+        28,
+        "250"
+       ],
+       [
+        29,
+        "150"
+       ],
+       [
+        9,
+        "CharSelectImgBtnStyle"
+       ],
+       [
+        80,
+        "OnCharacterClicked"
+       ],
+       [
+        89,
+        "build://Multiplayer:AvatarSelect_Casey"
+       ],
+       [
+        90,
+        "OnItemHoverChanged"
+       ]
+      ],
+      "props": [],
+      "kids": []
+     }
+    ]
+   }
+  }
+ ]
+}

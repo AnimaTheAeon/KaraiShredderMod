@@ -25,9 +25,14 @@ heroes stay as they are, and boss Karai and boss Shredder are not changed.
 
 - Every patch also stores the old bytes, so uninstalling puts the files back exactly.
   The installer also keeps `*.original-backup` copies, and it backs up your saves before it changes anything.
-- The patches contain only bytes that come from the game itself, rearranged or recoloured.
-  No outside art or sound is added. For that reason the `.kpatch` files are **not** in this repo:
-  they're generated from your own game files (see BUILD.md) and shipped in the Nexus download.
+- The patches contain only bytes that come from the game itself, rearranged or recoloured,
+  plus the mod's own code and data. No outside art or sound is added. For that reason the `.kpatch`
+  files and the art are **not** in this repo: they're generated from your own game files (see BUILD.md)
+  and shipped in the Nexus download.
+- **Every change can be checked.** `src/decode_patch.py` turns any patch into a readable report, and
+  `docs/patch-reports/` has one for every patch in the download. Everything after v1.0 is built from the
+  scripts in `src/`, and v1.0 itself is kept as readable source in `src/v1_0/` that rebuilds the released
+  files exactly (only the recoloured art is taken from the release patch).
 
 ## Repo layout
 
@@ -41,6 +46,9 @@ heroes stay as they are, and boss Karai and boss Shredder are not changed.
 | `src/pak.py`, `cff.py`, `tex.py`, `l8.py`, `hashes.py` | game file formats: pak2 archives, encrypted data records, BC1 textures, hashes |
 | `src/pe.py`, `disx.py`, `xref.py`, `pdata.py` | exe inspection (disassembly, cross-references) |
 | `src/emu*.py` | Unicorn emulation tests for the exe hooks |
+| `src/v1_0/` | **the v1.0 changes as readable source** (assembly, record edits, layout and voice rules) for Karai, Shredder and Both, plus `build.py`, which rebuilds the v1.0 files from them and checks every SHA-1 |
+| `src/decode_patch.py` | turns any `.kpatch` into a readable report (disassembly, decoded records, art, rule diffs) |
+| `docs/patch-reports/` | those reports, for every patch in the current download |
 | `v1.0-toolkit/` | the original toolkit Karai was first built with (pak2, CFF0 records, ability transplant, textures) |
 | `docs/FORMATS.md` | the reverse-engineered file formats |
 | `docs/KARAI_MOD_NOTES.md` | build log from the Karai v1.0 work |

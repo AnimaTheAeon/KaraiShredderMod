@@ -1,0 +1,37 @@
+{
+ "version": "shredder",
+ "patches": {
+  "TMNTSF.exe": "exe_shredder_v1.0.kpatch",
+  "overhead.pak2": "overhead_shredder_v1.0.kpatch",
+  "dupes.pak2": "dupes_shredder.kpatch",
+  "default.pak2": "default_shredder.kpatch"
+ },
+ "overhead_order": [
+  "a292b7c27a9b157d",
+  "3d50408ab841b670",
+  "0e2ff051f6d864af",
+  "8e812a7312530c0f"
+ ],
+ "records": [
+  "a292b7c27a9b157d",
+  "3d50408ab841b670",
+  "0e2ff051f6d864af"
+ ],
+ "textures_from_release": [
+  "8e812a7312530c0f"
+ ],
+ "overhead_layout": {
+  "directory_offset": 395419648,
+  "moved": {
+   "0e2ff051f6d864af": [
+    394625024,
+    57344
+   ],
+   "8e812a7312530c0f": [
+    394682368,
+    737280
+   ]
+  },
+  "stale_blocks_from_release": []
+ }
+}

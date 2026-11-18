@@ -1,0 +1,2217 @@
+Patch:    overhead_shredder.kpatch
+Applied to: overhead.pak2  (SHA-1 AD67E867B815A7D262EB7BD58B9B205ADA6C7EC7, 395055808 bytes)
+Result:   SHA-1 0530B24F31DE3C2A97850553EF9178BCCC655BBA, 396751648 bytes
+Ranges in patch: 8, bytes written: 2167886
+
+====================================================================================================
+ARCHIVE overhead.pak2: 13462 entries -> 13465. Changed: 4, added: 3, removed: 0
+====================================================================================================
+All other entries are byte-identical (compared compressed, in place or moved).
+  changed 0e2ff051f6d864af  41184 -> 68616 bytes
+  changed a292b7c27a9b157d  15808 -> 16504 bytes
+  changed 3d50408ab841b670  43680 -> 44072 bytes
+  changed 8e812a7312530c0f  1398168 -> 5592604 bytes
+  added   ad071165d36403c3  806666 bytes
+  added   85e9db7aaa1066cd  8167 bytes
+  added   69cde7de88f6e26d  699104 bytes
+
+####################################################################################################
+ENTRY 0e2ff051f6d864af  (changed)
+####################################################################################################
+CFF0 game-data record (decrypted with key index 9). Data 50720 bytes, 2126 pointers, 16 symbols.
+Original record: 29592 bytes, 1388 pointers, 8 symbols.
+Bytes changed inside the original part: 0. Original pointers changed: 0. Added after the original part: 21128 bytes.
+
+New symbols (8):
+  0x0073a0  type 0x97524006  *ShredderHeroAnimGraphTuning*
+  0x00a8a0  type 0x79c1c4a8  *Shredder_ActorRep_Default*
+  0x00a990  type 0x79c1c4a8  *Shredder_ActorRep_Samurai*
+  0x00a9f0  type 0x79c1c4a8  *Shredder_ActorRep_TrenchCoat*
+  0x00bb80  type 0x2419fb6c  *Shredder_Hero*
+  0x00bf70  type 0xc01a1612  *Shredder_HeroData*
+  0x00c2d0  type 0xc01a1612  *Shredder_HeroData_Skin_Samurai*
+  0x00c430  type 0xc01a1612  *Shredder_HeroData_Skin_TrenchCoat*
+
+Added data, every 8-byte field (pointers resolved; strings shown once at their own address):
+
+  ---- *ShredderHeroAnimGraphTuning* ----
+  0x0073a0  -> 0x73c0 
+  0x0073a8  -> 0xa690 
+  0x0073b0  -> 0xa240 
+  0x0073b8  -> 0xa248 
+  0x0073c0  -> 0x7428 
+  0x0073c8  -> 0x7450 
+  0x0073d0  -> 0x7478 
+  0x0073d8  -> 0x74a8 
+  0x0073e0  -> 0x74c8 
+  0x0073e8  -> 0x74f0 
+  0x0073f0  -> 0x7528 
+  0x0073f8  -> 0x7550 
+  0x007400  -> 0x7578 
+  0x007408  -> 0x75a0 
+  0x007410  -> 0x75c8 
+  0x007418  -> 0x75f0 
+  0x007428  -> 0x7438 'enable_turn_additive'
+  0x007438  string 'enable_turn_additive'
+  0x007450  -> 0x7460 'turn_additive_angle'
+  0x007458  00 00 8c 42 00 00 00 00   u32 0x428c0000 0x0   f32 70
+  0x007460  string 'turn_additive_angle'
+  0x007478  -> 0x7488 'turn_additive_transition'
+  0x007480  9a 99 59 3f 00 00 00 00   u32 0x3f59999a 0x0   f32 0.85
+  0x007488  string 'turn_additive_transition'
+  0x0074a8  -> 0x74b8 'std_blend_time'
+  0x0074b0  cd cc cc 3d 00 00 00 00   u32 0x3dcccccd 0x0   f32 0.1
+  0x0074b8  string 'std_blend_time'
+  0x0074c8  -> 0x74d8 'run_brush_blend_time'
+  0x0074d0  0a d7 23 3d 00 00 00 00   u32 0x3d23d70a 0x0   f32 0.04
+  0x0074d8  string 'run_brush_blend_time'
+  0x0074f0  -> 0x7500 'transitional_anim_blend_out_time'
+  0x0074f8  cd cc cc 3d 00 00 00 00   u32 0x3dcccccd 0x0   f32 0.1
+  0x007500  string 'transitional_anim_blend_out_time'
+  0x007528  -> 0x7538 'run_turn_blend_time'
+  0x007538  string 'run_turn_blend_time'
+  0x007550  -> 0x7560 'run_turn_90l_angle'
+  0x007558  00 00 34 c2 00 00 00 00   u32 0xc2340000 0x0   f32 -45
+  0x007560  string 'run_turn_90l_angle'
+  0x007578  -> 0x7588 'run_turn_180l_angle'
+  0x007580  00 00 c8 c2 00 00 00 00   u32 0xc2c80000 0x0   f32 -100
+  0x007588  string 'run_turn_180l_angle'
+  0x0075a0  -> 0x75b0 'run_turn_90r_angle'
+  0x0075a8  00 00 34 42 00 00 00 00   u32 0x42340000 0x0   f32 45
+  0x0075b0  string 'run_turn_90r_angle'
+  0x0075c8  -> 0x75d8 'run_turn_180r_angle'
+  0x0075d0  00 00 c8 42 00 00 00 00   u32 0x42c80000 0x0   f32 100
+  0x0075d8  string 'run_turn_180r_angle'
+  0x0075f0  -> 0x7600 'run_turn_min_time_between_turns'
+  0x0075f8  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x007600  string 'run_turn_min_time_between_turns'
+  0x007620  -> 0x7820 
+  0x007628  -> 0x78b8 
+  0x007630  -> 0x7958 
+  0x007638  -> 0x79f8 
+  0x007640  -> 0x7a90 
+  0x007648  -> 0x7b30 
+  0x007650  -> 0x7bc8 
+  0x007658  -> 0x7c78 
+  0x007660  -> 0x7d28 
+  0x007668  -> 0x7dd8 
+  0x007670  -> 0x7e88 
+  0x007678  -> 0x7f38 
+  0x007680  -> 0x7fd8 
+  0x007688  -> 0x8068 
+  0x007690  -> 0x8110 
+  0x007698  -> 0x81b0 
+  0x0076a0  -> 0x8250 
+  0x0076a8  -> 0x82f0 
+  0x0076b0  -> 0x8390 
+  0x0076b8  -> 0x8420 
+  0x0076c0  -> 0x84b8 
+  0x0076c8  -> 0x8550 
+  0x0076d0  -> 0x85e8 
+  0x0076d8  -> 0x86e8 
+  0x0076e0  -> 0x87e8 
+  0x0076e8  -> 0x8880 
+  0x0076f0  -> 0x8938 
+  0x0076f8  -> 0x89e8 
+  0x007700  -> 0x8aa0 
+  0x007708  -> 0x8b50 
+  0x007710  -> 0x8c08 
+  0x007718  -> 0x8cb8 
+  0x007720  -> 0x8d70 
+  0x007728  -> 0x8e28 
+  0x007730  -> 0x8ed8 
+  0x007738  -> 0x8f90 
+  0x007740  -> 0x9048 
+  0x007748  -> 0x9100 
+  0x007750  -> 0x91b8 
+  0x007758  -> 0x9270 
+  0x007760  -> 0x9330 
+  0x007768  -> 0x93e8 
+  0x007770  -> 0x9490 
+  0x007778  -> 0x9538 
+  0x007780  -> 0x95e0 
+  0x007788  -> 0x9688 
+  0x007790  -> 0x9730 
+  0x007798  -> 0x97c0 
+  0x0077a0  -> 0x9858 
+  0x0077a8  -> 0x99b8 
+  0x0077b0  -> 0x9a50 
+  0x0077b8  -> 0x9ae8 
+  0x0077c0  -> 0x9b80 
+  0x0077c8  -> 0x9c18 
+  0x0077d0  -> 0x9cb0 
+  0x0077d8  -> 0x9d50 
+  0x0077e0  -> 0x9de8 
+  0x0077e8  -> 0x9e80 
+  0x0077f0  -> 0x9f20 
+  0x0077f8  -> 0x9fc0 
+  0x007800  -> 0xa060 
+  0x007808  -> 0xa100 
+  0x007810  -> 0xa1a0 
+  0x007820  -> 0x7860 'ability_dash'
+  0x007828  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007830  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007838  -> 0xa258 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_SmokeBomb_Disappear.anim'
+  0x007840  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x007848  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007850  -> 0x78b0 
+  0x007860  string 'ability_dash'
+  0x007870  6c 64 3a 2f 2f 43 68 61   u32 0x2f3a646c 0x6168432f
+  0x007878  72 61 63 74 65 72 73 2f   u32 0x74636172 0x2f737265
+  0x007880  48 65 72 6f 65 73 2f 52   u32 0x6f726548 0x522f7365
+  0x007888  61 70 68 61 65 6c 2f 41   u32 0x61687061 0x412f6c65   f32 10.964
+  0x007890  6e 69 6d 73 2f 52 61 70   u32 0x736d696e 0x7061522f
+  0x007898  68 61 65 6c 5f 44 65 66   u32 0x6c656168 0x6665445f
+  0x0078a0  61 75 6c 74 5f 44 61 73   u32 0x746c7561 0x7361445f
+  0x0078a8  68 2e 61 6e 69 6d 00 00   u32 0x6e612e68 0x6d69
+  0x0078b8  -> 0x78f8 'ability_dash_vault'
+  0x0078c0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x0078c8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x0078d0  -> 0xa258 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_SmokeBomb_Disappear.anim'
+  0x0078d8  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x0078e0  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0078e8  -> 0x7950 
+  0x0078f8  string 'ability_dash_vault'
+  0x007910  3a 2f 2f 43 68 61 72 61   u32 0x432f2f3a 0x61726168   f32 175.184
+  0x007918  63 74 65 72 73 2f 48 65   u32 0x72657463 0x65482f73
+  0x007920  72 6f 65 73 2f 52 61 70   u32 0x73656f72 0x7061522f
+  0x007928  68 61 65 6c 2f 41 6e 69   u32 0x6c656168 0x696e412f
+  0x007930  6d 73 2f 52 61 70 68 61   u32 0x522f736d 0x61687061
+  0x007938  65 6c 5f 44 65 66 61 75   u32 0x445f6c65 0x75616665   f32 893.694
+  0x007940  6c 74 5f 44 61 73 68 2e   u32 0x445f746c 0x2e687361   f32 893.819
+  0x007948  61 6e 69 6d 00 00 00 00   u32 0x6d696e61 0x0
+  0x007958  -> 0x7998 'ability_dash_out'
+  0x007960  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007968  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007970  -> 0xa2b0 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_SmokeBomb_Reappear.anim'
+  0x007978  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x007980  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007988  -> 0x79f0 
+  0x007998  string 'ability_dash_out'
+  0x0079b0  2f 43 68 61 72 61 63 74   u32 0x6168432f 0x74636172
+  0x0079b8  65 72 73 2f 48 65 72 6f   u32 0x2f737265 0x6f726548
+  0x0079c0  65 73 2f 52 61 70 68 61   u32 0x522f7365 0x61687061
+  0x0079c8  65 6c 2f 41 6e 69 6d 73   u32 0x412f6c65 0x736d696e   f32 10.964
+  0x0079d0  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x0079d8  5f 44 65 66 61 75 6c 74   u32 0x6665445f 0x746c7561
+  0x0079e0  5f 44 61 73 68 5f 45 6e   u32 0x7361445f 0x6e455f68
+  0x0079e8  64 2e 61 6e 69 6d 00 00   u32 0x6e612e64 0x6d69
+  0x0079f8  -> 0x7a38 'death'
+  0x007a00  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007a08  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007a10  -> 0xa300 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Death.anim'
+  0x007a18  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x007a20  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007a28  -> 0x7a88 
+  0x007a38  string 'death'
+  0x007a40  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x007a48  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x007a50  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x007a58  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x007a60  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x007a68  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x007a70  66 61 75 6c 74 5f 44 65   u32 0x6c756166 0x65445f74
+  0x007a78  61 74 68 2e 61 6e 69 6d   u32 0x2e687461 0x6d696e61
+  0x007a90  -> 0x7ad0 'hit_react'
+  0x007a98  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007aa0  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007aa8  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x007ab0  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x007ab8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007ac0  -> 0x7b28 
+  0x007ad0  string 'hit_react'
+  0x007ae0  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x007ae8  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x007af0  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x007af8  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x007b00  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x007b08  6c 5f 44 65 66 61 75 6c   u32 0x65445f6c 0x6c756166
+  0x007b10  74 5f 48 69 74 52 65 61   u32 0x69485f74 0x61655274
+  0x007b18  63 74 69 6f 6e 2e 61 6e   u32 0x6f697463 0x6e612e6e
+  0x007b20  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x007b30  -> 0x7b70 'stun_loop'
+  0x007b38  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x007b40  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007b48  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x007b50  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x007b58  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007b60  -> 0x7bc0 
+  0x007b70  string 'stun_loop'
+  0x007b80  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x007b88  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x007b90  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x007b98  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x007ba0  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x007ba8  6c 5f 44 65 66 61 75 6c   u32 0x65445f6c 0x6c756166
+  0x007bb0  74 5f 53 74 75 6e 6e 65   u32 0x74535f74 0x656e6e75
+  0x007bb8  64 2e 61 6e 69 6d 00 00   u32 0x6e612e64 0x6d69
+  0x007bc8  -> 0x7c08 'level_exit_walkWithMovement'
+  0x007bd0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007bd8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007be0  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x007be8  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x007bf0  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007bf8  -> 0x7c70 
+  0x007c08  string 'level_exit_walkWithMovement'
+  0x007c28  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x007c30  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x007c38  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x007c40  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x007c48  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x007c50  61 65 6c 5f 4c 65 76 65   u32 0x5f6c6561 0x6576654c
+  0x007c58  6c 5f 45 78 69 74 5f 57   u32 0x78455f6c 0x575f7469
+  0x007c60  61 6c 6b 2e 61 6e 69 6d   u32 0x2e6b6c61 0x6d696e61
+  0x007c78  -> 0x7cb8 'level_exit_leapWithMovement'
+  0x007c80  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007c88  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007c90  -> 0xa3d8 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Leap.anim'
+  0x007c98  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x007ca0  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007ca8  -> 0x7d20 
+  0x007cb8  string 'level_exit_leapWithMovement'
+  0x007cd8  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x007ce0  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x007ce8  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x007cf0  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x007cf8  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x007d00  61 65 6c 5f 4c 65 76 65   u32 0x5f6c6561 0x6576654c
+  0x007d08  6c 5f 45 78 69 74 5f 4c   u32 0x78455f6c 0x4c5f7469
+  0x007d10  65 61 70 2e 61 6e 69 6d   u32 0x2e706165 0x6d696e61
+  0x007d28  -> 0x7d68 'level_exit_jumpWithMovement'
+  0x007d30  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007d38  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007d40  -> 0xa3d8 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Leap.anim'
+  0x007d48  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x007d50  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007d58  -> 0x7dd0 
+  0x007d68  string 'level_exit_jumpWithMovement'
+  0x007d88  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x007d90  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x007d98  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x007da0  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x007da8  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x007db0  61 65 6c 5f 4c 65 76 65   u32 0x5f6c6561 0x6576654c
+  0x007db8  6c 5f 45 78 69 74 5f 4a   u32 0x78455f6c 0x4a5f7469   f32 3.66108e+06
+  0x007dc0  75 6d 70 2e 61 6e 69 6d   u32 0x2e706d75 0x6d696e61
+  0x007dd8  -> 0x7e18 'level_exit_jumpNoMovement'
+  0x007de0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007de8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007df0  -> 0xa258 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_SmokeBomb_Disappear.anim'
+  0x007df8  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x007e00  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007e08  -> 0x7e80 
+  0x007e18  string 'level_exit_jumpNoMovement'
+  0x007e38  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x007e40  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x007e48  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x007e50  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x007e58  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x007e60  6c 5f 4c 65 76 65 6c 5f   u32 0x654c5f6c 0x5f6c6576
+  0x007e68  45 78 69 74 5f 41 73 63   u32 0x74697845 0x6373415f
+  0x007e70  65 6e 64 2e 61 6e 69 6d   u32 0x2e646e65 0x6d696e61
+  0x007e88  -> 0x7ec8 'level_exit_portalNoMovement'
+  0x007e90  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007e98  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007ea0  -> 0xa258 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_SmokeBomb_Disappear.anim'
+  0x007ea8  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x007eb0  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007eb8  -> 0x7f30 
+  0x007ec8  string 'level_exit_portalNoMovement'
+  0x007ee8  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x007ef0  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x007ef8  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x007f00  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x007f08  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x007f10  61 65 6c 5f 4c 65 76 65   u32 0x5f6c6561 0x6576654c
+  0x007f18  6c 5f 45 78 69 74 5f 50   u32 0x78455f6c 0x505f7469
+  0x007f20  6f 72 74 61 6c 2e 61 6e   u32 0x6174726f 0x6e612e6c
+  0x007f28  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x007f38  -> 0x7f78 'cinematic_jump'
+  0x007f40  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x007f48  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007f50  -> 0xa3d8 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Leap.anim'
+  0x007f58  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x007f60  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x007f68  -> 0x7fd0 
+  0x007f78  string 'cinematic_jump'
+  0x007f88  75 69 6c 64 3a 2f 2f 43   u32 0x646c6975 0x432f2f3a   f32 175.184
+  0x007f90  68 61 72 61 63 74 65 72   u32 0x61726168 0x72657463
+  0x007f98  73 2f 48 65 72 6f 65 73   u32 0x65482f73 0x73656f72
+  0x007fa0  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x007fa8  2f 41 6e 69 6d 73 2f 52   u32 0x696e412f 0x522f736d
+  0x007fb0  61 70 68 61 65 6c 5f 44   u32 0x61687061 0x445f6c65   f32 893.694
+  0x007fb8  65 66 61 75 6c 74 5f 4a   u32 0x75616665 0x4a5f746c   f32 3.66108e+06
+  0x007fc0  75 6d 70 2e 61 6e 69 6d   u32 0x2e706d75 0x6d696e61
+  0x007fd8  -> 0x8018 'dummy'
+  0x007fe0  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x007fe8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x007ff0  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x007ff8  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x008000  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008008  -> 0x8060 
+  0x008018  string 'dummy'
+  0x008020  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x008028  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x008030  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x008038  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x008040  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x008048  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x008050  66 61 75 6c 74 5f 49 64   u32 0x6c756166 0x64495f74
+  0x008058  6c 65 2e 61 6e 69 6d 00   u32 0x612e656c 0x6d696e
+  0x008068  -> 0x80a8 'Raphael_Special'
+  0x008070  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008078  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008080  -> 0xa428 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_SpinKick.anim'
+  0x008088  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x008090  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008098  -> 0x8108 
+  0x0080a8  string 'Raphael_Special'
+  0x0080b8  62 75 69 6c 64 3a 2f 2f   u32 0x6c697562 0x2f2f3a64
+  0x0080c0  43 68 61 72 61 63 74 65   u32 0x72616843 0x65746361
+  0x0080c8  72 73 2f 48 65 72 6f 65   u32 0x482f7372 0x656f7265   f32 179662
+  0x0080d0  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x0080d8  6c 2f 41 6e 69 6d 73 2f   u32 0x6e412f6c 0x2f736d69
+  0x0080e0  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x0080e8  44 65 66 61 75 6c 74 5f   u32 0x61666544 0x5f746c75
+  0x0080f0  41 74 74 61 63 6b 5f 53   u32 0x61747441 0x535f6b63
+  0x0080f8  70 65 63 69 61 6c 2e 61   u32 0x69636570 0x612e6c61
+  0x008100  6e 69 6d 00 00 00 00 00   u32 0x6d696e 0x0
+  0x008110  -> 0x8150 'Raphael_Special_old'
+  0x008118  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008120  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008128  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x008130  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x008138  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008140  -> 0x81a8 
+  0x008150  string 'Raphael_Special_old'
+  0x008168  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x008170  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x008178  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x008180  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x008188  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x008190  61 65 6c 5f 44 65 66 61   u32 0x5f6c6561 0x61666544
+  0x008198  75 6c 74 5f 49 64 6c 65   u32 0x5f746c75 0x656c6449
+  0x0081a0  2e 61 6e 69 6d 00 00 00   u32 0x696e612e 0x6d
+  0x0081b0  -> 0x81f0 'Raphael_Special_In'
+  0x0081b8  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x0081c0  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x0081c8  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x0081d0  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x0081d8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0081e0  -> 0x8248 
+  0x0081f0  string 'Raphael_Special_In'
+  0x008208  3a 2f 2f 43 68 61 72 61   u32 0x432f2f3a 0x61726168   f32 175.184
+  0x008210  63 74 65 72 73 2f 48 65   u32 0x72657463 0x65482f73
+  0x008218  72 6f 65 73 2f 52 61 70   u32 0x73656f72 0x7061522f
+  0x008220  68 61 65 6c 2f 41 6e 69   u32 0x6c656168 0x696e412f
+  0x008228  6d 73 2f 52 61 70 68 61   u32 0x522f736d 0x61687061
+  0x008230  65 6c 5f 44 65 66 61 75   u32 0x445f6c65 0x75616665   f32 893.694
+  0x008238  6c 74 5f 49 64 6c 65 2e   u32 0x495f746c 0x2e656c64   f32 915271
+  0x008240  61 6e 69 6d 00 00 00 00   u32 0x6d696e61 0x0
+  0x008250  -> 0x8290 'Raphael_Special_Loop'
+  0x008258  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x008260  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008268  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x008270  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x008278  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008280  -> 0x82e8 
+  0x008290  string 'Raphael_Special_Loop'
+  0x0082a8  6c 64 3a 2f 2f 43 68 61   u32 0x2f3a646c 0x6168432f
+  0x0082b0  72 61 63 74 65 72 73 2f   u32 0x74636172 0x2f737265
+  0x0082b8  48 65 72 6f 65 73 2f 52   u32 0x6f726548 0x522f7365
+  0x0082c0  61 70 68 61 65 6c 2f 41   u32 0x61687061 0x412f6c65   f32 10.964
+  0x0082c8  6e 69 6d 73 2f 52 61 70   u32 0x736d696e 0x7061522f
+  0x0082d0  68 61 65 6c 5f 44 65 66   u32 0x6c656168 0x6665445f
+  0x0082d8  61 75 6c 74 5f 49 64 6c   u32 0x746c7561 0x6c64495f
+  0x0082e0  65 2e 61 6e 69 6d 00 00   u32 0x6e612e65 0x6d69
+  0x0082f0  -> 0x8330 'Raphael_Special_Out'
+  0x0082f8  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008300  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008308  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x008310  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x008318  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008320  -> 0x8388 
+  0x008330  string 'Raphael_Special_Out'
+  0x008348  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x008350  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x008358  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x008360  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x008368  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x008370  61 65 6c 5f 44 65 66 61   u32 0x5f6c6561 0x61666544
+  0x008378  75 6c 74 5f 49 64 6c 65   u32 0x5f746c75 0x656c6449
+  0x008380  2e 61 6e 69 6d 00 00 00   u32 0x696e612e 0x6d
+  0x008390  -> 0x83d0 'run'
+  0x008398  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x0083a8  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x0083b0  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x0083b8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0083c0  -> 0x8418 
+  0x0083d0  string 'run'
+  0x0083d8  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x0083e0  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x0083e8  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x0083f0  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x0083f8  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x008400  61 65 6c 5f 44 65 66 61   u32 0x5f6c6561 0x61666544
+  0x008408  75 6c 74 5f 52 75 6e 2e   u32 0x5f746c75 0x2e6e7552
+  0x008410  61 6e 69 6d 00 00 00 00   u32 0x6d696e61 0x0
+  0x008420  -> 0x8460 'run_turn_left'
+  0x008428  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008438  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x008440  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x008448  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008450  -> 0x84b0 
+  0x008460  string 'run_turn_left'
+  0x008470  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x008478  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x008480  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x008488  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x008490  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x008498  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x0084a0  66 61 75 6c 74 5f 52 75   u32 0x6c756166 0x75525f74
+  0x0084a8  6e 2e 61 6e 69 6d 00 00   u32 0x6e612e6e 0x6d69
+  0x0084b8  -> 0x84f8 'run_turn_right'
+  0x0084c0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x0084d0  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x0084d8  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x0084e0  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0084e8  -> 0x8548 
+  0x0084f8  string 'run_turn_right'
+  0x008508  75 69 6c 64 3a 2f 2f 43   u32 0x646c6975 0x432f2f3a   f32 175.184
+  0x008510  68 61 72 61 63 74 65 72   u32 0x61726168 0x72657463
+  0x008518  73 2f 48 65 72 6f 65 73   u32 0x65482f73 0x73656f72
+  0x008520  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x008528  2f 41 6e 69 6d 73 2f 52   u32 0x696e412f 0x522f736d
+  0x008530  61 70 68 61 65 6c 5f 44   u32 0x61687061 0x445f6c65   f32 893.694
+  0x008538  65 66 61 75 6c 74 5f 52   u32 0x75616665 0x525f746c
+  0x008540  75 6e 2e 61 6e 69 6d 00   u32 0x612e6e75 0x6d696e
+  0x008550  -> 0x8590 'run_turn_back'
+  0x008558  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008568  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x008570  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x008578  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008580  -> 0x85e0 
+  0x008590  string 'run_turn_back'
+  0x0085a0  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x0085a8  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x0085b0  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x0085b8  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x0085c0  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x0085c8  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x0085d0  66 61 75 6c 74 5f 52 75   u32 0x6c756166 0x75525f74
+  0x0085d8  6e 2e 61 6e 69 6d 00 00   u32 0x6e612e6e 0x6d69
+  0x0085e8  -> 0x8628 'run_start'
+  0x0085f0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008600  -> 0xa470 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk_Start.anim'
+  0x008608  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x008610  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008618  -> 0x8678 
+  0x008628  string 'run_start'
+  0x008638  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x008640  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x008648  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x008650  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x008658  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x008660  6c 5f 44 65 66 61 75 6c   u32 0x65445f6c 0x6c756166
+  0x008668  74 5f 52 75 6e 2e 61 6e   u32 0x75525f74 0x6e612e6e
+  0x008670  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x008678  -> 0x8688 
+  0x008688  -> 0xc590 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x008690  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x008698  00 00 00 00 9a 99 99 3e   u32 0x0 0x3e99999a   f32 0.3
+  0x0086a0  62 75 69 6c 64 3a 2f 2f   u32 0x6c697562 0x2f2f3a64
+  0x0086a8  43 68 61 72 61 63 74 65   u32 0x72616843 0x65746361
+  0x0086b0  72 73 2f 48 65 72 6f 65   u32 0x482f7372 0x656f7265   f32 179662
+  0x0086b8  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x0086c0  6c 2f 41 6e 69 6d 73 2f   u32 0x6e412f6c 0x2f736d69
+  0x0086c8  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x0086d0  44 65 66 61 75 6c 74 5f   u32 0x61666544 0x5f746c75
+  0x0086d8  52 75 6e 2e 61 6e 69 6d   u32 0x2e6e7552 0x6d696e61
+  0x0086e8  -> 0x8728 'run_stop'
+  0x0086f0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x0086f8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008700  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x008708  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x008710  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008718  -> 0x8778 
+  0x008728  string 'run_stop'
+  0x008738  2f 43 68 61 72 61 63 74   u32 0x6168432f 0x74636172
+  0x008740  65 72 73 2f 48 65 72 6f   u32 0x2f737265 0x6f726548
+  0x008748  65 73 2f 52 61 70 68 61   u32 0x522f7365 0x61687061
+  0x008750  65 6c 2f 41 6e 69 6d 73   u32 0x412f6c65 0x736d696e   f32 10.964
+  0x008758  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x008760  5f 44 65 66 61 75 6c 74   u32 0x6665445f 0x746c7561
+  0x008768  5f 49 64 6c 65 2e 61 6e   u32 0x6c64495f 0x6e612e65
+  0x008770  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x008778  -> 0x8788 
+  0x008788  -> 0xc5d8 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x008790  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x008798  00 00 00 00 9a 99 99 3e   u32 0x0 0x3e99999a   f32 0.3
+  0x0087a0  62 75 69 6c 64 3a 2f 2f   u32 0x6c697562 0x2f2f3a64
+  0x0087a8  43 68 61 72 61 63 74 65   u32 0x72616843 0x65746361
+  0x0087b0  72 73 2f 48 65 72 6f 65   u32 0x482f7372 0x656f7265   f32 179662
+  0x0087b8  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x0087c0  6c 2f 41 6e 69 6d 73 2f   u32 0x6e412f6c 0x2f736d69
+  0x0087c8  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x0087d0  44 65 66 61 75 6c 74 5f   u32 0x61666544 0x5f746c75
+  0x0087d8  49 64 6c 65 2e 61 6e 69   u32 0x656c6449 0x696e612e
+  0x0087e0  6d 00 00 00 00 00 00 00   u32 0x6d 0x0
+  0x0087e8  -> 0x8828 'ability_roll'
+  0x0087f0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x0087f8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008800  -> 0xa258 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_SmokeBomb_Disappear.anim'
+  0x008808  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008810  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008818  -> 0x8878 
+  0x008828  string 'ability_roll'
+  0x008838  6c 64 3a 2f 2f 43 68 61   u32 0x2f3a646c 0x6168432f
+  0x008840  72 61 63 74 65 72 73 2f   u32 0x74636172 0x2f737265
+  0x008848  48 65 72 6f 65 73 2f 52   u32 0x6f726548 0x522f7365
+  0x008850  61 70 68 61 65 6c 2f 41   u32 0x61687061 0x412f6c65   f32 10.964
+  0x008858  6e 69 6d 73 2f 52 61 70   u32 0x736d696e 0x7061522f
+  0x008860  68 61 65 6c 5f 44 65 66   u32 0x6c656168 0x6665445f
+  0x008868  61 75 6c 74 5f 44 61 73   u32 0x746c7561 0x7361445f
+  0x008870  68 2e 61 6e 69 6d 00 00   u32 0x6e612e68 0x6d69
+  0x008880  -> 0x88c0 'tool_blessing_of_mammoth'
+  0x008888  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008890  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008898  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x0088a0  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x0088a8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0088b0  -> 0x8930 
+  0x0088c0  string 'tool_blessing_of_mammoth'
+  0x0088e0  2f 43 68 61 72 61 63 74   u32 0x6168432f 0x74636172
+  0x0088e8  65 72 73 2f 48 65 72 6f   u32 0x2f737265 0x6f726548
+  0x0088f0  65 73 2f 52 61 70 68 61   u32 0x522f7365 0x61687061
+  0x0088f8  65 6c 2f 41 6e 69 6d 73   u32 0x412f6c65 0x736d696e   f32 10.964
+  0x008900  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x008908  5f 44 65 66 61 75 6c 74   u32 0x6665445f 0x746c7561
+  0x008910  5f 54 6f 6f 6c 5f 53 68   u32 0x6f6f545f 0x68535f6c
+  0x008918  75 72 69 6b 65 6e 53 74   u32 0x6b697275 0x74536e65
+  0x008920  6f 72 6d 2e 61 6e 69 6d   u32 0x2e6d726f 0x6d696e61
+  0x008938  -> 0x8978 'tool_shuriken_storm'
+  0x008940  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008948  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008950  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x008958  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008960  00 00 00 00 00 00 10 41   u32 0x0 0x41100000   f32 9
+  0x008968  -> 0x89e0 
+  0x008978  string 'tool_shuriken_storm'
+  0x008990  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x008998  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x0089a0  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x0089a8  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x0089b0  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x0089b8  61 65 6c 5f 44 65 66 61   u32 0x5f6c6561 0x61666544
+  0x0089c0  75 6c 74 5f 54 6f 6f 6c   u32 0x5f746c75 0x6c6f6f54
+  0x0089c8  5f 53 68 75 72 69 6b 65   u32 0x7568535f 0x656b6972
+  0x0089d0  6e 53 74 6f 72 6d 2e 61   u32 0x6f74536e 0x612e6d72
+  0x0089d8  6e 69 6d 00 00 00 00 00   u32 0x6d696e 0x0
+  0x0089e8  -> 0x8a28 'tool_common_001_shurikens'
+  0x0089f0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x0089f8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008a00  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x008a08  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008a10  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008a18  -> 0x8a98 
+  0x008a28  string 'tool_common_001_shurikens'
+  0x008a48  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x008a50  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x008a58  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x008a60  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x008a68  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x008a70  6c 5f 44 65 66 61 75 6c   u32 0x65445f6c 0x6c756166
+  0x008a78  74 5f 54 6f 6f 6c 5f 53   u32 0x6f545f74 0x535f6c6f
+  0x008a80  68 75 72 69 6b 65 6e 53   u32 0x69727568 0x536e656b
+  0x008a88  74 6f 72 6d 2e 61 6e 69   u32 0x6d726f74 0x696e612e
+  0x008a90  6d 00 00 00 00 00 00 00   u32 0x6d 0x0
+  0x008aa0  -> 0x8ae0 'tool_common_002_hook'
+  0x008aa8  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008ab0  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008ab8  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x008ac0  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008ac8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008ad0  -> 0x8b48 
+  0x008ae0  string 'tool_common_002_hook'
+  0x008af8  6c 64 3a 2f 2f 43 68 61   u32 0x2f3a646c 0x6168432f
+  0x008b00  72 61 63 74 65 72 73 2f   u32 0x74636172 0x2f737265
+  0x008b08  48 65 72 6f 65 73 2f 52   u32 0x6f726548 0x522f7365
+  0x008b10  61 70 68 61 65 6c 2f 41   u32 0x61687061 0x412f6c65   f32 10.964
+  0x008b18  6e 69 6d 73 2f 52 61 70   u32 0x736d696e 0x7061522f
+  0x008b20  68 61 65 6c 5f 44 65 66   u32 0x6c656168 0x6665445f
+  0x008b28  61 75 6c 74 5f 54 6f 6f   u32 0x746c7561 0x6f6f545f
+  0x008b30  6c 5f 53 68 75 72 69 6b   u32 0x68535f6c 0x6b697275
+  0x008b38  65 6e 53 74 6f 72 6d 2e   u32 0x74536e65 0x2e6d726f
+  0x008b40  61 6e 69 6d 00 00 00 00   u32 0x6d696e61 0x0
+  0x008b50  -> 0x8b90 'tool_common_003_invulnerability'
+  0x008b58  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008b60  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008b68  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x008b70  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008b78  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008b80  -> 0x8c00 
+  0x008b90  string 'tool_common_003_invulnerability'
+  0x008bb0  62 75 69 6c 64 3a 2f 2f   u32 0x6c697562 0x2f2f3a64
+  0x008bb8  43 68 61 72 61 63 74 65   u32 0x72616843 0x65746361
+  0x008bc0  72 73 2f 48 65 72 6f 65   u32 0x482f7372 0x656f7265   f32 179662
+  0x008bc8  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x008bd0  6c 2f 41 6e 69 6d 73 2f   u32 0x6e412f6c 0x2f736d69
+  0x008bd8  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x008be0  44 65 66 61 75 6c 74 5f   u32 0x61666544 0x5f746c75
+  0x008be8  54 6f 6f 6c 5f 53 68 75   u32 0x6c6f6f54 0x7568535f
+  0x008bf0  72 69 6b 65 6e 53 74 6f   u32 0x656b6972 0x6f74536e
+  0x008bf8  72 6d 2e 61 6e 69 6d 00   u32 0x612e6d72 0x6d696e
+  0x008c08  -> 0x8c48 'tool_common_004_taunt'
+  0x008c10  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008c18  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008c20  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x008c28  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008c30  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008c38  -> 0x8cb0 
+  0x008c48  string 'tool_common_004_taunt'
+  0x008c60  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x008c68  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x008c70  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x008c78  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x008c80  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x008c88  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x008c90  66 61 75 6c 74 5f 54 6f   u32 0x6c756166 0x6f545f74
+  0x008c98  6f 6c 5f 53 68 75 72 69   u32 0x535f6c6f 0x69727568
+  0x008ca0  6b 65 6e 53 74 6f 72 6d   u32 0x536e656b 0x6d726f74
+  0x008ca8  2e 61 6e 69 6d 00 00 00   u32 0x696e612e 0x6d
+  0x008cb8  -> 0x8cf8 'tool_water_001_watersweep'
+  0x008cc0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008cc8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008cd0  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x008cd8  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008ce0  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008ce8  -> 0x8d68 
+  0x008cf8  string 'tool_water_001_watersweep'
+  0x008d18  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x008d20  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x008d28  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x008d30  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x008d38  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x008d40  6c 5f 44 65 66 61 75 6c   u32 0x65445f6c 0x6c756166
+  0x008d48  74 5f 54 6f 6f 6c 5f 53   u32 0x6f545f74 0x535f6c6f
+  0x008d50  68 75 72 69 6b 65 6e 53   u32 0x69727568 0x536e656b
+  0x008d58  74 6f 72 6d 2e 61 6e 69   u32 0x6d726f74 0x696e612e
+  0x008d60  6d 00 00 00 00 00 00 00   u32 0x6d 0x0
+  0x008d70  -> 0x8db0 'tool_water_002_ridethewave'
+  0x008d78  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008d80  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008d88  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x008d90  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008d98  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008da0  -> 0x8e20 
+  0x008db0  string 'tool_water_002_ridethewave'
+  0x008dd0  3a 2f 2f 43 68 61 72 61   u32 0x432f2f3a 0x61726168   f32 175.184
+  0x008dd8  63 74 65 72 73 2f 48 65   u32 0x72657463 0x65482f73
+  0x008de0  72 6f 65 73 2f 52 61 70   u32 0x73656f72 0x7061522f
+  0x008de8  68 61 65 6c 2f 41 6e 69   u32 0x6c656168 0x696e412f
+  0x008df0  6d 73 2f 52 61 70 68 61   u32 0x522f736d 0x61687061
+  0x008df8  65 6c 5f 44 65 66 61 75   u32 0x445f6c65 0x75616665   f32 893.694
+  0x008e00  6c 74 5f 54 6f 6f 6c 5f   u32 0x545f746c 0x5f6c6f6f
+  0x008e08  53 68 75 72 69 6b 65 6e   u32 0x72756853 0x6e656b69
+  0x008e10  53 74 6f 72 6d 2e 61 6e   u32 0x726f7453 0x6e612e6d
+  0x008e18  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x008e28  -> 0x8e68 'tool_flame_001_fireball'
+  0x008e30  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008e38  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008e40  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x008e48  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008e50  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008e58  -> 0x8ed0 
+  0x008e68  string 'tool_flame_001_fireball'
+  0x008e80  62 75 69 6c 64 3a 2f 2f   u32 0x6c697562 0x2f2f3a64
+  0x008e88  43 68 61 72 61 63 74 65   u32 0x72616843 0x65746361
+  0x008e90  72 73 2f 48 65 72 6f 65   u32 0x482f7372 0x656f7265   f32 179662
+  0x008e98  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x008ea0  6c 2f 41 6e 69 6d 73 2f   u32 0x6e412f6c 0x2f736d69
+  0x008ea8  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x008eb0  44 65 66 61 75 6c 74 5f   u32 0x61666544 0x5f746c75
+  0x008eb8  54 6f 6f 6c 5f 53 68 75   u32 0x6c6f6f54 0x7568535f
+  0x008ec0  72 69 6b 65 6e 53 74 6f   u32 0x656b6972 0x6f74536e
+  0x008ec8  72 6d 2e 61 6e 69 6d 00   u32 0x612e6d72 0x6d696e
+  0x008ed8  -> 0x8f18 'tool_flame_002_meteorstorm'
+  0x008ee0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008ee8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008ef0  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x008ef8  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008f00  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008f08  -> 0x8f88 
+  0x008f18  string 'tool_flame_002_meteorstorm'
+  0x008f38  3a 2f 2f 43 68 61 72 61   u32 0x432f2f3a 0x61726168   f32 175.184
+  0x008f40  63 74 65 72 73 2f 48 65   u32 0x72657463 0x65482f73
+  0x008f48  72 6f 65 73 2f 52 61 70   u32 0x73656f72 0x7061522f
+  0x008f50  68 61 65 6c 2f 41 6e 69   u32 0x6c656168 0x696e412f
+  0x008f58  6d 73 2f 52 61 70 68 61   u32 0x522f736d 0x61687061
+  0x008f60  65 6c 5f 44 65 66 61 75   u32 0x445f6c65 0x75616665   f32 893.694
+  0x008f68  6c 74 5f 54 6f 6f 6c 5f   u32 0x545f746c 0x5f6c6f6f
+  0x008f70  53 68 75 72 69 6b 65 6e   u32 0x72756853 0x6e656b69
+  0x008f78  53 74 6f 72 6d 2e 61 6e   u32 0x726f7453 0x6e612e6d
+  0x008f80  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x008f90  -> 0x8fd0 'tool_ninja_001_smokebomb'
+  0x008f98  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x008fa0  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x008fa8  -> 0xa258 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_SmokeBomb_Disappear.anim'
+  0x008fb0  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x008fb8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x008fc0  -> 0x9040 
+  0x008fd0  string 'tool_ninja_001_smokebomb'
+  0x008ff0  2f 43 68 61 72 61 63 74   u32 0x6168432f 0x74636172
+  0x008ff8  65 72 73 2f 48 65 72 6f   u32 0x2f737265 0x6f726548
+  0x009000  65 73 2f 52 61 70 68 61   u32 0x522f7365 0x61687061
+  0x009008  65 6c 2f 41 6e 69 6d 73   u32 0x412f6c65 0x736d696e   f32 10.964
+  0x009010  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x009018  5f 44 65 66 61 75 6c 74   u32 0x6665445f 0x746c7561
+  0x009020  5f 54 6f 6f 6c 5f 53 68   u32 0x6f6f545f 0x68535f6c
+  0x009028  75 72 69 6b 65 6e 53 74   u32 0x6b697275 0x74536e65
+  0x009030  6f 72 6d 2e 61 6e 69 6d   u32 0x2e6d726f 0x6d696e61
+  0x009048  -> 0x9088 'tool_ninja_002_shurikenstorm'
+  0x009050  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009058  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009060  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x009068  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x009070  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009078  -> 0x90f8 
+  0x009088  string 'tool_ninja_002_shurikenstorm'
+  0x0090a8  6c 64 3a 2f 2f 43 68 61   u32 0x2f3a646c 0x6168432f
+  0x0090b0  72 61 63 74 65 72 73 2f   u32 0x74636172 0x2f737265
+  0x0090b8  48 65 72 6f 65 73 2f 52   u32 0x6f726548 0x522f7365
+  0x0090c0  61 70 68 61 65 6c 2f 41   u32 0x61687061 0x412f6c65   f32 10.964
+  0x0090c8  6e 69 6d 73 2f 52 61 70   u32 0x736d696e 0x7061522f
+  0x0090d0  68 61 65 6c 5f 44 65 66   u32 0x6c656168 0x6665445f
+  0x0090d8  61 75 6c 74 5f 54 6f 6f   u32 0x746c7561 0x6f6f545f
+  0x0090e0  6c 5f 53 68 75 72 69 6b   u32 0x68535f6c 0x6b697275
+  0x0090e8  65 6e 53 74 6f 72 6d 2e   u32 0x74536e65 0x2e6d726f
+  0x0090f0  61 6e 69 6d 00 00 00 00   u32 0x6d696e61 0x0
+  0x009100  -> 0x9140 'tool_ooze_001_oozeshurikens'
+  0x009108  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009110  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009118  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x009120  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x009128  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009130  -> 0x91b0 
+  0x009140  string 'tool_ooze_001_oozeshurikens'
+  0x009160  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x009168  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x009170  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x009178  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x009180  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x009188  61 65 6c 5f 44 65 66 61   u32 0x5f6c6561 0x61666544
+  0x009190  75 6c 74 5f 54 6f 6f 6c   u32 0x5f746c75 0x6c6f6f54
+  0x009198  5f 53 68 75 72 69 6b 65   u32 0x7568535f 0x656b6972
+  0x0091a0  6e 53 74 6f 72 6d 2e 61   u32 0x6f74536e 0x612e6d72
+  0x0091a8  6e 69 6d 00 00 00 00 00   u32 0x6d696e 0x0
+  0x0091b8  -> 0x91f8 'tool_ooze_002_unstablecanister'
+  0x0091c0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x0091c8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x0091d0  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x0091d8  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x0091e0  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0091e8  -> 0x9268 
+  0x0091f8  string 'tool_ooze_002_unstablecanister'
+  0x009218  75 69 6c 64 3a 2f 2f 43   u32 0x646c6975 0x432f2f3a   f32 175.184
+  0x009220  68 61 72 61 63 74 65 72   u32 0x61726168 0x72657463
+  0x009228  73 2f 48 65 72 6f 65 73   u32 0x65482f73 0x73656f72
+  0x009230  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x009238  2f 41 6e 69 6d 73 2f 52   u32 0x696e412f 0x522f736d
+  0x009240  61 70 68 61 65 6c 5f 44   u32 0x61687061 0x445f6c65   f32 893.694
+  0x009248  65 66 61 75 6c 74 5f 54   u32 0x75616665 0x545f746c
+  0x009250  6f 6f 6c 5f 53 68 75 72   u32 0x5f6c6f6f 0x72756853
+  0x009258  69 6b 65 6e 53 74 6f 72   u32 0x6e656b69 0x726f7453
+  0x009260  6d 2e 61 6e 69 6d 00 00   u32 0x6e612e6d 0x6d69
+  0x009270  -> 0x92b0 'tool_utrom_001_electricshurikens'
+  0x009278  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009280  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009288  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x009290  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x009298  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0092a0  -> 0x9328 
+  0x0092b0  string 'tool_utrom_001_electricshurikens'
+  0x0092d8  2f 43 68 61 72 61 63 74   u32 0x6168432f 0x74636172
+  0x0092e0  65 72 73 2f 48 65 72 6f   u32 0x2f737265 0x6f726548
+  0x0092e8  65 73 2f 52 61 70 68 61   u32 0x522f7365 0x61687061
+  0x0092f0  65 6c 2f 41 6e 69 6d 73   u32 0x412f6c65 0x736d696e   f32 10.964
+  0x0092f8  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x009300  5f 44 65 66 61 75 6c 74   u32 0x6665445f 0x746c7561
+  0x009308  5f 54 6f 6f 6c 5f 53 68   u32 0x6f6f545f 0x68535f6c
+  0x009310  75 72 69 6b 65 6e 53 74   u32 0x6b697275 0x74536e65
+  0x009318  6f 72 6d 2e 61 6e 69 6d   u32 0x2e6d726f 0x6d696e61
+  0x009330  -> 0x9370 'tool_utrom_002_lightningrod'
+  0x009338  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009340  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009348  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x009350  00 00 00 40 00 00 00 00   u32 0x40000000 0x0   f32 2
+  0x009358  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009360  -> 0x93e0 
+  0x009370  string 'tool_utrom_002_lightningrod'
+  0x009390  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x009398  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x0093a0  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x0093a8  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x0093b0  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x0093b8  61 65 6c 5f 44 65 66 61   u32 0x5f6c6561 0x61666544
+  0x0093c0  75 6c 74 5f 54 6f 6f 6c   u32 0x5f746c75 0x6c6f6f54
+  0x0093c8  5f 53 68 75 72 69 6b 65   u32 0x7568535f 0x656b6972
+  0x0093d0  6e 53 74 6f 72 6d 2e 61   u32 0x6f74536e 0x612e6d72
+  0x0093d8  6e 69 6d 00 00 00 00 00   u32 0x6d696e 0x0
+  0x0093e8  -> 0x9428 'attack_combo1'
+  0x0093f0  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x0093f8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009400  -> 0xa4b8 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x009408  00 00 c0 3f 00 00 00 00   u32 0x3fc00000 0x0   f32 1.5
+  0x009410  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009418  -> 0x9488 
+  0x009428  string 'attack_combo1'
+  0x009438  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x009440  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x009448  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x009450  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x009458  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x009460  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x009468  66 61 75 6c 74 5f 41 74   u32 0x6c756166 0x74415f74
+  0x009470  74 61 63 6b 5f 43 6f 6d   u32 0x6b636174 0x6d6f435f
+  0x009478  62 6f 31 2e 61 6e 69 6d   u32 0x2e316f62 0x6d696e61
+  0x009490  -> 0x94d0 'attack_combo2'
+  0x009498  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x0094a0  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x0094a8  -> 0xa500 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Back.anim'
+  0x0094b0  00 00 c0 3f 00 00 00 00   u32 0x3fc00000 0x0   f32 1.5
+  0x0094b8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0094c0  -> 0x9530 
+  0x0094d0  string 'attack_combo2'
+  0x0094e0  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x0094e8  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x0094f0  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x0094f8  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x009500  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x009508  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x009510  66 61 75 6c 74 5f 41 74   u32 0x6c756166 0x74415f74
+  0x009518  74 61 63 6b 5f 43 6f 6d   u32 0x6b636174 0x6d6f435f
+  0x009520  62 6f 32 2e 61 6e 69 6d   u32 0x2e326f62 0x6d696e61
+  0x009538  -> 0x9578 'attack_combo3'
+  0x009540  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x009548  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009550  -> 0xa550 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Lunge.anim'
+  0x009558  00 00 c0 3f 00 00 00 00   u32 0x3fc00000 0x0   f32 1.5
+  0x009560  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009568  -> 0x95d8 
+  0x009578  string 'attack_combo3'
+  0x009588  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x009590  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x009598  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x0095a0  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x0095a8  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x0095b0  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x0095b8  66 61 75 6c 74 5f 41 74   u32 0x6c756166 0x74415f74
+  0x0095c0  74 61 63 6b 5f 43 6f 6d   u32 0x6b636174 0x6d6f435f
+  0x0095c8  62 6f 33 2e 61 6e 69 6d   u32 0x2e336f62 0x6d696e61
+  0x0095e0  -> 0x9620 'attack_combo4'
+  0x0095e8  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x0095f0  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x0095f8  -> 0xa5a0 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_CrashingWave.anim'
+  0x009600  00 00 c0 3f 00 00 00 00   u32 0x3fc00000 0x0   f32 1.5
+  0x009608  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009610  -> 0x9680 
+  0x009620  string 'attack_combo4'
+  0x009630  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x009638  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x009640  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x009648  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x009650  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x009658  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x009660  66 61 75 6c 74 5f 41 74   u32 0x6c756166 0x74415f74
+  0x009668  74 61 63 6b 5f 43 6f 6d   u32 0x6b636174 0x6d6f435f
+  0x009670  62 6f 34 2e 61 6e 69 6d   u32 0x2e346f62 0x6d696e61
+  0x009688  -> 0x96c8 'attack_combo_dash'
+  0x009690  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x009698  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x0096a0  -> 0xa5f0 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Kick_End.anim'
+  0x0096a8  00 00 c0 3f 00 00 00 00   u32 0x3fc00000 0x0   f32 1.5
+  0x0096b0  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0096b8  -> 0x9728 
+  0x0096c8  string 'attack_combo_dash'
+  0x0096e0  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x0096e8  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x0096f0  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x0096f8  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x009700  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x009708  6c 5f 44 65 66 61 75 6c   u32 0x65445f6c 0x6c756166
+  0x009710  74 5f 41 74 74 61 63 6b   u32 0x74415f74 0x6b636174
+  0x009718  5f 44 61 73 68 2e 61 6e   u32 0x7361445f 0x6e612e68
+  0x009720  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x009730  -> 0x9770 'spawn'
+  0x009738  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009740  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009748  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x009750  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x009758  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009760  -> 0x97b8 
+  0x009770  string 'spawn'
+  0x009778  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x009780  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x009788  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x009790  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x009798  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x0097a0  70 68 61 65 6c 5f 44 65   u32 0x65616870 0x65445f6c
+  0x0097a8  66 61 75 6c 74 5f 49 64   u32 0x6c756166 0x64495f74
+  0x0097b0  6c 65 2e 61 6e 69 6d 00   u32 0x612e656c 0x6d696e
+  0x0097c0  -> 0x9800 'respawn'
+  0x0097c8  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x0097d0  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x0097d8  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x0097e0  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x0097e8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0097f0  -> 0x9850 
+  0x009800  string 'respawn'
+  0x009808  62 75 69 6c 64 3a 2f 2f   u32 0x6c697562 0x2f2f3a64
+  0x009810  43 68 61 72 61 63 74 65   u32 0x72616843 0x65746361
+  0x009818  72 73 2f 48 65 72 6f 65   u32 0x482f7372 0x656f7265   f32 179662
+  0x009820  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x009828  6c 2f 41 6e 69 6d 73 2f   u32 0x6e412f6c 0x2f736d69
+  0x009830  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x009838  44 65 66 61 75 6c 74 5f   u32 0x61666544 0x5f746c75
+  0x009840  49 64 6c 65 2e 61 6e 69   u32 0x656c6449 0x696e612e
+  0x009848  6d 00 00 00 00 00 00 00   u32 0x6d 0x0
+  0x009858  -> 0x9898 'idle'
+  0x009860  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x009868  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009870  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x009878  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x009880  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009888  -> 0x98e0 
+  0x009898  string 'idle'
+  0x0098a0  6c 64 3a 2f 2f 43 68 61   u32 0x2f3a646c 0x6168432f
+  0x0098a8  72 61 63 74 65 72 73 2f   u32 0x74636172 0x2f737265
+  0x0098b0  48 65 72 6f 65 73 2f 52   u32 0x6f726548 0x522f7365
+  0x0098b8  61 70 68 61 65 6c 2f 41   u32 0x61687061 0x412f6c65   f32 10.964
+  0x0098c0  6e 69 6d 73 2f 52 61 70   u32 0x736d696e 0x7061522f
+  0x0098c8  68 61 65 6c 5f 44 65 66   u32 0x6c656168 0x6665445f
+  0x0098d0  61 75 6c 74 5f 49 64 6c   u32 0x746c7561 0x6c64495f
+  0x0098d8  65 2e 61 6e 69 6d 00 00   u32 0x6e612e65 0x6d69
+  0x0098e0  -> 0x98f8 
+  0x0098e8  -> 0x9958 
+  0x0098f8  -> 0xc5d8 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x009900  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x009908  00 00 00 00 cd cc cc 3e   u32 0x0 0x3ecccccd   f32 0.4
+  0x009910  62 75 69 6c 64 3a 2f 2f   u32 0x6c697562 0x2f2f3a64
+  0x009918  43 68 61 72 61 63 74 65   u32 0x72616843 0x65746361
+  0x009920  72 73 2f 48 65 72 6f 65   u32 0x482f7372 0x656f7265   f32 179662
+  0x009928  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x009930  6c 2f 41 6e 69 6d 73 2f   u32 0x6e412f6c 0x2f736d69
+  0x009938  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x009940  44 65 66 61 75 6c 74 5f   u32 0x61666544 0x5f746c75
+  0x009948  49 64 6c 65 2e 61 6e 69   u32 0x656c6449 0x696e612e
+  0x009950  6d 00 00 00 00 00 00 00   u32 0x6d 0x0
+  0x009958  -> 0xc5d8 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x009960  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x009968  00 00 00 00 cd cc cc 3e   u32 0x0 0x3ecccccd   f32 0.4
+  0x009970  62 75 69 6c 64 3a 2f 2f   u32 0x6c697562 0x2f2f3a64
+  0x009978  43 68 61 72 61 63 74 65   u32 0x72616843 0x65746361
+  0x009980  72 73 2f 48 65 72 6f 65   u32 0x482f7372 0x656f7265   f32 179662
+  0x009988  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x009990  6c 2f 41 6e 69 6d 73 2f   u32 0x6e412f6c 0x2f736d69
+  0x009998  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x0099a0  44 65 66 61 75 6c 74 5f   u32 0x61666544 0x5f746c75
+  0x0099a8  49 64 6c 65 2e 61 6e 69   u32 0x656c6449 0x696e612e
+  0x0099b0  6d 00 00 00 00 00 00 00   u32 0x6d 0x0
+  0x0099b8  -> 0x99f8 'idle_ability'
+  0x0099c0  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x0099c8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x0099d0  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x0099d8  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x0099e0  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x0099e8  -> 0x9a48 
+  0x0099f8  string 'idle_ability'
+  0x009a08  6c 64 3a 2f 2f 43 68 61   u32 0x2f3a646c 0x6168432f
+  0x009a10  72 61 63 74 65 72 73 2f   u32 0x74636172 0x2f737265
+  0x009a18  48 65 72 6f 65 73 2f 52   u32 0x6f726548 0x522f7365
+  0x009a20  61 70 68 61 65 6c 2f 41   u32 0x61687061 0x412f6c65   f32 10.964
+  0x009a28  6e 69 6d 73 2f 52 61 70   u32 0x736d696e 0x7061522f
+  0x009a30  68 61 65 6c 5f 44 65 66   u32 0x6c656168 0x6665445f
+  0x009a38  61 75 6c 74 5f 49 64 6c   u32 0x746c7561 0x6c64495f
+  0x009a40  65 2e 61 6e 69 6d 00 00   u32 0x6e612e65 0x6d69
+  0x009a50  -> 0x9a90 'turn_back'
+  0x009a58  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009a60  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009a68  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x009a70  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x009a78  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009a80  -> 0x9ae0 
+  0x009a90  string 'turn_back'
+  0x009aa0  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x009aa8  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x009ab0  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x009ab8  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x009ac0  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x009ac8  6c 5f 44 65 66 61 75 6c   u32 0x65445f6c 0x6c756166
+  0x009ad0  74 5f 52 75 6e 2e 61 6e   u32 0x75525f74 0x6e612e6e
+  0x009ad8  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x009ae8  -> 0x9b28 'turn_left'
+  0x009af0  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009af8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009b00  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x009b08  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x009b10  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009b18  -> 0x9b78 
+  0x009b28  string 'turn_left'
+  0x009b38  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x009b40  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x009b48  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x009b50  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x009b58  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x009b60  6c 5f 44 65 66 61 75 6c   u32 0x65445f6c 0x6c756166
+  0x009b68  74 5f 52 75 6e 2e 61 6e   u32 0x75525f74 0x6e612e6e
+  0x009b70  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x009b80  -> 0x9bc0 'turn_right'
+  0x009b88  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009b90  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009b98  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x009ba0  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x009ba8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009bb0  -> 0x9c10 
+  0x009bc0  string 'turn_right'
+  0x009bd0  3a 2f 2f 43 68 61 72 61   u32 0x432f2f3a 0x61726168   f32 175.184
+  0x009bd8  63 74 65 72 73 2f 48 65   u32 0x72657463 0x65482f73
+  0x009be0  72 6f 65 73 2f 52 61 70   u32 0x73656f72 0x7061522f
+  0x009be8  68 61 65 6c 2f 41 6e 69   u32 0x6c656168 0x696e412f
+  0x009bf0  6d 73 2f 52 61 70 68 61   u32 0x522f736d 0x61687061
+  0x009bf8  65 6c 5f 44 65 66 61 75   u32 0x445f6c65 0x75616665   f32 893.694
+  0x009c00  6c 74 5f 52 75 6e 2e 61   u32 0x525f746c 0x612e6e75
+  0x009c08  6e 69 6d 00 00 00 00 00   u32 0x6d696e 0x0
+  0x009c18  -> 0x9c58 'brush_idle'
+  0x009c20  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x009c28  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009c30  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x009c38  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x009c40  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009c48  -> 0x9ca8 
+  0x009c58  string 'brush_idle'
+  0x009c68  3a 2f 2f 43 68 61 72 61   u32 0x432f2f3a 0x61726168   f32 175.184
+  0x009c70  63 74 65 72 73 2f 48 65   u32 0x72657463 0x65482f73
+  0x009c78  72 6f 65 73 2f 52 61 70   u32 0x73656f72 0x7061522f
+  0x009c80  68 61 65 6c 2f 41 6e 69   u32 0x6c656168 0x696e412f
+  0x009c88  6d 73 2f 52 61 70 68 61   u32 0x522f736d 0x61687061
+  0x009c90  65 6c 5f 44 65 66 61 75   u32 0x445f6c65 0x75616665   f32 893.694
+  0x009c98  6c 74 5f 49 64 6c 65 2e   u32 0x495f746c 0x2e656c64   f32 915271
+  0x009ca0  61 6e 69 6d 00 00 00 00   u32 0x6d696e61 0x0
+  0x009cb0  -> 0x9cf0 'brush_run_start'
+  0x009cb8  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009cc8  -> 0xa470 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk_Start.anim'
+  0x009cd0  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x009cd8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009ce0  -> 0x9d48 
+  0x009cf0  string 'brush_run_start'
+  0x009d00  62 75 69 6c 64 3a 2f 2f   u32 0x6c697562 0x2f2f3a64
+  0x009d08  43 68 61 72 61 63 74 65   u32 0x72616843 0x65746361
+  0x009d10  72 73 2f 48 65 72 6f 65   u32 0x482f7372 0x656f7265   f32 179662
+  0x009d18  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x009d20  6c 2f 41 6e 69 6d 73 2f   u32 0x6e412f6c 0x2f736d69
+  0x009d28  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x009d30  44 65 66 61 75 6c 74 5f   u32 0x61666544 0x5f746c75
+  0x009d38  52 75 6e 2e 61 6e 69 6d   u32 0x2e6e7552 0x6d696e61
+  0x009d50  -> 0x9d90 'brush_run_stop'
+  0x009d58  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009d60  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009d68  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x009d70  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x009d78  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009d80  -> 0x9de0 
+  0x009d90  string 'brush_run_stop'
+  0x009da0  75 69 6c 64 3a 2f 2f 43   u32 0x646c6975 0x432f2f3a   f32 175.184
+  0x009da8  68 61 72 61 63 74 65 72   u32 0x61726168 0x72657463
+  0x009db0  73 2f 48 65 72 6f 65 73   u32 0x65482f73 0x73656f72
+  0x009db8  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x009dc0  2f 41 6e 69 6d 73 2f 52   u32 0x696e412f 0x522f736d
+  0x009dc8  61 70 68 61 65 6c 5f 44   u32 0x61687061 0x445f6c65   f32 893.694
+  0x009dd0  65 66 61 75 6c 74 5f 52   u32 0x75616665 0x525f746c
+  0x009dd8  75 6e 2e 61 6e 69 6d 00   u32 0x612e6e75 0x6d696e
+  0x009de8  -> 0x9e28 'brush_run'
+  0x009df0  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x009e00  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x009e08  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x009e10  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009e18  -> 0x9e78 
+  0x009e28  string 'brush_run'
+  0x009e38  2f 2f 43 68 61 72 61 63   u32 0x68432f2f 0x63617261
+  0x009e40  74 65 72 73 2f 48 65 72   u32 0x73726574 0x7265482f
+  0x009e48  6f 65 73 2f 52 61 70 68   u32 0x2f73656f 0x68706152
+  0x009e50  61 65 6c 2f 41 6e 69 6d   u32 0x2f6c6561 0x6d696e41
+  0x009e58  73 2f 52 61 70 68 61 65   u32 0x61522f73 0x65616870
+  0x009e60  6c 5f 44 65 66 61 75 6c   u32 0x65445f6c 0x6c756166
+  0x009e68  74 5f 52 75 6e 2e 61 6e   u32 0x75525f74 0x6e612e6e
+  0x009e70  69 6d 00 00 00 00 00 00   u32 0x6d69 0x0
+  0x009e80  -> 0x9ec0 'homelair_spawn'
+  0x009e88  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x009e90  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009e98  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x009ea0  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x009ea8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009eb0  -> 0x9f18 
+  0x009ec0  string 'homelair_spawn'
+  0x009ed0  75 69 6c 64 3a 2f 2f 43   u32 0x646c6975 0x432f2f3a   f32 175.184
+  0x009ed8  68 61 72 61 63 74 65 72   u32 0x61726168 0x72657463
+  0x009ee0  73 2f 48 65 72 6f 65 73   u32 0x65482f73 0x73656f72
+  0x009ee8  2f 52 61 70 68 61 65 6c   u32 0x7061522f 0x6c656168
+  0x009ef0  2f 41 6e 69 6d 73 2f 52   u32 0x696e412f 0x522f736d
+  0x009ef8  61 70 68 61 65 6c 5f 48   u32 0x61687061 0x485f6c65   f32 228786
+  0x009f00  6f 6d 65 6c 61 69 72 5f   u32 0x6c656d6f 0x5f726961
+  0x009f08  52 65 73 70 61 77 6e 2e   u32 0x70736552 0x2e6e7761
+  0x009f10  61 6e 69 6d 00 00 00 00   u32 0x6d696e61 0x0
+  0x009f20  -> 0x9f60 'homelair_walk'
+  0x009f28  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x009f38  -> 0xa390 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x009f40  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x009f48  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009f50  -> 0x9fb8 
+  0x009f60  string 'homelair_walk'
+  0x009f70  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x009f78  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x009f80  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x009f88  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x009f90  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x009f98  70 68 61 65 6c 5f 48 6f   u32 0x65616870 0x6f485f6c
+  0x009fa0  6d 65 6c 61 69 72 5f 57   u32 0x616c656d 0x575f7269
+  0x009fa8  61 6c 6b 2e 61 6e 69 6d   u32 0x2e6b6c61 0x6d696e61
+  0x009fc0  -> 0xa000 'homelair_idle'
+  0x009fc8  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x009fd0  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x009fd8  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x009fe0  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x009fe8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x009ff0  -> 0xa058 
+  0x00a000  string 'homelair_idle'
+  0x00a010  69 6c 64 3a 2f 2f 43 68   u32 0x3a646c69 0x68432f2f   f32 0.000871366
+  0x00a018  61 72 61 63 74 65 72 73   u32 0x63617261 0x73726574
+  0x00a020  2f 48 65 72 6f 65 73 2f   u32 0x7265482f 0x2f73656f
+  0x00a028  52 61 70 68 61 65 6c 2f   u32 0x68706152 0x2f6c6561
+  0x00a030  41 6e 69 6d 73 2f 52 61   u32 0x6d696e41 0x61522f73
+  0x00a038  70 68 61 65 6c 5f 48 6f   u32 0x65616870 0x6f485f6c
+  0x00a040  6d 65 6c 61 69 72 5f 49   u32 0x616c656d 0x495f7269   f32 915239
+  0x00a048  64 6c 65 2e 61 6e 69 6d   u32 0x2e656c64 0x6d696e61
+  0x00a060  -> 0xa0a0 'turn_additive_left'
+  0x00a068  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x00a070  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x00a078  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x00a080  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x00a088  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x00a090  -> 0xa0f8 
+  0x00a0a0  string 'turn_additive_left'
+  0x00a0b8  3a 2f 2f 43 68 61 72 61   u32 0x432f2f3a 0x61726168   f32 175.184
+  0x00a0c0  63 74 65 72 73 2f 48 65   u32 0x72657463 0x65482f73
+  0x00a0c8  72 6f 65 73 2f 52 61 70   u32 0x73656f72 0x7061522f
+  0x00a0d0  68 61 65 6c 2f 41 6e 69   u32 0x6c656168 0x696e412f
+  0x00a0d8  6d 73 2f 52 61 70 68 61   u32 0x522f736d 0x61687061
+  0x00a0e0  65 6c 5f 44 65 66 61 75   u32 0x445f6c65 0x75616665   f32 893.694
+  0x00a0e8  6c 74 5f 49 64 6c 65 2e   u32 0x495f746c 0x2e656c64   f32 915271
+  0x00a0f0  61 6e 69 6d 00 00 00 00   u32 0x6d696e61 0x0
+  0x00a100  -> 0xa140 'turn_additive_center'
+  0x00a108  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x00a110  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x00a118  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x00a120  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x00a128  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x00a130  -> 0xa198 
+  0x00a140  string 'turn_additive_center'
+  0x00a158  6c 64 3a 2f 2f 43 68 61   u32 0x2f3a646c 0x6168432f
+  0x00a160  72 61 63 74 65 72 73 2f   u32 0x74636172 0x2f737265
+  0x00a168  48 65 72 6f 65 73 2f 52   u32 0x6f726548 0x522f7365
+  0x00a170  61 70 68 61 65 6c 2f 41   u32 0x61687061 0x412f6c65   f32 10.964
+  0x00a178  6e 69 6d 73 2f 52 61 70   u32 0x736d696e 0x7061522f
+  0x00a180  68 61 65 6c 5f 44 65 66   u32 0x6c656168 0x6665445f
+  0x00a188  61 75 6c 74 5f 49 64 6c   u32 0x746c7561 0x6c64495f
+  0x00a190  65 2e 61 6e 69 6d 00 00   u32 0x6e612e65 0x6d69
+  0x00a1a0  -> 0xa1e0 'turn_additive_right'
+  0x00a1a8  01 00 00 00 ff ff ff ff   u32 0x1 0xffffffff
+  0x00a1b0  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x00a1b8  -> 0xa348 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x00a1c0  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x00a1c8  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x00a1d0  -> 0xa238 
+  0x00a1e0  string 'turn_additive_right'
+  0x00a1f8  64 3a 2f 2f 43 68 61 72   u32 0x2f2f3a64 0x72616843
+  0x00a200  61 63 74 65 72 73 2f 48   u32 0x65746361 0x482f7372   f32 179662
+  0x00a208  65 72 6f 65 73 2f 52 61   u32 0x656f7265 0x61522f73
+  0x00a210  70 68 61 65 6c 2f 41 6e   u32 0x65616870 0x6e412f6c
+  0x00a218  69 6d 73 2f 52 61 70 68   u32 0x2f736d69 0x68706152
+  0x00a220  61 65 6c 5f 44 65 66 61   u32 0x5f6c6561 0x61666544
+  0x00a228  75 6c 74 5f 49 64 6c 65   u32 0x5f746c75 0x656c6449
+  0x00a230  2e 61 6e 69 6d 00 00 00   u32 0x696e612e 0x6d
+  0x00a258  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_SmokeBomb_Disappear.anim'
+  0x00a2b0  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_SmokeBomb_Reappear.anim'
+  0x00a300  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Death.anim'
+  0x00a348  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+  0x00a390  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x00a3d8  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Leap.anim'
+  0x00a428  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_SpinKick.anim'
+  0x00a470  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk_Start.anim'
+  0x00a4b8  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_Slash.anim'
+  0x00a500  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Back.anim'
+  0x00a550  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Lunge.anim'
+  0x00a5a0  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_CrashingWave.anim'
+  0x00a5f0  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Attack_Kick_End.anim'
+  0x00a640  -> 0xa680 'SpinKick'
+  0x00a648  00 00 00 00 ff ff ff ff   u32 0x0 0xffffffff
+  0x00a650  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x00a658  -> 0xa428 'build://Characters/NPCs/Shredder/Anims/Shredder_Attack_SpinKick.anim'
+  0x00a660  cd cc cc 3f 00 00 00 00   u32 0x3fcccccd 0x0   f32 1.6
+  0x00a668  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x00a670  -> 0x9488 
+  0x00a680  string 'SpinKick'
+  0x00a690  -> 0x7820 
+  0x00a698  -> 0x78b8 
+  0x00a6a0  -> 0x7958 
+  0x00a6a8  -> 0x79f8 
+  0x00a6b0  -> 0x7a90 
+  0x00a6b8  -> 0x7b30 
+  0x00a6c0  -> 0x7bc8 
+  0x00a6c8  -> 0x7c78 
+  0x00a6d0  -> 0x7d28 
+  0x00a6d8  -> 0x7dd8 
+  0x00a6e0  -> 0x7e88 
+  0x00a6e8  -> 0x7f38 
+  0x00a6f0  -> 0x7fd8 
+  0x00a6f8  -> 0x8068 
+  0x00a700  -> 0x8110 
+  0x00a708  -> 0x81b0 
+  0x00a710  -> 0x8250 
+  0x00a718  -> 0x82f0 
+  0x00a720  -> 0x8390 
+  0x00a728  -> 0x8420 
+  0x00a730  -> 0x84b8 
+  0x00a738  -> 0x8550 
+  0x00a740  -> 0x85e8 
+  0x00a748  -> 0x86e8 
+  0x00a750  -> 0x87e8 
+  0x00a758  -> 0x8880 
+  0x00a760  -> 0x8938 
+  0x00a768  -> 0x89e8 
+  0x00a770  -> 0x8aa0 
+  0x00a778  -> 0x8b50 
+  0x00a780  -> 0x8c08 
+  0x00a788  -> 0x8cb8 
+  0x00a790  -> 0x8d70 
+  0x00a798  -> 0x8e28 
+  0x00a7a0  -> 0x8ed8 
+  0x00a7a8  -> 0x8f90 
+  0x00a7b0  -> 0x9048 
+  0x00a7b8  -> 0x9100 
+  0x00a7c0  -> 0x91b8 
+  0x00a7c8  -> 0x9270 
+  0x00a7d0  -> 0x9330 
+  0x00a7d8  -> 0x93e8 
+  0x00a7e0  -> 0x9490 
+  0x00a7e8  -> 0x9538 
+  0x00a7f0  -> 0x95e0 
+  0x00a7f8  -> 0x9688 
+  0x00a800  -> 0x9730 
+  0x00a808  -> 0x97c0 
+  0x00a810  -> 0x9858 
+  0x00a818  -> 0x99b8 
+  0x00a820  -> 0x9a50 
+  0x00a828  -> 0x9ae8 
+  0x00a830  -> 0x9b80 
+  0x00a838  -> 0x9c18 
+  0x00a840  -> 0x9cb0 
+  0x00a848  -> 0x9d50 
+  0x00a850  -> 0x9de8 
+  0x00a858  -> 0x9e80 
+  0x00a860  -> 0x9f20 
+  0x00a868  -> 0x9fc0 
+  0x00a870  -> 0xa060 
+  0x00a878  -> 0xa100 
+  0x00a880  -> 0xa1a0 
+  0x00a888  -> 0xa640 
+
+  ---- *Shredder_ActorRep_Default* ----
+  0x00a8a0  -> 0xa8f8 'build://Characters/NPCs/Shredder/Model/ShredHro.mesh'
+  0x00a8a8  -> 0xa930 'build://Characters/NPCs/Shredder/Model/Shredder.skeleton'
+  0x00a8b0  -> 0x8a0 
+  0x00a8b8  -> 0xa970 '*ShredderHeroAnimGraphTuning*'
+  0x00a8c0  -> 0xae8 
+  0x00a8c8  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00a8d0  -> 0xaf0 
+  0x00a8d8  -> 0xaf8 
+  0x00a8e0  -> 0xb00 
+  0x00a8e8  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00a8f0  -> 0xb08 
+  0x00a8f8  string 'build://Characters/NPCs/Shredder/Model/ShredHro.mesh'
+  0x00a930  string 'build://Characters/NPCs/Shredder/Model/Shredder.skeleton'
+  0x00a970  string '*ShredderHeroAnimGraphTuning*'
+
+  ---- *Shredder_ActorRep_Samurai* ----
+  0x00a990  -> 0xa8f8 'build://Characters/NPCs/Shredder/Model/ShredHro.mesh'
+  0x00a998  -> 0xa930 'build://Characters/NPCs/Shredder/Model/Shredder.skeleton'
+  0x00a9a0  -> 0x8a0 
+  0x00a9a8  -> 0xa970 '*ShredderHeroAnimGraphTuning*'
+  0x00a9b0  -> 0xae8 
+  0x00a9b8  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00a9c0  -> 0xaf0 
+  0x00a9c8  -> 0xaf8 
+  0x00a9d0  -> 0xb00 
+  0x00a9d8  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00a9e0  -> 0xb08 
+
+  ---- *Shredder_ActorRep_TrenchCoat* ----
+  0x00a9f0  -> 0xa8f8 'build://Characters/NPCs/Shredder/Model/ShredHro.mesh'
+  0x00a9f8  -> 0xa930 'build://Characters/NPCs/Shredder/Model/Shredder.skeleton'
+  0x00aa00  -> 0x8a0 
+  0x00aa08  -> 0xa970 '*ShredderHeroAnimGraphTuning*'
+  0x00aa10  -> 0xae8 
+  0x00aa18  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00aa20  -> 0xaf0 
+  0x00aa28  -> 0xaf8 
+  0x00aa30  -> 0xb00 
+  0x00aa38  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00aa40  -> 0xb08 
+  0x00aa50  -> 0xab98 'Shredder_Stun'
+  0x00aa58  -> 0xab6c 'Turtle_Stun'
+  0x00aa60  -> 0xb08 
+  0x00aa68  -> 0xb08 
+  0x00aa70  -> 0xb08 
+  0x00aa78  -> 0xb08 
+  0x00aa80  -> 0xb08 
+  0x00aa88  -> 0xb08 
+  0x00aa90  -> 0xb08 
+  0x00aa98  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00aaa0  00 00 80 bf cd cc cc 3d   u32 0xbf800000 0x3dcccccd   f32 -1, 0.1
+  0x00aaa8  00 00 80 bf 00 00 01 00   u32 0xbf800000 0x10000   f32 -1
+  0x00aab0  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00aab8  -> 0xb08 
+  0x00aac0  -> 0xb08 
+  0x00aad0  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00aad8  00 00 00 00 01 01 01 00   u32 0x0 0x10101
+  0x00aae8  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00aaf0  -> 0xab78 
+  0x00aaf8  -> 0xab80 
+  0x00ab00  -> 0xab88 
+  0x00ab08  -> 0xab90 
+  0x00ab10  00 00 00 00 00 00 10 41   u32 0x0 0x41100000   f32 9
+  0x00ab18  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00ab20  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00ab28  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00ab30  00 01 00 00 03 00 00 00   u32 0x100 0x3
+  0x00ab38  00 00 00 00 00 00 0c 42   u32 0x0 0x420c0000   f32 35
+  0x00ab40  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00ab50  -> 0xb08 
+  0x00ab58  -> 0xb08 
+  0x00ab60  54 75 72 74 6c 65 5f 53   u32 0x74727554 0x535f656c
+  0x00ab68  74 75 6e 00 54 75 72 74   u32 0x6e7574 0x74727554
+  0x00ab70  6c 65 5f 53 74 75 6e 00   u32 0x535f656c 0x6e7574
+  0x00ab98  string 'Shredder_Stun'
+  0x00abb0  -> 0xad08 'Shredder_Hit_Reaction'
+  0x00abb8  -> 0xacd4 'Turtle_Hit_Reaction'
+  0x00abc0  -> 0xb08 
+  0x00abc8  -> 0xb08 
+  0x00abd0  -> 0xb08 
+  0x00abd8  -> 0xb08 
+  0x00abe0  -> 0xb08 
+  0x00abe8  -> 0xb08 
+  0x00abf0  -> 0xb08 
+  0x00abf8  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00ac00  00 00 80 bf cd cc cc 3d   u32 0xbf800000 0x3dcccccd   f32 -1, 0.1
+  0x00ac08  00 00 80 bf 00 00 01 00   u32 0xbf800000 0x10000   f32 -1
+  0x00ac10  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00ac18  -> 0xb08 
+  0x00ac20  -> 0xb08 
+  0x00ac30  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00ac38  00 00 00 00 00 01 00 00   u32 0x0 0x100
+  0x00ac48  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00ac50  -> 0xace8 
+  0x00ac58  -> 0xacf0 
+  0x00ac60  -> 0xacf8 
+  0x00ac68  -> 0xad00 
+  0x00ac70  00 00 00 00 00 00 10 41   u32 0x0 0x41100000   f32 9
+  0x00ac78  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00ac80  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00ac88  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00ac90  00 01 00 00 03 00 00 00   u32 0x100 0x3
+  0x00ac98  00 00 00 00 00 00 0c 42   u32 0x0 0x420c0000   f32 35
+  0x00aca0  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00acb0  -> 0xb08 
+  0x00acb8  -> 0xb08 
+  0x00acc0  54 75 72 74 6c 65 5f 48   u32 0x74727554 0x485f656c   f32 228758
+  0x00acc8  69 74 5f 52 65 61 63 74   u32 0x525f7469 0x74636165
+  0x00acd0  69 6f 6e 00 54 75 72 74   u32 0x6e6f69 0x74727554
+  0x00acd8  6c 65 5f 48 69 74 5f 52   u32 0x485f656c 0x525f7469   f32 228758
+  0x00ace0  65 61 63 74 69 6f 6e 00   u32 0x74636165 0x6e6f69
+  0x00ad08  string 'Shredder_Hit_Reaction'
+  0x00ad20  -> 0xae70 'RShredder_Attack_Chain'
+  0x00ad28  -> 0xae45 'primary'
+  0x00ad30  -> 0xb08 
+  0x00ad38  -> 0xb08 
+  0x00ad40  -> 0xb08 
+  0x00ad48  -> 0xb08 
+  0x00ad50  -> 0xb08 
+  0x00ad58  -> 0xb08 
+  0x00ad60  -> 0xb08 
+  0x00ad68  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00ad70  6f 12 83 3a 00 00 80 bf   u32 0x3a83126f 0xbf800000   f32 0.001, -1
+  0x00ad78  00 00 80 bf 00 00 01 00   u32 0xbf800000 0x10000   f32 -1
+  0x00ad80  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00ad88  -> 0xb08 
+  0x00ad90  -> 0xb08 
+  0x00ada0  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00ada8  00 00 00 00 01 01 00 00   u32 0x0 0x101
+  0x00adb8  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00adc0  -> 0xae50 
+  0x00adc8  -> 0xae58 
+  0x00add0  -> 0xae60 
+  0x00add8  -> 0xae68 
+  0x00ade0  01 00 00 00 00 00 90 40   u32 0x1 0x40900000   f32 4.5
+  0x00ade8  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00adf0  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00adf8  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00ae00  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00ae08  00 00 00 00 00 00 34 42   u32 0x0 0x42340000   f32 45
+  0x00ae10  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00ae18  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00ae20  -> 0xb08 
+  0x00ae28  -> 0xb08 
+  0x00ae30  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x00ae38  41 74 74 61 63 6b 5f 43   u32 0x61747441 0x435f6b63   f32 223.419
+  0x00ae40  68 61 69 6e 00 70 72 69   u32 0x6e696168 0x69727000
+  0x00ae48  6d 61 72 79 00 00 00 00   u32 0x7972616d 0x0
+  0x00ae70  string 'RShredder_Attack_Chain'
+  0x00ae90  -> 0xafd8 'RShredder_Attack_Chain1'
+  0x00ae98  -> 0xb08 
+  0x00aea0  -> 0xb08 
+  0x00aea8  -> 0xb08 
+  0x00aeb0  -> 0xb08 
+  0x00aeb8  -> 0xb08 
+  0x00aec0  -> 0xb08 
+  0x00aec8  -> 0xb08 
+  0x00aed0  -> 0xb08 
+  0x00aed8  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00aee0  6f 12 83 3a 00 00 80 bf   u32 0x3a83126f 0xbf800000   f32 0.001, -1
+  0x00aee8  00 00 80 bf 00 00 01 00   u32 0xbf800000 0x10000   f32 -1
+  0x00aef0  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00aef8  -> 0xb08 
+  0x00af00  -> 0xb08 
+  0x00af10  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00af18  00 00 00 00 01 01 00 00   u32 0x0 0x101
+  0x00af28  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00af30  -> 0xafb8 
+  0x00af38  -> 0xafc0 
+  0x00af40  -> 0xafc8 
+  0x00af48  -> 0xafd0 
+  0x00af50  00 00 00 00 00 00 90 40   u32 0x0 0x40900000   f32 4.5
+  0x00af58  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00af60  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00af68  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00af70  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00af78  00 00 00 00 00 00 34 42   u32 0x0 0x42340000   f32 45
+  0x00af80  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00af88  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00af90  -> 0xb08 
+  0x00af98  -> 0xb08 
+  0x00afa0  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x00afa8  41 74 74 61 63 6b 5f 43   u32 0x61747441 0x435f6b63   f32 223.419
+  0x00afb0  68 61 69 6e 31 00 00 00   u32 0x6e696168 0x31
+  0x00afd8  string 'RShredder_Attack_Chain1'
+  0x00aff0  -> 0xb138 'RShredder_Attack_Chain2'
+  0x00aff8  -> 0xb08 
+  0x00b000  -> 0xb08 
+  0x00b008  -> 0xb08 
+  0x00b010  -> 0xb08 
+  0x00b018  -> 0xb08 
+  0x00b020  -> 0xb08 
+  0x00b028  -> 0xb08 
+  0x00b030  -> 0xb08 
+  0x00b038  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00b040  6f 12 83 3a 00 00 80 bf   u32 0x3a83126f 0xbf800000   f32 0.001, -1
+  0x00b048  00 00 80 bf 00 00 01 00   u32 0xbf800000 0x10000   f32 -1
+  0x00b050  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00b058  -> 0xb08 
+  0x00b060  -> 0xb08 
+  0x00b070  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00b078  00 00 00 00 01 01 00 00   u32 0x0 0x101
+  0x00b088  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00b090  -> 0xb118 
+  0x00b098  -> 0xb120 
+  0x00b0a0  -> 0xb128 
+  0x00b0a8  -> 0xb130 
+  0x00b0b0  00 00 00 00 00 00 90 40   u32 0x0 0x40900000   f32 4.5
+  0x00b0b8  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00b0c0  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00b0c8  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00b0d0  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b0d8  00 00 00 00 00 00 34 42   u32 0x0 0x42340000   f32 45
+  0x00b0e0  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00b0e8  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b0f0  -> 0xb08 
+  0x00b0f8  -> 0xb08 
+  0x00b100  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x00b108  41 74 74 61 63 6b 5f 43   u32 0x61747441 0x435f6b63   f32 223.419
+  0x00b110  68 61 69 6e 32 00 00 00   u32 0x6e696168 0x32
+  0x00b138  string 'RShredder_Attack_Chain2'
+  0x00b150  -> 0xb298 'RShredder_Attack_Chain3'
+  0x00b158  -> 0xb08 
+  0x00b160  -> 0xb08 
+  0x00b168  -> 0xb08 
+  0x00b170  -> 0xb08 
+  0x00b178  -> 0xb08 
+  0x00b180  -> 0xb08 
+  0x00b188  -> 0xb08 
+  0x00b190  -> 0xb08 
+  0x00b198  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00b1a0  6f 12 83 3a 00 00 80 bf   u32 0x3a83126f 0xbf800000   f32 0.001, -1
+  0x00b1a8  00 00 80 bf 00 00 01 00   u32 0xbf800000 0x10000   f32 -1
+  0x00b1b0  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00b1b8  -> 0xb08 
+  0x00b1c0  -> 0xb08 
+  0x00b1d0  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00b1d8  00 00 00 00 01 01 00 00   u32 0x0 0x101
+  0x00b1e8  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00b1f0  -> 0xb278 
+  0x00b1f8  -> 0xb280 
+  0x00b200  -> 0xb288 
+  0x00b208  -> 0xb290 
+  0x00b210  00 00 00 00 00 00 90 40   u32 0x0 0x40900000   f32 4.5
+  0x00b218  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00b220  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00b228  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00b230  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b238  00 00 00 00 00 00 34 42   u32 0x0 0x42340000   f32 45
+  0x00b240  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00b248  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b250  -> 0xb08 
+  0x00b258  -> 0xb08 
+  0x00b260  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x00b268  41 74 74 61 63 6b 5f 43   u32 0x61747441 0x435f6b63   f32 223.419
+  0x00b270  68 61 69 6e 33 00 00 00   u32 0x6e696168 0x33
+  0x00b298  string 'RShredder_Attack_Chain3'
+  0x00b2b0  -> 0xb3f8 'RShredder_Attack_Chain4'
+  0x00b2b8  -> 0xb08 
+  0x00b2c0  -> 0xb08 
+  0x00b2c8  -> 0xb08 
+  0x00b2d0  -> 0xb08 
+  0x00b2d8  -> 0xb08 
+  0x00b2e0  -> 0xb08 
+  0x00b2e8  -> 0xb08 
+  0x00b2f0  -> 0xb08 
+  0x00b2f8  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00b300  6f 12 83 3a 00 00 80 bf   u32 0x3a83126f 0xbf800000   f32 0.001, -1
+  0x00b308  00 00 80 bf 00 00 01 00   u32 0xbf800000 0x10000   f32 -1
+  0x00b310  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00b318  -> 0xb08 
+  0x00b320  -> 0xb08 
+  0x00b330  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00b338  00 00 00 00 01 01 00 00   u32 0x0 0x101
+  0x00b348  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00b350  -> 0xb3d8 
+  0x00b358  -> 0xb3e0 
+  0x00b360  -> 0xb3e8 
+  0x00b368  -> 0xb3f0 
+  0x00b370  00 00 00 00 00 00 90 40   u32 0x0 0x40900000   f32 4.5
+  0x00b378  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00b380  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00b388  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00b390  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b398  00 00 00 00 00 00 34 42   u32 0x0 0x42340000   f32 45
+  0x00b3a0  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00b3a8  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b3b0  -> 0xb08 
+  0x00b3b8  -> 0xb08 
+  0x00b3c0  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x00b3c8  41 74 74 61 63 6b 5f 43   u32 0x61747441 0x435f6b63   f32 223.419
+  0x00b3d0  68 61 69 6e 34 00 00 00   u32 0x6e696168 0x34
+  0x00b3f8  string 'RShredder_Attack_Chain4'
+  0x00b410  -> 0xb558 'RShredder_DashAttack'
+  0x00b418  -> 0xb08 
+  0x00b420  -> 0xb08 
+  0x00b428  -> 0xb08 
+  0x00b430  -> 0xb08 
+  0x00b438  -> 0xb08 
+  0x00b440  -> 0xb08 
+  0x00b448  -> 0xb08 
+  0x00b450  -> 0xb08 
+  0x00b458  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00b460  6f 12 83 3a 00 00 80 bf   u32 0x3a83126f 0xbf800000   f32 0.001, -1
+  0x00b468  00 00 80 bf 00 00 01 00   u32 0xbf800000 0x10000   f32 -1
+  0x00b470  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00b478  -> 0xb08 
+  0x00b480  -> 0xb08 
+  0x00b490  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00b498  00 00 00 00 01 01 00 00   u32 0x0 0x101
+  0x00b4a8  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00b4b0  -> 0xb538 
+  0x00b4b8  -> 0xb540 
+  0x00b4c0  -> 0xb548 
+  0x00b4c8  -> 0xb550 
+  0x00b4d0  00 00 00 00 00 00 90 40   u32 0x0 0x40900000   f32 4.5
+  0x00b4d8  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00b4e0  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00b4e8  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00b4f0  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b4f8  00 00 00 00 00 00 34 42   u32 0x0 0x42340000   f32 45
+  0x00b500  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00b508  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b510  -> 0xb08 
+  0x00b518  -> 0xb08 
+  0x00b520  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x00b528  44 61 73 68 41 74 74 61   u32 0x68736144 0x61747441
+  0x00b530  63 6b 00 00 00 00 00 00   u32 0x6b63 0x0
+  0x00b558  string 'RShredder_DashAttack'
+  0x00b570  -> 0xb6b8 'Shredder_HeroSpinKick'
+  0x00b578  -> 0xb690 'special'
+  0x00b580  -> 0xb08 
+  0x00b588  -> 0xb6d0 'Boss_Shredder'
+  0x00b590  -> 0xb6e0 'shredder_special_hud'
+  0x00b598  -> 0xb6e0 'shredder_special_hud'
+  0x00b5a0  -> 0xb08 
+  0x00b5a8  -> 0xb08 
+  0x00b5b0  -> 0xb08 
+  0x00b5b8  00 00 80 3f ec 51 38 3e   u32 0x3f800000 0x3e3851ec   f32 1, 0.18
+  0x00b5c0  00 00 80 bf 00 00 80 bf   u32 0xbf800000 0xbf800000   f32 -1, -1
+  0x00b5c8  cd cc cc 3d 00 00 01 00   u32 0x3dcccccd 0x10000   f32 0.1
+  0x00b5d0  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00b5d8  -> 0xb08 
+  0x00b5e0  -> 0xb08 
+  0x00b5f0  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00b5f8  00 00 00 00 01 01 01 00   u32 0x0 0x10101
+  0x00b608  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00b610  -> 0xb698 
+  0x00b618  -> 0xb6a0 
+  0x00b620  -> 0xb6a8 
+  0x00b628  -> 0xb6b0 
+  0x00b630  00 00 00 00 00 00 10 41   u32 0x0 0x41100000   f32 9
+  0x00b638  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00b640  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00b648  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00b650  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b658  00 00 00 00 00 00 0c 42   u32 0x0 0x420c0000   f32 35
+  0x00b660  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00b670  -> 0xb08 
+  0x00b678  -> 0xb08 
+  0x00b680  52 61 70 68 61 65 6c 5f   u32 0x68706152 0x5f6c6561
+  0x00b688  53 70 65 63 69 61 6c 00   u32 0x63657053 0x6c6169
+  0x00b690  string 'special'
+  0x00b6b8  string 'Shredder_HeroSpinKick'
+  0x00b6d0  string 'Boss_Shredder'
+  0x00b6e0  string 'shredder_special_hud'
+  0x00b700  -> 0xb810 'Ability_Common_002_Hook'
+  0x00b708  -> 0xb858 'tool_ninja_1'
+  0x00b710  -> 0xb08 
+  0x00b718  -> 0xb6d0 'Boss_Shredder'
+  0x00b720  -> 0xb868 'shredder_smoke_hud'
+  0x00b728  -> 0xb868 'shredder_smoke_hud'
+  0x00b730  -> 0xb08 
+  0x00b738  -> 0xb08 
+  0x00b740  -> 0xb08 
+  0x00b748  00 00 80 3f a6 9b c4 3d   u32 0x3f800000 0x3dc49ba6   f32 1, 0.096
+  0x00b750  00 00 80 bf 00 00 80 bf   u32 0xbf800000 0xbf800000   f32 -1, -1
+  0x00b758  cd cc cc 3d 00 00 01 00   u32 0x3dcccccd 0x10000   f32 0.1
+  0x00b760  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00b768  -> 0xb08 
+  0x00b770  -> 0xb08 
+  0x00b780  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00b788  00 00 00 00 00 01 01 00   u32 0x0 0x10100
+  0x00b798  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00b7a0  -> 0xb838 
+  0x00b7a8  -> 0xb840 
+  0x00b7b0  -> 0xb848 
+  0x00b7b8  -> 0xb850 
+  0x00b7c0  00 00 00 00 00 00 10 41   u32 0x0 0x41100000   f32 9
+  0x00b7c8  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00b7d0  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00b7d8  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00b7e0  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b7e8  00 00 00 00 00 00 0c 42   u32 0x0 0x420c0000   f32 35
+  0x00b7f0  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00b800  -> 0xb08 
+  0x00b808  -> 0xb08 
+  0x00b810  string 'Ability_Common_002_Hook'
+  0x00b828  74 6f 6f 6c 5f 63 6f 6d   u32 0x6c6f6f74 0x6d6f635f
+  0x00b830  6d 6f 6e 5f 32 00 00 00   u32 0x5f6e6f6d 0x32
+  0x00b858  string 'tool_ninja_1'
+  0x00b868  string 'shredder_smoke_hud'
+  0x00b880  -> 0xb990 'Ability_Ninja_001_SmokeBomb'
+  0x00b888  -> 0xb9e0 'tool_common_2'
+  0x00b890  -> 0xb08 
+  0x00b898  -> 0xb6d0 'Boss_Shredder'
+  0x00b8a0  -> 0xb868 'shredder_smoke_hud'
+  0x00b8a8  -> 0xb868 'shredder_smoke_hud'
+  0x00b8b0  -> 0xb08 
+  0x00b8b8  -> 0xb08 
+  0x00b8c0  -> 0xb08 
+  0x00b8c8  00 00 80 3f 0a d7 a3 3d   u32 0x3f800000 0x3da3d70a   f32 1, 0.08
+  0x00b8d0  00 00 80 bf 00 00 80 bf   u32 0xbf800000 0xbf800000   f32 -1, -1
+  0x00b8d8  cd cc cc 3d 00 00 01 00   u32 0x3dcccccd 0x10000   f32 0.1
+  0x00b8e0  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00b8e8  -> 0xb08 
+  0x00b8f0  -> 0xb08 
+  0x00b900  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00b908  00 00 00 00 00 01 01 00   u32 0x0 0x10100
+  0x00b918  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00b920  -> 0xb9c0 
+  0x00b928  -> 0xb9c8 
+  0x00b930  -> 0xb9d0 
+  0x00b938  -> 0xb9d8 
+  0x00b940  00 00 00 00 00 00 10 41   u32 0x0 0x41100000   f32 9
+  0x00b948  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00b950  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00b958  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00b960  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00b968  03 00 00 00 00 00 0c 42   u32 0x3 0x420c0000   f32 35
+  0x00b970  00 00 80 bf cd cc 4c 3e   u32 0xbf800000 0x3e4ccccd   f32 -1, 0.2
+  0x00b980  -> 0xb08 
+  0x00b988  -> 0xb08 
+  0x00b990  string 'Ability_Ninja_001_SmokeBomb'
+  0x00b9b0  5f 6e 69 6e 6a 61 5f 31   u32 0x6e696e5f 0x315f616a
+  0x00b9e0  string 'tool_common_2'
+  0x00b9f0  -> 0xbb00 'Mobility_001_Dash'
+  0x00b9f8  -> 0xbb12 'dash'
+  0x00ba00  -> 0xbb17 '*Mobility_001_DefaultHumanRoll_Vars*'
+  0x00ba08  -> 0xb6d0 'Boss_Shredder'
+  0x00ba10  -> 0xbb60 'shredder_dash_hud'
+  0x00ba18  -> 0xbb60 'shredder_dash_hud'
+  0x00ba20  -> 0xb08 
+  0x00ba28  -> 0xb08 
+  0x00ba30  -> 0xb08 
+  0x00ba38  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00ba40  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00ba48  00 00 80 bf 00 01 01 00   u32 0xbf800000 0x10100   f32 -1
+  0x00ba50  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00ba58  -> 0xb08 
+  0x00ba60  -> 0xb08 
+  0x00ba70  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00ba78  00 00 00 00 01 01 01 00   u32 0x0 0x10101
+  0x00ba88  00 00 00 00 01 00 00 00   u32 0x0 0x1
+  0x00ba90  -> 0xbb40 
+  0x00ba98  -> 0xbb48 
+  0x00baa0  -> 0xbb50 
+  0x00baa8  -> 0xbb58 
+  0x00bab0  01 00 00 00 00 00 10 41   u32 0x1 0x41100000   f32 9
+  0x00bab8  00 00 00 00 00 00 00 3f   u32 0x0 0x3f000000   f32 0.5
+  0x00bac0  00 00 40 40 00 00 80 40   u32 0x40400000 0x40800000   f32 3, 4
+  0x00bac8  00 01 00 00 00 00 80 3f   u32 0x100 0x3f800000   f32 1
+  0x00bad0  00 01 00 00 00 00 00 00   u32 0x100 0x0
+  0x00bad8  03 00 00 00 00 00 0c 42   u32 0x3 0x420c0000   f32 35
+  0x00bae0  00 00 80 bf 29 5c 8f 3d   u32 0xbf800000 0x3d8f5c29   f32 -1, 0.07
+  0x00bae8  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00baf0  -> 0xb08 
+  0x00baf8  -> 0xb08 
+  0x00bb00  string 'Mobility_001_Dash'
+  0x00bb18  4d 6f 62 69 6c 69 74 79   u32 0x69626f4d 0x7974696c
+  0x00bb20  5f 30 30 31 5f 44 65 66   u32 0x3130305f 0x6665445f
+  0x00bb28  61 75 6c 74 48 75 6d 61   u32 0x746c7561 0x616d7548
+  0x00bb30  6e 52 6f 6c 6c 5f 56 61   u32 0x6c6f526e 0x61565f6c
+  0x00bb38  72 73 2a 00 00 00 00 00   u32 0x2a7372 0x0
+  0x00bb60  string 'shredder_dash_hud'
+
+  ---- *Shredder_Hero* ----
+  0x00bb80  -> 0x10d0 
+  0x00bb88  -> 0x10d8 
+  0x00bb90  -> 0x10e0 
+  0x00bb98  -> 0x10e8 
+  0x00bba0  -> 0x10f0 
+  0x00bba8  -> 0x10f8 
+  0x00bbb0  d4 00 00 00 d4 00 00 00   u32 0xd4 0xd4
+  0x00bbb8  d4 00 00 00 d4 00 00 00   u32 0xd4 0xd4
+  0x00bbc0  d4 00 00 00 00 00 00 00   u32 0xd4 0x0
+  0x00bbc8  -> 0xb08 
+  0x00bbd0  00 00 80 3e 66 66 66 3f   u32 0x3e800000 0x3f666666   f32 0.25, 0.9
+  0x00bbd8  -> 0x1100 'Buff_Raphael_LifetimeBuff'
+  0x00bbe0  -> 0x111a 'Buff_Boss_Camera_Close'
+  0x00bc00  -> 0x1131 'plaque_rebirth_character'
+  0x00bc08  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00bc10  -> 0xb08 
+  0x00bc18  -> 0xb08 
+  0x00bc20  -> 0xb08 
+  0x00bc28  -> 0xb08 
+  0x00bc30  -> 0x1150 
+  0x00bc38  -> 0xb08 
+  0x00bc40  -> 0x1158 
+  0x00bc50  -> 0x1160 
+  0x00bc58  -> 0x1168 
+  0x00bc60  -> 0x1170 
+  0x00bc68  00 00 80 bf 00 00 00 00   u32 0xbf800000 0x0   f32 -1
+  0x00bc70  -> 0xb08 
+  0x00bc78  -> 0x1178 
+  0x00bc80  -> 0x1746 'navigation'
+  0x00bc88  9a 99 a9 40 00 00 80 3f   u32 0x40a9999a 0x3f800000   f32 5.3, 1
+  0x00bc90  00 00 c0 40 cd cc cc 3d   u32 0x40c00000 0x3dcccccd   f32 6, 0.1
+  0x00bc98  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x00bca0  00 00 00 40 00 00 00 40   u32 0x40000000 0x40000000   f32 2, 2
+  0x00bca8  00 00 f0 41 00 00 70 41   u32 0x41f00000 0x41700000   f32 30, 15
+  0x00bcb0  -> 0x1758 
+  0x00bcb8  -> 0xbd70 
+  0x00bcc0  00 00 f0 42 00 00 f0 42   u32 0x42f00000 0x42f00000   f32 120, 120
+  0x00bcd8  00 00 f0 41 00 00 f0 41   u32 0x41f00000 0x41f00000   f32 30, 30
+  0x00bce0  00 00 0c 42 00 00 0c 42   u32 0x420c0000 0x420c0000   f32 35, 35
+  0x00bce8  00 00 c8 41 00 00 c8 41   u32 0x41c80000 0x41c80000   f32 25, 25
+  0x00bcf0  00 00 40 40 00 00 40 40   u32 0x40400000 0x40400000   f32 3, 3
+  0x00bcf8  00 00 c0 3f 00 00 c0 3f   u32 0x3fc00000 0x3fc00000   f32 1.5, 1.5
+  0x00bd00  00 00 96 42 00 00 96 42   u32 0x42960000 0x42960000   f32 75, 75
+  0x00bd08  -> 0x6610 
+  0x00bd10  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00bd18  -> 0x6618 'fogofwar'
+  0x00bd20  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00bd28  00 00 80 3f 00 00 80 3f   u32 0x3f800000 0x3f800000   f32 1, 1
+  0x00bd30  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x00bd38  -> 0xb08 
+  0x00bd40  -> 0xb08 
+  0x00bd48  -> 0x6628 
+  0x00bd50  00 00 00 00 00 00 80 3f   u32 0x0 0x3f800000   f32 1
+  0x00bd58  -> 0xbf40 'Shredder_Hero'
+  0x00bd60  -> 0xbf50 'UI_CHARACTER_NAME_05'
+  0x00bd68  00 00 40 40 00 00 00 00   u32 0x40400000 0x0   f32 3
+  0x00bd70  -> 0x1930 
+  0x00bd78  -> 0x1a80 
+  0x00bd80  -> 0x1be8 
+  0x00bd88  -> 0x1d50 
+  0x00bd90  -> 0x1ec0 
+  0x00bd98  -> 0x2008 
+  0x00bda0  -> 0x2148 
+  0x00bda8  -> 0x2288 
+  0x00bdb0  -> 0x23d0 
+  0x00bdb8  -> 0x2518 
+  0x00bdc0  -> 0xaa50 
+  0x00bdc8  -> 0x27c0 
+  0x00bdd0  -> 0xabb0 
+  0x00bdd8  -> 0xad20 
+  0x00bde0  -> 0xae90 
+  0x00bde8  -> 0xaff0 
+  0x00bdf0  -> 0xb150 
+  0x00bdf8  -> 0xb2b0 
+  0x00be00  -> 0xb410 
+  0x00be08  -> 0x3230 
+  0x00be10  -> 0xb570 
+  0x00be18  -> 0x34d0 
+  0x00be20  -> 0x3620 
+  0x00be28  -> 0xb700 
+  0x00be30  -> 0x38d8 
+  0x00be38  -> 0x3a40 
+  0x00be40  -> 0x3b98 
+  0x00be48  -> 0x3cf0 
+  0x00be50  -> 0x3e50 
+  0x00be58  -> 0x3fa8 
+  0x00be60  -> 0x4110 
+  0x00be68  -> 0x4270 
+  0x00be70  -> 0xb880 
+  0x00be78  -> 0x4530 
+  0x00be80  -> 0x4690 
+  0x00be88  -> 0x47f0 
+  0x00be90  -> 0x4950 
+  0x00be98  -> 0x4ab8 
+  0x00bea0  -> 0x4c18 
+  0x00bea8  -> 0x4d78 
+  0x00beb0  -> 0x4ed8 
+  0x00beb8  -> 0x5030 
+  0x00bec0  -> 0x5190 
+  0x00bec8  -> 0x5308 
+  0x00bed0  -> 0x5478 
+  0x00bed8  -> 0x55e0 
+  0x00bee0  -> 0x5748 
+  0x00bee8  -> 0x58b0 
+  0x00bef0  -> 0x5a20 
+  0x00bef8  -> 0x5b88 
+  0x00bf00  -> 0xb9f0 
+  0x00bf08  -> 0x5e58 
+  0x00bf10  -> 0x5fa8 
+  0x00bf18  -> 0x60f8 
+  0x00bf20  -> 0x6238 
+  0x00bf28  -> 0x6380 
+  0x00bf30  -> 0x64c8 
+  0x00bf40  string 'Shredder_Hero'
+  0x00bf50  string 'UI_CHARACTER_NAME_05'
+
+  ---- *Shredder_HeroData* ----
+  0x00bf70  -> 0xc088 '*Shredder_HeroData*'
+  0x00bf78  -> 0xb08 
+  0x00bf80  -> 0xc0d0 'Shredder'
+  0x00bf88  08 00 00 00 00 00 00 00   u32 0x8 0x0
+  0x00bf90  -> 0xc0a0 '*Shredder_Hero*'
+  0x00bf98  -> 0xc0b0 '*Shredder_ActorRep_Default*'
+  0x00bfa8  d4 00 00 00 00 00 00 00   u32 0xd4 0x0
+  0x00bfb0  -> 0xc0e0 
+  0x00bfb8  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x00bfc0  -> 0x6d5e 'UI_SAMURAI_SKIN_NAME_DEFAULT'
+  0x00bfc8  -> 0xb08 
+  0x00bfd0  -> 0xbf50 'UI_CHARACTER_NAME_05'
+  0x00bfd8  -> 0xc0e8 'UI_CHARACTER_DESCRIPTION_SHREDDER'
+  0x00bfe0  -> 0xc110 'Boss_Shredder.atlas:shredder_hud'
+  0x00bfe8  cd cc 0c 3f 00 00 80 3e   u32 0x3f0ccccd 0x3e800000   f32 0.55, 0.25
+  0x00bff0  9a 99 59 3f 00 00 80 3f   u32 0x3f59999a 0x3f800000   f32 0.85, 1
+  0x00bff8  52 b8 1e 3f 52 b8 1e 3f   u32 0x3f1eb852 0x3f1eb852   f32 0.62, 0.62
+  0x00c000  c3 f5 28 3f 00 00 80 3f   u32 0x3f28f5c3 0x3f800000   f32 0.66, 1
+  0x00c008  -> 0xc138 'Boss_Shredder.atlas:shredder_big'
+  0x00c010  66 66 66 3f 00 00 00 00   u32 0x3f666666 0x0   f32 0.9
+  0x00c018  -> 0xc160 'Multiplayer.atlas:Frame_Ink_Don'
+  0x00c020  00 00 40 3f 00 00 80 3f   u32 0x3f400000 0x3f800000   f32 0.75, 1
+  0x00c028  5c 8f 82 3e 5c 8f 82 3e   u32 0x3e828f5c 0x3e828f5c   f32 0.255, 0.255
+  0x00c030  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x00c038  -> 0xc180 'Boss_Shredder.atlas:shredder_select'
+  0x00c040  cd cc 0c 3f 00 00 80 3e   u32 0x3f0ccccd 0x3e800000   f32 0.55, 0.25
+  0x00c048  9a 99 59 3f 00 00 80 3f   u32 0x3f59999a 0x3f800000   f32 0.85, 1
+  0x00c050  -> 0xc1a8 'Boss_Shredder.atlas:shredder_claw'
+  0x00c058  -> 0xc1d0 'Boss_Shredder.atlas:shredder_special'
+  0x00c060  -> 0xc1f8 'SPECIAL_ATTACK_SHREDDER_NAME'
+  0x00c068  -> 0xc218 'SPECIAL_ATTACK_SHREDDER_DESC'
+  0x00c070  -> 0xc238 '*PowerSelect_Ability_Ninja_001_SmokeBomb_Shredder*'
+  0x00c078  -> 0xc270 '*PowerSelect_BroPower_Shredder_001_CharSelect*'
+  0x00c080  -> 0xc2a0 '*PowerSelect_BroPower_Shredder_002_CharSelect*'
+  0x00c088  string '*Shredder_HeroData*'
+  0x00c0a0  string '*Shredder_Hero*'
+  0x00c0b0  string '*Shredder_ActorRep_Default*'
+  0x00c0d0  string 'Shredder'
+  0x00c0e8  string 'UI_CHARACTER_DESCRIPTION_SHREDDER'
+  0x00c110  string 'Boss_Shredder.atlas:shredder_hud'
+  0x00c138  string 'Boss_Shredder.atlas:shredder_big'
+  0x00c160  string 'Multiplayer.atlas:Frame_Ink_Don'
+  0x00c180  string 'Boss_Shredder.atlas:shredder_select'
+  0x00c1a8  string 'Boss_Shredder.atlas:shredder_claw'
+  0x00c1d0  string 'Boss_Shredder.atlas:shredder_special'
+  0x00c1f8  string 'SPECIAL_ATTACK_SHREDDER_NAME'
+  0x00c218  string 'SPECIAL_ATTACK_SHREDDER_DESC'
+  0x00c238  string '*PowerSelect_Ability_Ninja_001_SmokeBomb_Shredder*'
+  0x00c270  string '*PowerSelect_BroPower_Shredder_001_CharSelect*'
+  0x00c2a0  string '*PowerSelect_BroPower_Shredder_002_CharSelect*'
+
+  ---- *Shredder_HeroData_Skin_Samurai* ----
+  0x00c2d0  -> 0xc3e8 '*Shredder_HeroData_Skin_Samurai*'
+  0x00c2d8  -> 0xc088 '*Shredder_HeroData*'
+  0x00c2e0  -> 0xc0d0 'Shredder'
+  0x00c2e8  08 00 00 00 00 00 00 00   u32 0x8 0x0
+  0x00c2f0  -> 0xc0a0 '*Shredder_Hero*'
+  0x00c2f8  -> 0xc410 '*Shredder_ActorRep_Samurai*'
+  0x00c308  d4 00 00 00 00 00 00 00   u32 0xd4 0x0
+  0x00c310  -> 0xc0e0 
+  0x00c318  00 00 00 00 07 00 00 00   u32 0x0 0x7
+  0x00c320  -> 0x6f81 'UI_SAMURAI_SKIN_NAME_RAPH'
+  0x00c328  -> 0xb08 
+  0x00c330  -> 0xbf50 'UI_CHARACTER_NAME_05'
+  0x00c338  -> 0xc0e8 'UI_CHARACTER_DESCRIPTION_SHREDDER'
+  0x00c340  -> 0xc110 'Boss_Shredder.atlas:shredder_hud'
+  0x00c348  cd cc 0c 3f 00 00 80 3e   u32 0x3f0ccccd 0x3e800000   f32 0.55, 0.25
+  0x00c350  9a 99 59 3f 00 00 80 3f   u32 0x3f59999a 0x3f800000   f32 0.85, 1
+  0x00c358  52 b8 1e 3f 52 b8 1e 3f   u32 0x3f1eb852 0x3f1eb852   f32 0.62, 0.62
+  0x00c360  c3 f5 28 3f 00 00 80 3f   u32 0x3f28f5c3 0x3f800000   f32 0.66, 1
+  0x00c368  -> 0xc138 'Boss_Shredder.atlas:shredder_big'
+  0x00c370  66 66 66 3f 00 00 00 00   u32 0x3f666666 0x0   f32 0.9
+  0x00c378  -> 0xc160 'Multiplayer.atlas:Frame_Ink_Don'
+  0x00c380  00 00 00 3f 00 00 80 3f   u32 0x3f000000 0x3f800000   f32 0.5, 1
+  0x00c388  5c 8f 82 3e 5c 8f 82 3e   u32 0x3e828f5c 0x3e828f5c   f32 0.255, 0.255
+  0x00c390  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x00c398  -> 0xc180 'Boss_Shredder.atlas:shredder_select'
+  0x00c3a0  cd cc 0c 3f 00 00 80 3e   u32 0x3f0ccccd 0x3e800000   f32 0.55, 0.25
+  0x00c3a8  9a 99 59 3f 00 00 80 3f   u32 0x3f59999a 0x3f800000   f32 0.85, 1
+  0x00c3b0  -> 0xc1a8 'Boss_Shredder.atlas:shredder_claw'
+  0x00c3b8  -> 0xc1d0 'Boss_Shredder.atlas:shredder_special'
+  0x00c3c0  -> 0xc1f8 'SPECIAL_ATTACK_SHREDDER_NAME'
+  0x00c3c8  -> 0xc218 'SPECIAL_ATTACK_SHREDDER_DESC'
+  0x00c3d0  -> 0xc238 '*PowerSelect_Ability_Ninja_001_SmokeBomb_Shredder*'
+  0x00c3d8  -> 0xc270 '*PowerSelect_BroPower_Shredder_001_CharSelect*'
+  0x00c3e0  -> 0xc2a0 '*PowerSelect_BroPower_Shredder_002_CharSelect*'
+  0x00c3e8  string '*Shredder_HeroData_Skin_Samurai*'
+  0x00c410  string '*Shredder_ActorRep_Samurai*'
+
+  ---- *Shredder_HeroData_Skin_TrenchCoat* ----
+  0x00c430  -> 0xc548 '*Shredder_HeroData_Skin_TrenchCoat*'
+  0x00c438  -> 0xc088 '*Shredder_HeroData*'
+  0x00c440  -> 0xc0d0 'Shredder'
+  0x00c448  08 00 00 00 00 00 00 00   u32 0x8 0x0
+  0x00c450  -> 0xc0a0 '*Shredder_Hero*'
+  0x00c458  -> 0xc570 '*Shredder_ActorRep_TrenchCoat*'
+  0x00c468  d4 00 00 00 00 00 00 00   u32 0xd4 0x0
+  0x00c470  -> 0xc0e0 
+  0x00c478  00 00 00 00 08 00 00 00   u32 0x0 0x8
+  0x00c480  -> 0x71bc 'UI_TRENCHCOAT_SKIN_NAME_RAPH'
+  0x00c488  -> 0xb08 
+  0x00c490  -> 0xbf50 'UI_CHARACTER_NAME_05'
+  0x00c498  -> 0xc0e8 'UI_CHARACTER_DESCRIPTION_SHREDDER'
+  0x00c4a0  -> 0xc110 'Boss_Shredder.atlas:shredder_hud'
+  0x00c4a8  cd cc 0c 3f 00 00 80 3e   u32 0x3f0ccccd 0x3e800000   f32 0.55, 0.25
+  0x00c4b0  9a 99 59 3f 00 00 80 3f   u32 0x3f59999a 0x3f800000   f32 0.85, 1
+  0x00c4b8  52 b8 1e 3f 52 b8 1e 3f   u32 0x3f1eb852 0x3f1eb852   f32 0.62, 0.62
+  0x00c4c0  c3 f5 28 3f 00 00 80 3f   u32 0x3f28f5c3 0x3f800000   f32 0.66, 1
+  0x00c4c8  -> 0xc138 'Boss_Shredder.atlas:shredder_big'
+  0x00c4d0  66 66 66 3f 00 00 00 00   u32 0x3f666666 0x0   f32 0.9
+  0x00c4d8  -> 0xc160 'Multiplayer.atlas:Frame_Ink_Don'
+  0x00c4e0  00 00 00 3f 00 00 80 3f   u32 0x3f000000 0x3f800000   f32 0.5, 1
+  0x00c4e8  5c 8f 82 3e 5c 8f 82 3e   u32 0x3e828f5c 0x3e828f5c   f32 0.255, 0.255
+  0x00c4f0  00 00 80 3f 00 00 00 00   u32 0x3f800000 0x0   f32 1
+  0x00c4f8  -> 0xc180 'Boss_Shredder.atlas:shredder_select'
+  0x00c500  cd cc 0c 3f 00 00 80 3e   u32 0x3f0ccccd 0x3e800000   f32 0.55, 0.25
+  0x00c508  9a 99 59 3f 00 00 80 3f   u32 0x3f59999a 0x3f800000   f32 0.85, 1
+  0x00c510  -> 0xc1a8 'Boss_Shredder.atlas:shredder_claw'
+  0x00c518  -> 0xc1d0 'Boss_Shredder.atlas:shredder_special'
+  0x00c520  -> 0xc1f8 'SPECIAL_ATTACK_SHREDDER_NAME'
+  0x00c528  -> 0xc218 'SPECIAL_ATTACK_SHREDDER_DESC'
+  0x00c530  -> 0xc238 '*PowerSelect_Ability_Ninja_001_SmokeBomb_Shredder*'
+  0x00c538  -> 0xc270 '*PowerSelect_BroPower_Shredder_001_CharSelect*'
+  0x00c540  -> 0xc2a0 '*PowerSelect_BroPower_Shredder_002_CharSelect*'
+  0x00c548  string '*Shredder_HeroData_Skin_TrenchCoat*'
+  0x00c570  string '*Shredder_ActorRep_TrenchCoat*'
+  0x00c590  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Walk.anim'
+  0x00c5d8  string 'build://Characters/NPCs/Shredder/Anims/Shredder_Default_Idle.anim'
+
+####################################################################################################
+ENTRY a292b7c27a9b157d  (changed)
+####################################################################################################
+CFF0 game-data record (decrypted with key index 9). Data 11360 bytes, 486 pointers, 18 symbols.
+Original record: 11000 bytes, 460 pointers, 16 symbols.
+Bytes changed inside the original part: 0. Original pointers changed: 0. Added after the original part: 360 bytes.
+
+New symbols (2):
+  0x002b00  type 0x5f03154f  *PowerSelect_BroPower_Shredder_001_CharSelect*
+  0x002bc0  type 0x5f03154f  *PowerSelect_BroPower_Shredder_002_CharSelect*
+
+Added data, every 8-byte field (pointers resolved; strings shown once at their own address):
+
+  ---- *PowerSelect_BroPower_Shredder_001_CharSelect* ----
+  0x002b00  -> 0x2658 'Buff_BroPower_Leonardo_001'
+  0x002b08  08 00 00 00 01 00 00 00   u32 0x8 0x1
+  0x002b10  0a 00 00 00 00 00 00 00   u32 0xa 0x0
+  0x002b18  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x002b20  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x002b28  -> 0x2678 
+  0x002b38  -> 0x2680 'BROTHERPOWER_LEONARDO_001_NAME'
+  0x002b40  -> 0x269f 'BROTHERPOWER_LEONARDO_001_CHARSELECT_DESC'
+  0x002b48  -> 0x26d0 
+  0x002b50  -> 0x26d8 
+  0x002b58  -> 0x26e0 
+  0x002b60  -> 0x2b90 'build://Boss_Shredder.atlas'
+  0x002b68  -> 0x2bb0 'shredder_insp1'
+  0x002b70  -> 0x2848 
+  0x002b78  -> 0x2850 
+  0x002b80  -> 0x2858 
+  0x002b88  -> 0x2870 
+  0x002b90  string 'build://Boss_Shredder.atlas'
+  0x002bb0  string 'shredder_insp1'
+
+  ---- *PowerSelect_BroPower_Shredder_002_CharSelect* ----
+  0x002bc0  -> 0x2878 'Buff_BroPower_Leonardo_002'
+  0x002bc8  08 00 00 00 01 00 00 00   u32 0x8 0x1
+  0x002bd0  0a 00 00 00 00 00 00 00   u32 0xa 0x0
+  0x002bd8  ff ff ff ff 00 00 00 00   u32 0xffffffff 0x0
+  0x002be0  01 00 00 00 00 00 00 00   u32 0x1 0x0
+  0x002be8  -> 0x2898 
+  0x002bf8  -> 0x28a0 'BROTHERPOWER_LEONARDO_002_NAME'
+  0x002c00  -> 0x28bf 'BROTHERPOWER_LEONARDO_002_CHARSELECT_DESC'
+  0x002c08  -> 0x28f0 
+  0x002c10  -> 0x28f8 
+  0x002c18  -> 0x2950 
+  0x002c20  -> 0x2b90 'build://Boss_Shredder.atlas'
+  0x002c28  -> 0x2c50 'shredder_insp2'
+  0x002c30  -> 0x2988 
+  0x002c38  -> 0x2990 
+  0x002c40  -> 0x2998 
+  0x002c48  -> 0x29b0 
+  0x002c50  string 'shredder_insp2'
+
+####################################################################################################
+ENTRY 3d50408ab841b670  (changed)
+####################################################################################################
+CFF0 game-data record (decrypted with key index 14). Data 30672 bytes, 1409 pointers, 29 symbols.
+Original record: 30472 bytes, 1396 pointers, 28 symbols.
+Bytes changed inside the original part: 0. Original pointers changed: 0. Added after the original part: 200 bytes.
+
+New symbols (1):
+  0x007710  type 0x5f03154f  *PowerSelect_Ability_Ninja_001_SmokeBomb_Shredder*
+
+Added data, every 8-byte field (pointers resolved; strings shown once at their own address):
+
+  ---- *PowerSelect_Ability_Ninja_001_SmokeBomb_Shredder* ----
+  0x007710  -> 0x2828 'BuffMarker_Ability_Ninja_001_SmokeBomb'
+  0x007718  07 00 00 00 02 00 00 00   u32 0x7 0x2
+  0x007720  0c 00 00 00 02 00 00 00   u32 0xc 0x2
+  0x007728  ff ff ff ff c8 00 00 00   u32 0xffffffff 0xc8
+  0x007730  03 00 00 00 00 00 00 00   u32 0x3 0x0
+  0x007738  -> 0x2850 
+  0x007748  -> 0x2858 'ENHANCEMENT_NINJA_TOOL_001_NAME'
+  0x007750  -> 0x2878 'ENHANCEMENT_NINJA_TOOL_001_DESC'
+  0x007758  -> 0x2898 
+  0x007760  -> 0x28a0 
+  0x007768  -> 0x2b48 
+  0x007770  -> 0x77a0 'build://Boss_Shredder.atlas'
+  0x007778  -> 0x77c0 'shredder_smoke'
+  0x007780  -> 0x2c58 
+  0x007788  -> 0x2c70 
+  0x007790  -> 0x2c78 
+  0x007798  -> 0x2c90 
+  0x0077a0  string 'build://Boss_Shredder.atlas'
+  0x0077c0  string 'shredder_smoke'
+
+####################################################################################################
+ENTRY 8e812a7312530c0f  (changed)
+####################################################################################################
+Texture BC3 2048x2048, 12 mips, 12 sprites.
+Was BC3 1024x1024, 11 mips, 1 sprites.
+Sprites (hash, x, y, w, h, name if known):
+        0x991f7750      0     0  1000   888  shredder_0
+  new  0xe5395d82   1024     0  1000   888  shredder_big
+  new  0xf3ada218     16  1040   360   480  shredder_select
+  new  0x59101b0a    400  1040   256   256  shredder_hud
+  new  0x4f0942d4   1024   900   250   250  shredder_special
+  new  0xe484f892   1290   900   250   250  shredder_claw
+  new  0x5f29cdc2   1560   900   200   200  shredder_smoke
+  new  0x3752c0a4   1024  1160   250   250  shredder_special_hud
+  new  0x1d003521   1290  1160   250   250  shredder_dash_hud
+  new  0xfb7ca96a   1560  1160   200   200  shredder_smoke_hud
+  new  0x7cb7e676   1780   900   200   200  shredder_insp1
+  new  0x696989cd   1780  1160   200   200  shredder_insp2
+Pixels are recoloured / resized copies of game art (see docs/HISTORY.md). Use --png to export before/after images.
+
+####################################################################################################
+ENTRY ad071165d36403c3  (new)
+####################################################################################################
+RSC0 model (mesh) resource, 806666 bytes. Material path stored in it: '/Characters/NPCs/Shredder/Model/ShredHro.ShredderCharacterShader_REBIRTH_CHARACTER_SHADER.shadergraph'
+The game finds the material by key = lookup8(MD5(that path without the leading /).upper()). See docs/FORMATS.md.
+New entry. Every byte other than that path is a copy of an existing game mesh (see build_cape.py).
+
+####################################################################################################
+ENTRY 85e9db7aaa1066cd  (new)
+####################################################################################################
+CFF0 material ("shadergraph") record, not encrypted. Chunks: SHD0, SHD0
+Texture GUIDs it uses (key = lookup8(GUID)):
+  04342C84DD75173B3594AD932A0F3E6B  x1
+  124E2EE31AB74D771598794D27D582BD  x1
+  12F7A358BD9043ACC68F411BA719EA3D  x12
+  1756D55C713F67A5806C373264F5EC69  x1
+  1C15AD137978C473D9D516CA11951203  x1
+  2528C848D57D6B38B978BE839D796E3D  x1
+  2F0ED51EC4DFFBFB3473A5406BE886EA  x1
+  35C3E5679B63972640C49C8778927C5B  x1
+  3A2C2E31C93C607082B4191F5A82ECA3  x1
+  3DA1070486BB2F0DA304F2AC03186214  x6
+  4125484A89562CD3A7FF52F4E2C1F40D  x1
+  475BC18ED1453CC8806B06851395EB43  x1
+  4D9EA5ED7FC5E7F7CFCB1ACB763C20AA  x12
+  4E854B4EC96C3D03537FE17F964DC385  x1
+  5732C0EB972BC0CC08345ACB7C39D53A  x1
+  5B4B6CB34D48E0741FE4065B73D99EE3  x1
+  622DB5B9A8C52A6BBE3F72ECC51450FD  x12
+  6A76671D636344477705C1174ED95993  x1
+  6D59C4CF8D8F8EDCEDBFCBD7CC5C929A  x12
+  7384B19E3D966E7EFC1168A2A8CF3FBD  x1
+  74A89FA60359726E93C497A694F52B61  x12
+  75569DF75E216635EDE5A91ABE6306DC  x1
+  7F401C8B9D362D326F076FDEE023DCB8  x1
+  83D84F1A4AFE3A8F2F5613861C7E966E  x1
+  84D058EB1E21138DAA2393C54BB7B320  x12
+  8DACECEE4985DE52F6EFBA0F608413D1  x1
+  9CA187558CDD0A40105ADC1F6DD74945  x1
+  A6DE4A1B1AAA26A52EF5A517565A3E16  x1
+  ADED5399465E0BE04C2BBA813D535306  x1
+  B6A5DE7F37B744DA6FEC16A6F8DC76F8  x1
+  C5E5A961F9357DA32D5E015BDD163356  x1
+  C8E63CCA98415BFFB32054944B9C8B56  x1
+  D91B2968DD625DB0909AC3679CBAC477  x1
+  F5F8345BA13440285755689C1AACD695  x1
+  F739D77246C682EE1959B59913EC8157  x1
+  F8BB11F793FB03CCA353FBFFF33B1F45  x1
+  F91FDF0AFD7907C4B174D3E0B9A2646B  x1
+  F9C4513C5889EA15CC71323DB0A7C8D9  x1
+  FC09DD503EC03B27379F00214210884C  x1
+
+####################################################################################################
+ENTRY 69cde7de88f6e26d  (new)
+####################################################################################################
+Texture BC1 1024x1024, 11 mips, 1 sprites.
+Sprites (hash, x, y, w, h, name if known):
+  new  0x494c6b0f      0     0  1024  1024  
+Pixels are recoloured / resized copies of game art (see docs/HISTORY.md). Use --png to export before/after images.

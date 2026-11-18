@@ -1,0 +1,64 @@
+Patch:    default_both.kpatch
+Applied to: default.pak2  (SHA-1 F55E73ABC9C31C1427A1031DD1AF7A2C3B29F32C, 1317408 bytes)
+Result:   SHA-1 52ED1D8B85CBAB21BA62713201B6BB0E7E8837FD, 1317408 bytes
+Ranges in patch: 2, bytes written: 4310
+
+====================================================================================================
+ARCHIVE default.pak2: 81 entries -> 81. Changed: 1, added: 0, removed: 0
+====================================================================================================
+All other entries are byte-identical (compared compressed, in place or moved).
+  changed 07398c8c3a145269  14626 -> 15121 bytes
+
+####################################################################################################
+ENTRY 07398c8c3a145269  (changed)
+####################################################################################################
+UIML layout (binary UI markup), parsed as a tree: 293 elements.
+Before: 287 elements. Lines starting with + were added, - removed (unified diff of the element tree):
+  --- original
+  +++ patched
+  @@ -133,4 +133,6 @@
+                   <0x0b > 66='QUAD_SLICE3_H' 28='140' 29='680' 13='false' 14='build://Multiplayer:Window_Banner_Alopex'
+                   <0x0b > 66='QUAD_SLICE3_H' 28='140' 29='680' 13='false' 14='build://Multiplayer:Window_Banner_Slash'
+  +                <0x0b > 66='QUAD_SLICE3_H' 28='140' 29='680' 13='false' 14='build://Multiplayer:Window_Banner_Raph'
+  +                <0x0b > 66='QUAD_SLICE3_H' 28='140' 29='680' 13='false' 14='build://Multiplayer:Window_Banner_Don'
+                 <0x38 > 29='490' 58='{Binding Path=Character_Name}' 60='true' 62='{Resource HeaderH3}' 68='true' 69='0,0,0,200'
+               <0x19 > 12='0.9'
+  @@ -238,19 +240,23 @@
+             <0x37 > 
+             <0x31 > 
+  -            <0x4d > 78='0' 79='#aa7450' 88='{Resource MoveInPortrait0}' 27='SelectorPortrait_0' 28='250' 29='150' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Mike' 90='OnItemHoverChanged'
+  -          <0x31 > 
+  -            <0x4d > 78='1' 79='#55629c' 88='{Resource MoveInPortrait1}' 27='SelectorPortrait_1' 28='250' 29='150' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Leo' 90='OnItemHoverChanged'
+  -          <0x31 > 
+  -            <0x4d > 78='2' 79='#ca6a6a' 88='{Resource MoveInPortrait2}' 27='SelectorPortrait_2' 28='250' 29='150' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Raph' 90='OnItemHoverChanged'
+  -          <0x31 > 
+  -            <0x4d > 78='3' 79='#9675a3' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_3' 28='250' 29='150' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Don' 90='OnItemHoverChanged'
+  -          <0x31 > 
+  -            <0x4d > 78='4' 79='#7aaca1' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_4' 28='250' 29='150' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Casey' 90='OnItemHoverChanged'
+  -          <0x31 > 
+  -            <0x4d > 78='5' 79='#a89d5e' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_5' 28='250' 29='150' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Metal' 90='OnItemHoverChanged'
+  -          <0x31 > 
+  -            <0x4d > 78='6' 79='#7baf70' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_6' 28='250' 29='150' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Alopex' 90='OnItemHoverChanged'
+  -          <0x31 > 
+  -            <0x4d > 78='7' 79='#7d7683' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_7' 28='250' 29='150' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Slash' 90='OnItemHoverChanged'
+  +            <0x4d > 78='0' 79='#aa7450' 88='{Resource MoveInPortrait0}' 27='SelectorPortrait_0' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Mike' 90='OnItemHoverChanged'
+  +          <0x31 > 
+  +            <0x4d > 78='1' 79='#55629c' 88='{Resource MoveInPortrait1}' 27='SelectorPortrait_1' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Leo' 90='OnItemHoverChanged'
+  +          <0x31 > 
+  +            <0x4d > 78='2' 79='#ca6a6a' 88='{Resource MoveInPortrait2}' 27='SelectorPortrait_2' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Raph' 90='OnItemHoverChanged'
+  +          <0x31 > 
+  +            <0x4d > 78='3' 79='#9675a3' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_3' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Don' 90='OnItemHoverChanged'
+  +          <0x31 > 
+  +            <0x4d > 78='4' 79='#7aaca1' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_4' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Casey' 90='OnItemHoverChanged'
+  +          <0x31 > 
+  +            <0x4d > 78='5' 79='#a89d5e' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_5' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Metal' 90='OnItemHoverChanged'
+  +          <0x31 > 
+  +            <0x4d > 78='6' 79='#7baf70' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_6' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Alopex' 90='OnItemHoverChanged'
+  +          <0x31 > 
+  +            <0x4d > 78='7' 79='#7d7683' 88='{Resource MoveInPortrait3}' 27='SelectorPortrait_7' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Slash' 90='OnItemHoverChanged'
+  +          <0x31 > 
+  +            <0x4d > 78='8' 79='#b02a3a' 88='{Resource MoveInPortrait3}' 27='SP8' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Casey' 90='OnItemHoverChanged'
+  +          <0x31 > 
+  +            <0x4d > 78='9' 79='#8a5cc0' 88='{Resource MoveInPortrait3}' 27='SP9' 28='225' 29='135' 9='CharSelectImgBtnStyle' 80='OnCharacterClicked' 89='build://Multiplayer:AvatarSelect_Casey' 90='OnItemHoverChanged'
+             <0x37 > 
+             <0x10 > 29='500' 23='STACK_ONE' 24='{Binding Path=ButtonContainerIndex Default=0}'

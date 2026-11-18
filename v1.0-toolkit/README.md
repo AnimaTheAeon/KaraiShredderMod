@@ -32,7 +32,7 @@ These scripts are as written, with the same hard-coded sandbox paths.
 
 ## Not here
 - **The Shredder v1.0 builders** (`sf.py`, `recedit.py`, `build_shred_data/atlas/banter/exe.py`) were lost.
-  What they change is described in `docs/HISTORY.md`. The v1.0 Shredder patches can be read range by
-  range with `src/kpatch.py`.
+  Their output is kept as readable source in [`src/v1_0/source/`](../src/v1_0/source/) (for Karai, Shredder
+  and Both), and `src/v1_0/build.py` rebuilds the v1.0 files from it exactly. See BUILD.md, "The v1.0 base".
 - **Game data.** Records and textures pulled from the paks are not included. Extract them from your own
   game files with the tools above.

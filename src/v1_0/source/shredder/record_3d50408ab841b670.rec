@@ -1,0 +1,32 @@
+; v1.0 shredder: record 3d50408ab841b670
+; Generated from the released patch by gen_source.py; build.py rebuilds the record from
+; the original game record + this file and must reproduce the release byte for byte.
+
+record 3d50408ab841b670
+base 30472
+size 30672
+ptch_pad 1
+
+sym 0x7710 0x5f03154f 72 *PowerSelect_Ability_Ninja_001_SmokeBomb_Shredder*
+
+
+; ---- *PowerSelect_Ability_Ninja_001_SmokeBomb_Shredder*
+ptr 0x7710 0x2828    ; 'BuffMarker_Ability_Ninja_001_SmokeBomb'
+hex 0x7718 0700000002000000    ; u32 0x7 0x2
+hex 0x7720 0c00000002000000    ; u32 0xc 0x2
+hex 0x7728 ffffffffc8000000    ; u32 0xffffffff 0xc8
+hex 0x7730 0300000000000000    ; u32 0x3 0x0
+ptr 0x7738 0x2850
+ptr 0x7748 0x2858    ; 'ENHANCEMENT_NINJA_TOOL_001_NAME'
+ptr 0x7750 0x2878    ; 'ENHANCEMENT_NINJA_TOOL_001_DESC'
+ptr 0x7758 0x2898
+ptr 0x7760 0x28a0
+ptr 0x7768 0x2b48
+ptr 0x7770 0x77a0    ; 'build://Boss_Shredder.atlas'
+ptr 0x7778 0x77c0    ; 'shredder_smoke'
+ptr 0x7780 0x2c58
+ptr 0x7788 0x2c70
+ptr 0x7790 0x2c78
+ptr 0x7798 0x2c90
+str 0x77a0 "build://Boss_Shredder.atlas"
+str 0x77c0 "shredder_smoke"

@@ -1,0 +1,2319 @@
+Patch:    exe_karai.kpatch
+Applied to: TMNTSF.exe  (SHA-1 DF59708EC2F3B0A469CF7C8C0D2934510D42FE96, 24848200 bytes)
+Result:   SHA-1 29DCD292306BE1D7E13A98964702070B51A24561, 24842752 bytes
+Ranges in patch: 153, bytes written: 15581
+
+====================================================================================================
+PE HEADER
+====================================================================================================
+  OptionalHeader.SizeOfImage            0x186e000 -> 0x1870000
+  OptionalHeader.CheckSum               0x17bc09f -> 0x17bdc76
+  FileHeader.NumberOfSections        8 -> 9
+  DataDirectory[SECURITY]  (0x17af200, 0x3548) -> (0x0, 0x0)   (Authenticode signature block dropped: a patched exe can no longer carry the original signature)
+
+  Sections (name, RVA, virtual size, file offset, file size, flags):
+   CHG .text        0x1000  0xf69e00     0x400  0xf69e00 0x60000020
+        was     0x1000  0xf69c7e     0x400  0xf69e00 0x60000020
+       .rdata     0xf6b000  0x491e00  0xf6a200  0x491e00 0x40000040
+   CHG .data     0x13fd000  0x2b4000 0x13fc000  0x1f9200 0xc0000040
+        was  0x13fd000  0x2b30e0 0x13fc000  0x1f9200 0xc0000040
+       .pdata    0x16b1000   0xbb62c 0x15f5200   0xbb800 0x40000040
+       CPADinfo  0x176d000      0x38 0x16b0a00     0x200 0xc0000040
+       _RDATA    0x176e000    0x2208 0x16b0c00    0x2400 0x40000040
+       .rsrc     0x1771000   0x8ddb8 0x16b3000   0x8de00 0x40000040
+       .reloc    0x17ff000   0x6e314 0x1740e00   0x6e400 0x42000040
+   NEW .karai    0x186e000    0x2000 0x17af200    0x2000 0xe0000020
+
+  File size 24848200 -> 24842752 bytes (the old file ends with data past the last section, e.g. the signature)
+
+====================================================================================================
+CHANGED CODE SITES IN THE ORIGINAL GAME CODE (.text): 144
+====================================================================================================
+Each site shows the original instructions, then the patched bytes. A patched site is usually a jump into
+new code (a "cave", listed in the next part), or a constant/branch change.
+
+-- site 0x1400d352d .. 0x1400d369a (365 bytes changed)
+   original:
+     1400d352a: 488d0d5f933f01           lea rcx, [0x1414cc890]                                       
+     1400d3531: e8fa194600               call 0x140534f30                                             ; std::string assign
+     1400d3536: 90                       nop                                                          
+     1400d3537: 33f6                     xor esi, esi                                                 
+     1400d3539: 48893570933f01           mov qword ptr [0x1414cc8b0], rsi                             
+     1400d3540: 48893579933f01           mov qword ptr [0x1414cc8c0], rsi                             
+     1400d3547: 8d7e0f                   lea edi, [rsi + 0xf]                                         
+     1400d354a: 48893d77933f01           mov qword ptr [0x1414cc8c8], rdi                             
+     1400d3551: 40883558933f01           mov byte ptr [0x1414cc8b0], sil                              
+     1400d3558: 4c8d0df1a60701           lea r9, [0x14114dc50]                                        ; 'SelectorPortrait_0/Lit'
+     1400d355f: 8d5616                   lea edx, [rsi + 0x16]                                        
+     1400d3562: 488d0d47933f01           lea rcx, [0x1414cc8b0]                                       
+     1400d3569: e8c2194600               call 0x140534f30                                             ; std::string assign
+     1400d356e: 90                       nop                                                          
+     1400d356f: 4889355a933f01           mov qword ptr [0x1414cc8d0], rsi                             
+     1400d3576: 48893563933f01           mov qword ptr [0x1414cc8e0], rsi                             
+     1400d357d: 48893d64933f01           mov qword ptr [0x1414cc8e8], rdi                             
+     1400d3584: 40883545933f01           mov byte ptr [0x1414cc8d0], sil                              
+     1400d358b: 4c8d0da6a60701           lea r9, [0x14114dc38]                                        ; 'SelectorPortrait_0/Used'
+     1400d3592: 8d5617                   lea edx, [rsi + 0x17]                                        
+     1400d3595: 488d0d34933f01           lea rcx, [0x1414cc8d0]                                       
+     1400d359c: e88f194600               call 0x140534f30                                             ; std::string assign
+     1400d35a1: 90                       nop                                                          
+     1400d35a2: 48893547933f01           mov qword ptr [0x1414cc8f0], rsi                             
+     1400d35a9: 48893550933f01           mov qword ptr [0x1414cc900], rsi                             
+     1400d35b0: 48893d51933f01           mov qword ptr [0x1414cc908], rdi                             
+     1400d35b7: 40883532933f01           mov byte ptr [0x1414cc8f0], sil                              
+     1400d35be: 4c8d0d1ba50701           lea r9, [0x14114dae0]                                        ; 'SelectorPortrait_0/Locked'
+     1400d35c5: 8d5619                   lea edx, [rsi + 0x19]                                        
+     1400d35c8: 488d0d21933f01           lea rcx, [0x1414cc8f0]                                       
+     1400d35cf: e85c194600               call 0x140534f30                                             ; std::string assign
+     1400d35d4: 90                       nop                                                          
+     1400d35d5: 48893534933f01           mov qword ptr [0x1414cc910], rsi                             
+     1400d35dc: 4889353d933f01           mov qword ptr [0x1414cc920], rsi                             
+     1400d35e3: 48893d3e933f01           mov qword ptr [0x1414cc928], rdi                             
+     1400d35ea: 4088351f933f01           mov byte ptr [0x1414cc910], sil                              
+     1400d35f1: 4c8d0dc8a40701           lea r9, [0x14114dac0]                                        ; 'SelectorPortrait_0/Image'
+     1400d35f8: 8d5618                   lea edx, [rsi + 0x18]                                        
+     1400d35fb: 488d0d0e933f01           lea rcx, [0x1414cc910]                                       
+     1400d3602: e829194600               call 0x140534f30                                             ; std::string assign
+     1400d3607: 90                       nop                                                          
+     1400d3608: 48893521933f01           mov qword ptr [0x1414cc930], rsi                             
+     1400d360f: 4889352a933f01           mov qword ptr [0x1414cc940], rsi                             
+     1400d3616: 48893d2b933f01           mov qword ptr [0x1414cc948], rdi                             
+     1400d361d: 4088350c933f01           mov byte ptr [0x1414cc930], sil                              
+     1400d3624: 4c8d0deda40701           lea r9, [0x14114db18]                                        ; 'SelectorPortrait_0/HeroColor'
+     1400d362b: 8d561c                   lea edx, [rsi + 0x1c]                                        
+     1400d362e: 488d0dfb923f01           lea rcx, [0x1414cc930]                                       
+     1400d3635: e8f6184600               call 0x140534f30                                             ; std::string assign
+     1400d363a: 90                       nop                                                          
+     1400d363b: 4889350e933f01           mov qword ptr [0x1414cc950], rsi                             
+     1400d3642: 48893517933f01           mov qword ptr [0x1414cc960], rsi                             
+     1400d3649: 48893d18933f01           mov qword ptr [0x1414cc968], rdi                             
+     1400d3650: 408835f9923f01           mov byte ptr [0x1414cc950], sil                              
+     1400d3657: 4c8d0da2a40701           lea r9, [0x14114db00]                                        ; 'SelectorPortrait_0/Glow'
+     1400d365e: 8d5617                   lea edx, [rsi + 0x17]                                        
+     1400d3661: 488d0de8923f01           lea rcx, [0x1414cc950]                                       
+     1400d3668: e8c3184600               call 0x140534f30                                             ; std::string assign
+     1400d366d: 90                       nop                                                          
+     1400d366e: 488935fb923f01           mov qword ptr [0x1414cc970], rsi                             
+     1400d3675: 48893504933f01           mov qword ptr [0x1414cc980], rsi                             
+     1400d367c: 48893d05933f01           mov qword ptr [0x1414cc988], rdi                             
+     1400d3683: 408835e6923f01           mov byte ptr [0x1414cc970], sil                              
+     1400d368a: 4c8d0dbfa40701           lea r9, [0x14114db50]                                        ; 'SelectorPortrait_1'
+     1400d3691: 8d5612                   lea edx, [rsi + 0x12]                                        
+     1400d3694: 488d0dd5923f01           lea rcx, [0x1414cc970]                                       
+   patched:
+     1400d352a: 488d0dafcb5d01           lea rcx, [0x1416b00e0]                                       
+     1400d3531: e8fa194600               call 0x140534f30                                             ; std::string assign
+     1400d3536: 90                       nop                                                          
+     1400d3537: 33f6                     xor esi, esi                                                 
+     1400d3539: 488935c0cb5d01           mov qword ptr [0x1416b0100], rsi                             
+     1400d3540: 488935c9cb5d01           mov qword ptr [0x1416b0110], rsi                             
+     1400d3547: 8d7e0f                   lea edi, [rsi + 0xf]                                         
+     1400d354a: 48893dc7cb5d01           mov qword ptr [0x1416b0118], rdi                             
+     1400d3551: 408835a8cb5d01           mov byte ptr [0x1416b0100], sil                              
+     1400d3558: 4c8d0df1a60701           lea r9, [0x14114dc50]                                        ; 'SelectorPortrait_0/Lit'
+     1400d355f: 8d5616                   lea edx, [rsi + 0x16]                                        
+     1400d3562: 488d0d97cb5d01           lea rcx, [0x1416b0100]                                       
+     1400d3569: e8c2194600               call 0x140534f30                                             ; std::string assign
+     1400d356e: 90                       nop                                                          
+     1400d356f: 488935aacb5d01           mov qword ptr [0x1416b0120], rsi                             
+     1400d3576: 488935b3cb5d01           mov qword ptr [0x1416b0130], rsi                             
+     1400d357d: 48893db4cb5d01           mov qword ptr [0x1416b0138], rdi                             
+     1400d3584: 40883595cb5d01           mov byte ptr [0x1416b0120], sil                              
+     1400d358b: 4c8d0da6a60701           lea r9, [0x14114dc38]                                        ; 'SelectorPortrait_0/Used'
+     1400d3592: 8d5617                   lea edx, [rsi + 0x17]                                        
+     1400d3595: 488d0d84cb5d01           lea rcx, [0x1416b0120]                                       
+     1400d359c: e88f194600               call 0x140534f30                                             ; std::string assign
+     1400d35a1: 90                       nop                                                          
+     1400d35a2: 48893597cb5d01           mov qword ptr [0x1416b0140], rsi                             
+     1400d35a9: 488935a0cb5d01           mov qword ptr [0x1416b0150], rsi                             
+     1400d35b0: 48893da1cb5d01           mov qword ptr [0x1416b0158], rdi                             
+     1400d35b7: 40883582cb5d01           mov byte ptr [0x1416b0140], sil                              
+     1400d35be: 4c8d0d1ba50701           lea r9, [0x14114dae0]                                        ; 'SelectorPortrait_0/Locked'
+     1400d35c5: 8d5619                   lea edx, [rsi + 0x19]                                        
+     1400d35c8: 488d0d71cb5d01           lea rcx, [0x1416b0140]                                       
+     1400d35cf: e85c194600               call 0x140534f30                                             ; std::string assign
+     1400d35d4: 90                       nop                                                          
+     1400d35d5: 48893584cb5d01           mov qword ptr [0x1416b0160], rsi                             
+     1400d35dc: 4889358dcb5d01           mov qword ptr [0x1416b0170], rsi                             
+     1400d35e3: 48893d8ecb5d01           mov qword ptr [0x1416b0178], rdi                             
+     1400d35ea: 4088356fcb5d01           mov byte ptr [0x1416b0160], sil                              
+     1400d35f1: 4c8d0dc8a40701           lea r9, [0x14114dac0]                                        ; 'SelectorPortrait_0/Image'
+     1400d35f8: 8d5618                   lea edx, [rsi + 0x18]                                        
+     1400d35fb: 488d0d5ecb5d01           lea rcx, [0x1416b0160]                                       
+     1400d3602: e829194600               call 0x140534f30                                             ; std::string assign
+     1400d3607: 90                       nop                                                          
+     1400d3608: 48893571cb5d01           mov qword ptr [0x1416b0180], rsi                             
+     1400d360f: 4889357acb5d01           mov qword ptr [0x1416b0190], rsi                             
+     1400d3616: 48893d7bcb5d01           mov qword ptr [0x1416b0198], rdi                             
+     1400d361d: 4088355ccb5d01           mov byte ptr [0x1416b0180], sil                              
+     1400d3624: 4c8d0deda40701           lea r9, [0x14114db18]                                        ; 'SelectorPortrait_0/HeroColor'
+     1400d362b: 8d561c                   lea edx, [rsi + 0x1c]                                        
+     1400d362e: 488d0d4bcb5d01           lea rcx, [0x1416b0180]                                       
+     1400d3635: e8f6184600               call 0x140534f30                                             ; std::string assign
+     1400d363a: 90                       nop                                                          
+     1400d363b: 4889355ecb5d01           mov qword ptr [0x1416b01a0], rsi                             
+     1400d3642: 48893567cb5d01           mov qword ptr [0x1416b01b0], rsi                             
+     1400d3649: 48893d68cb5d01           mov qword ptr [0x1416b01b8], rdi                             
+     1400d3650: 40883549cb5d01           mov byte ptr [0x1416b01a0], sil                              
+     1400d3657: 4c8d0da2a40701           lea r9, [0x14114db00]                                        ; 'SelectorPortrait_0/Glow'
+     1400d365e: 8d5617                   lea edx, [rsi + 0x17]                                        
+     1400d3661: 488d0d38cb5d01           lea rcx, [0x1416b01a0]                                       
+     1400d3668: e8c3184600               call 0x140534f30                                             ; std::string assign
+     1400d366d: 90                       nop                                                          
+     1400d366e: 4889354bcb5d01           mov qword ptr [0x1416b01c0], rsi                             
+     1400d3675: 48893554cb5d01           mov qword ptr [0x1416b01d0], rsi                             
+     1400d367c: 48893d55cb5d01           mov qword ptr [0x1416b01d8], rdi                             
+     1400d3683: 40883536cb5d01           mov byte ptr [0x1416b01c0], sil                              
+     1400d368a: 4c8d0dbfa40701           lea r9, [0x14114db50]                                        ; 'SelectorPortrait_1'
+     1400d3691: 8d5612                   lea edx, [rsi + 0x12]                                        
+     1400d3694: 488d0d25cb5d01           lea rcx, [0x1416b01c0]                                       
+
+-- site 0x1400d36ab .. 0x1400d36ae (3 bytes changed)
+   original:
+     1400d36a8: 488d0de1923f01           lea rcx, [0x1414cc990]                                       
+   patched:
+     1400d36a8: 488d0d31cb5d01           lea rcx, [0x1416b01e0]                                       
+
+-- site 0x1400d36bf .. 0x1400d36c2 (3 bytes changed)
+   original:
+     1400d36bc: 488d0ded923f01           lea rcx, [0x1414cc9b0]                                       
+   patched:
+     1400d36bc: 488d0d3dcb5d01           lea rcx, [0x1416b0200]                                       
+
+-- site 0x1400d36d3 .. 0x1400d36d6 (3 bytes changed)
+   original:
+     1400d36d0: 488d0df9923f01           lea rcx, [0x1414cc9d0]                                       
+   patched:
+     1400d36d0: 488d0d49cb5d01           lea rcx, [0x1416b0220]                                       
+
+-- site 0x1400d36e7 .. 0x1400d36ea (3 bytes changed)
+   original:
+     1400d36e4: 488d0d05933f01           lea rcx, [0x1414cc9f0]                                       
+   patched:
+     1400d36e4: 488d0d55cb5d01           lea rcx, [0x1416b0240]                                       
+
+-- site 0x1400d36fb .. 0x1400d36fe (3 bytes changed)
+   original:
+     1400d36f8: 488d0d11933f01           lea rcx, [0x1414cca10]                                       
+   patched:
+     1400d36f8: 488d0d61cb5d01           lea rcx, [0x1416b0260]                                       
+
+-- site 0x1400d370f .. 0x1400d3712 (3 bytes changed)
+   original:
+     1400d370c: 488d0d1d933f01           lea rcx, [0x1414cca30]                                       
+   patched:
+     1400d370c: 488d0d6dcb5d01           lea rcx, [0x1416b0280]                                       
+
+-- site 0x1400d3723 .. 0x1400d3726 (3 bytes changed)
+   original:
+     1400d3720: 488d0d29933f01           lea rcx, [0x1414cca50]                                       
+   patched:
+     1400d3720: 488d0d79cb5d01           lea rcx, [0x1416b02a0]                                       
+
+-- site 0x1400d3737 .. 0x1400d373a (3 bytes changed)
+   original:
+     1400d3734: 488d0d35933f01           lea rcx, [0x1414cca70]                                       
+   patched:
+     1400d3734: 488d0d85cb5d01           lea rcx, [0x1416b02c0]                                       
+
+-- site 0x1400d374b .. 0x1400d374e (3 bytes changed)
+   original:
+     1400d3748: 488d0d41933f01           lea rcx, [0x1414cca90]                                       
+   patched:
+     1400d3748: 488d0d91cb5d01           lea rcx, [0x1416b02e0]                                       
+
+-- site 0x1400d375f .. 0x1400d3762 (3 bytes changed)
+   original:
+     1400d375c: 488d0d4d933f01           lea rcx, [0x1414ccab0]                                       
+   patched:
+     1400d375c: 488d0d9dcb5d01           lea rcx, [0x1416b0300]                                       
+
+-- site 0x1400d3773 .. 0x1400d3776 (3 bytes changed)
+   original:
+     1400d3770: 488d0d59933f01           lea rcx, [0x1414ccad0]                                       
+   patched:
+     1400d3770: 488d0da9cb5d01           lea rcx, [0x1416b0320]                                       
+
+-- site 0x1400d3787 .. 0x1400d378a (3 bytes changed)
+   original:
+     1400d3784: 488d0d65933f01           lea rcx, [0x1414ccaf0]                                       
+   patched:
+     1400d3784: 488d0db5cb5d01           lea rcx, [0x1416b0340]                                       
+
+-- site 0x1400d379b .. 0x1400d379e (3 bytes changed)
+   original:
+     1400d3798: 488d0d71933f01           lea rcx, [0x1414ccb10]                                       
+   patched:
+     1400d3798: 488d0dc1cb5d01           lea rcx, [0x1416b0360]                                       
+
+-- site 0x1400d37af .. 0x1400d37b2 (3 bytes changed)
+   original:
+     1400d37ac: 488d0d7d933f01           lea rcx, [0x1414ccb30]                                       
+   patched:
+     1400d37ac: 488d0dcdcb5d01           lea rcx, [0x1416b0380]                                       
+
+-- site 0x1400d37c3 .. 0x1400d37c6 (3 bytes changed)
+   original:
+     1400d37c0: 488d0d89933f01           lea rcx, [0x1414ccb50]                                       
+   patched:
+     1400d37c0: 488d0dd9cb5d01           lea rcx, [0x1416b03a0]                                       
+
+-- site 0x1400d37d7 .. 0x1400d37da (3 bytes changed)
+   original:
+     1400d37d4: 488d0d95933f01           lea rcx, [0x1414ccb70]                                       
+   patched:
+     1400d37d4: 488d0de5cb5d01           lea rcx, [0x1416b03c0]                                       
+
+-- site 0x1400d37eb .. 0x1400d37ee (3 bytes changed)
+   original:
+     1400d37e8: 488d0da1933f01           lea rcx, [0x1414ccb90]                                       
+   patched:
+     1400d37e8: 488d0df1cb5d01           lea rcx, [0x1416b03e0]                                       
+
+-- site 0x1400d37ff .. 0x1400d3802 (3 bytes changed)
+   original:
+     1400d37fc: 488d0dad933f01           lea rcx, [0x1414ccbb0]                                       
+   patched:
+     1400d37fc: 488d0dfdcb5d01           lea rcx, [0x1416b0400]                                       
+
+-- site 0x1400d3813 .. 0x1400d3816 (3 bytes changed)
+   original:
+     1400d3810: 488d0db9933f01           lea rcx, [0x1414ccbd0]                                       
+   patched:
+     1400d3810: 488d0d09cc5d01           lea rcx, [0x1416b0420]                                       
+
+-- site 0x1400d3827 .. 0x1400d382a (3 bytes changed)
+   original:
+     1400d3824: 488d0dc5933f01           lea rcx, [0x1414ccbf0]                                       
+   patched:
+     1400d3824: 488d0d15cc5d01           lea rcx, [0x1416b0440]                                       
+
+-- site 0x1400d383b .. 0x1400d383e (3 bytes changed)
+   original:
+     1400d3838: 488d0dd1933f01           lea rcx, [0x1414ccc10]                                       
+   patched:
+     1400d3838: 488d0d21cc5d01           lea rcx, [0x1416b0460]                                       
+
+-- site 0x1400d384f .. 0x1400d3852 (3 bytes changed)
+   original:
+     1400d384c: 488d0ddd933f01           lea rcx, [0x1414ccc30]                                       
+   patched:
+     1400d384c: 488d0d2dcc5d01           lea rcx, [0x1416b0480]                                       
+
+-- site 0x1400d3863 .. 0x1400d3866 (3 bytes changed)
+   original:
+     1400d3860: 488d0de9933f01           lea rcx, [0x1414ccc50]                                       
+   patched:
+     1400d3860: 488d0d39cc5d01           lea rcx, [0x1416b04a0]                                       
+
+-- site 0x1400d3877 .. 0x1400d387a (3 bytes changed)
+   original:
+     1400d3874: 488d0df5933f01           lea rcx, [0x1414ccc70]                                       
+   patched:
+     1400d3874: 488d0d45cc5d01           lea rcx, [0x1416b04c0]                                       
+
+-- site 0x1400d388b .. 0x1400d388e (3 bytes changed)
+   original:
+     1400d3888: 488d0d01943f01           lea rcx, [0x1414ccc90]                                       
+   patched:
+     1400d3888: 488d0d51cc5d01           lea rcx, [0x1416b04e0]                                       
+
+-- site 0x1400d389f .. 0x1400d38a2 (3 bytes changed)
+   original:
+     1400d389c: 488d0d0d943f01           lea rcx, [0x1414cccb0]                                       
+   patched:
+     1400d389c: 488d0d5dcc5d01           lea rcx, [0x1416b0500]                                       
+
+-- site 0x1400d38b3 .. 0x1400d38b6 (3 bytes changed)
+   original:
+     1400d38b0: 488d0d19943f01           lea rcx, [0x1414cccd0]                                       
+   patched:
+     1400d38b0: 488d0d69cc5d01           lea rcx, [0x1416b0520]                                       
+
+-- site 0x1400d38c7 .. 0x1400d38ca (3 bytes changed)
+   original:
+     1400d38c4: 488d0d25943f01           lea rcx, [0x1414cccf0]                                       
+   patched:
+     1400d38c4: 488d0d75cc5d01           lea rcx, [0x1416b0540]                                       
+
+-- site 0x1400d38db .. 0x1400d38de (3 bytes changed)
+   original:
+     1400d38d8: 488d0d31943f01           lea rcx, [0x1414ccd10]                                       
+   patched:
+     1400d38d8: 488d0d81cc5d01           lea rcx, [0x1416b0560]                                       
+
+-- site 0x1400d38ef .. 0x1400d38f2 (3 bytes changed)
+   original:
+     1400d38ec: 488d0d3d943f01           lea rcx, [0x1414ccd30]                                       
+   patched:
+     1400d38ec: 488d0d8dcc5d01           lea rcx, [0x1416b0580]                                       
+
+-- site 0x1400d3903 .. 0x1400d3906 (3 bytes changed)
+   original:
+     1400d3900: 488d0d49943f01           lea rcx, [0x1414ccd50]                                       
+   patched:
+     1400d3900: 488d0d99cc5d01           lea rcx, [0x1416b05a0]                                       
+
+-- site 0x1400d3917 .. 0x1400d391a (3 bytes changed)
+   original:
+     1400d3914: 488d0d55943f01           lea rcx, [0x1414ccd70]                                       
+   patched:
+     1400d3914: 488d0da5cc5d01           lea rcx, [0x1416b05c0]                                       
+
+-- site 0x1400d392b .. 0x1400d392e (3 bytes changed)
+   original:
+     1400d3928: 488d0d61943f01           lea rcx, [0x1414ccd90]                                       
+   patched:
+     1400d3928: 488d0db1cc5d01           lea rcx, [0x1416b05e0]                                       
+
+-- site 0x1400d393f .. 0x1400d3942 (3 bytes changed)
+   original:
+     1400d393c: 488d0d6d943f01           lea rcx, [0x1414ccdb0]                                       
+   patched:
+     1400d393c: 488d0dbdcc5d01           lea rcx, [0x1416b0600]                                       
+
+-- site 0x1400d3953 .. 0x1400d3956 (3 bytes changed)
+   original:
+     1400d3950: 488d0d79943f01           lea rcx, [0x1414ccdd0]                                       
+   patched:
+     1400d3950: 488d0dc9cc5d01           lea rcx, [0x1416b0620]                                       
+
+-- site 0x1400d3967 .. 0x1400d396a (3 bytes changed)
+   original:
+     1400d3964: 488d0d85943f01           lea rcx, [0x1414ccdf0]                                       
+   patched:
+     1400d3964: 488d0dd5cc5d01           lea rcx, [0x1416b0640]                                       
+
+-- site 0x1400d397b .. 0x1400d397e (3 bytes changed)
+   original:
+     1400d3978: 488d0d91943f01           lea rcx, [0x1414cce10]                                       
+   patched:
+     1400d3978: 488d0de1cc5d01           lea rcx, [0x1416b0660]                                       
+
+-- site 0x1400d398f .. 0x1400d3992 (3 bytes changed)
+   original:
+     1400d398c: 488d0d9d943f01           lea rcx, [0x1414cce30]                                       
+   patched:
+     1400d398c: 488d0dedcc5d01           lea rcx, [0x1416b0680]                                       
+
+-- site 0x1400d39a3 .. 0x1400d39a6 (3 bytes changed)
+   original:
+     1400d39a0: 488d0da9943f01           lea rcx, [0x1414cce50]                                       
+   patched:
+     1400d39a0: 488d0df9cc5d01           lea rcx, [0x1416b06a0]                                       
+
+-- site 0x1400d39b7 .. 0x1400d39ba (3 bytes changed)
+   original:
+     1400d39b4: 488d0db5943f01           lea rcx, [0x1414cce70]                                       
+   patched:
+     1400d39b4: 488d0d05cd5d01           lea rcx, [0x1416b06c0]                                       
+
+-- site 0x1400d39cb .. 0x1400d39ce (3 bytes changed)
+   original:
+     1400d39c8: 488d0dc1943f01           lea rcx, [0x1414cce90]                                       
+   patched:
+     1400d39c8: 488d0d11cd5d01           lea rcx, [0x1416b06e0]                                       
+
+-- site 0x1400d39df .. 0x1400d39e2 (3 bytes changed)
+   original:
+     1400d39dc: 488d0dcd943f01           lea rcx, [0x1414cceb0]                                       
+   patched:
+     1400d39dc: 488d0d1dcd5d01           lea rcx, [0x1416b0700]                                       
+
+-- site 0x1400d39f3 .. 0x1400d39f6 (3 bytes changed)
+   original:
+     1400d39f0: 488d0dd9943f01           lea rcx, [0x1414cced0]                                       
+   patched:
+     1400d39f0: 488d0d29cd5d01           lea rcx, [0x1416b0720]                                       
+
+-- site 0x1400d3a07 .. 0x1400d3a0a (3 bytes changed)
+   original:
+     1400d3a04: 488d0de5943f01           lea rcx, [0x1414ccef0]                                       
+   patched:
+     1400d3a04: 488d0d35cd5d01           lea rcx, [0x1416b0740]                                       
+
+-- site 0x1400d3a1b .. 0x1400d3a1e (3 bytes changed)
+   original:
+     1400d3a18: 488d0df1943f01           lea rcx, [0x1414ccf10]                                       
+   patched:
+     1400d3a18: 488d0d41cd5d01           lea rcx, [0x1416b0760]                                       
+
+-- site 0x1400d3a2f .. 0x1400d3a32 (3 bytes changed)
+   original:
+     1400d3a2c: 488d0dfd943f01           lea rcx, [0x1414ccf30]                                       
+   patched:
+     1400d3a2c: 488d0d4dcd5d01           lea rcx, [0x1416b0780]                                       
+
+-- site 0x1400d3a43 .. 0x1400d3a46 (3 bytes changed)
+   original:
+     1400d3a40: 488d0d09953f01           lea rcx, [0x1414ccf50]                                       
+   patched:
+     1400d3a40: 488d0d59cd5d01           lea rcx, [0x1416b07a0]                                       
+
+-- site 0x1400d3a57 .. 0x1400d3a5a (3 bytes changed)
+   original:
+     1400d3a54: 488d0d15953f01           lea rcx, [0x1414ccf70]                                       
+   patched:
+     1400d3a54: 488d0d65cd5d01           lea rcx, [0x1416b07c0]                                       
+
+-- site 0x1400d3a73 .. 0x1400d3a77 (4 bytes changed)
+   original:
+     1400d3a72: e9e570d400               jmp 0x140e1ab5c                                              
+   patched:
+     1400d3a72: e9b9ac7901               jmp 0x14186e730                                              ; ENTRY_14186e730
+
+-- site 0x14054e721 .. 0x14054e723 (2 bytes changed)
+   original:
+     14054e720: bad0000000               mov edx, 0xd0                                                
+   patched:
+     14054e720: ba00010000               mov edx, 0x100                                               
+
+-- site 0x14064fa4d .. 0x14064fa70 (35 bytes changed)
+   original:
+     14064fa4a: 668983e0000000           mov word ptr [rbx + 0xe0], ax                                
+     14064fa51: 4889abe8000000           mov qword ptr [rbx + 0xe8], rbp                              
+     14064fa58: 4889abf0000000           mov qword ptr [rbx + 0xf0], rbp                              
+     14064fa5f: 4889abf8000000           mov qword ptr [rbx + 0xf8], rbp                              
+     14064fa66: 4889ab00010000           mov qword ptr [rbx + 0x100], rbp                             
+     14064fa6d: 89ab08010000             mov dword ptr [rbx + 0x108], ebp                             
+   patched:
+     14064fa4a: 668983f8000000           mov word ptr [rbx + 0xf8], ax                                
+     14064fa51: 4889ab00010000           mov qword ptr [rbx + 0x100], rbp                             
+     14064fa58: 4889ab08010000           mov qword ptr [rbx + 0x108], rbp                             
+     14064fa5f: 4889ab10010000           mov qword ptr [rbx + 0x110], rbp                             
+     14064fa66: 4889ab18010000           mov qword ptr [rbx + 0x118], rbp                             
+     14064fa6d: 89ab20010000             mov dword ptr [rbx + 0x120], ebp                             
+
+-- site 0x14064fcf4 .. 0x14064fcfe (10 bytes changed)
+   original:
+     14064fcf2: 83bb0801000000           cmp dword ptr [rbx + 0x108], 0                               
+     14064fcf9: 7408                     je 0x14064fd03                                               
+     14064fcfb: 018308010000             add dword ptr [rbx + 0x108], eax                             
+   patched:
+     14064fcf2: 83bb2001000000           cmp dword ptr [rbx + 0x120], 0                               
+     14064fcf9: 7408                     je 0x14064fd03                                               
+     14064fcfb: 018320010000             add dword ptr [rbx + 0x120], eax                             
+
+-- site 0x14064fe17 .. 0x14064fe2c (21 bytes changed)
+   original:
+     14064fe17: 8a4530                   mov al, byte ptr [rbp + 0x30]                                
+     14064fe1a: 88836c010000             mov byte ptr [rbx + 0x16c], al                               
+     14064fe20: 0f57c9                   xorps xmm1, xmm1                                             
+     14064fe23: 33c0                     xor eax, eax                                                 
+     14064fe25: 488945e0                 mov qword ptr [rbp - 0x20], rax                              
+     14064fe29: 8d7808                   lea edi, [rax + 8]                                           
+   patched:
+     14064fe17: e984ae9100               jmp 0x140f6aca0                                              ; ENTRY_140f6aca0
+     14064fe1c: 90                       nop                                                          
+     14064fe1d: 90                       nop                                                          
+     14064fe1e: 90                       nop                                                          
+     14064fe1f: 90                       nop                                                          
+     14064fe20: 0f57c9                   xorps xmm1, xmm1                                             
+     14064fe23: 33c0                     xor eax, eax                                                 
+     14064fe25: 488945e0                 mov qword ptr [rbp - 0x20], rax                              
+     14064fe29: 8d7809                   lea edi, [rax + 9]                                           
+
+-- site 0x14064fe5c .. 0x14064fe5d (1 bytes changed)
+   original:
+     14064fe59: 668983e0000000           mov word ptr [rbx + 0xe0], ax                                
+   patched:
+     14064fe59: 668983f8000000           mov word ptr [rbx + 0xf8], ax                                
+
+-- site 0x14064feee .. 0x14064feef (1 bytes changed)
+   original:
+     14064feeb: 849418e0000000           test byte ptr [rax + rbx + 0xe0], dl                         
+   patched:
+     14064feeb: 849418f8000000           test byte ptr [rax + rbx + 0xf8], dl                         
+
+-- site 0x14064ff4b .. 0x14064ff4c (1 bytes changed)
+   original:
+     14064ff48: 849418e0000000           test byte ptr [rax + rbx + 0xe0], dl                         
+   patched:
+     14064ff48: 849418f8000000           test byte ptr [rax + rbx + 0xf8], dl                         
+
+-- site 0x14064ffba .. 0x14064ffbb (1 bytes changed)
+   original:
+     14064ffb7: 849418e0000000           test byte ptr [rax + rbx + 0xe0], dl                         
+   patched:
+     14064ffb7: 849418f8000000           test byte ptr [rax + rbx + 0xf8], dl                         
+
+-- site 0x14065000e .. 0x14065000f (1 bytes changed)
+   original:
+     14065000b: 849418e0000000           test byte ptr [rax + rbx + 0xe0], dl                         
+   patched:
+     14065000b: 849418f8000000           test byte ptr [rax + rbx + 0xf8], dl                         
+
+-- site 0x14065002d .. 0x14065002e (1 bytes changed)
+   original:
+     14065002b: 83fe08                   cmp esi, 8                                                   
+   patched:
+     14065002b: 83fe09                   cmp esi, 9                                                   
+
+-- site 0x140650b11 .. 0x140650b12 (1 bytes changed)
+   original:
+     140650b0d: 46848418e0000000         test byte ptr [rax + r11 + 0xe0], r8b                        
+   patched:
+     140650b0d: 46848418f8000000         test byte ptr [rax + r11 + 0xf8], r8b                        
+
+-- site 0x140650b67 .. 0x140650b68 (1 bytes changed)
+   original:
+     140650b63: 42849418e0000000         test byte ptr [rax + r11 + 0xe0], dl                         
+   patched:
+     140650b63: 42849418f8000000         test byte ptr [rax + r11 + 0xf8], dl                         
+
+-- site 0x140650c6b .. 0x140650c79 (14 bytes changed)
+   original:
+     140650c68: 663983e0000000           cmp word ptr [rbx + 0xe0], ax                                
+     140650c6f: 0f84f0000000             je 0x140650d65                                               
+     140650c75: 668983e0000000           mov word ptr [rbx + 0xe0], ax                                
+   patched:
+     140650c68: 663983f8000000           cmp word ptr [rbx + 0xf8], ax                                
+     140650c6f: 0f84f0000000             je 0x140650d65                                               
+     140650c75: 668983f8000000           mov word ptr [rbx + 0xf8], ax                                
+
+-- site 0x140650cf9 .. 0x140650cfa (1 bytes changed)
+   original:
+     140650cf6: 849418e0000000           test byte ptr [rax + rbx + 0xe0], dl                         
+   patched:
+     140650cf6: 849418f8000000           test byte ptr [rax + rbx + 0xf8], dl                         
+
+-- site 0x140650d2c .. 0x140650d2d (1 bytes changed)
+   original:
+     140650d29: 849418e0000000           test byte ptr [rax + rbx + 0xe0], dl                         
+   patched:
+     140650d29: 849418f8000000           test byte ptr [rax + rbx + 0xf8], dl                         
+
+-- site 0x140650e9c .. 0x140650e9e (2 bytes changed)
+   original:
+     140650e98: 488b8cc7e8000000         mov rcx, qword ptr [rdi + rax*8 + 0xe8]                      
+   patched:
+     140650e98: 488b8cc700010000         mov rcx, qword ptr [rdi + rax*8 + 0x100]                     
+
+-- site 0x140650ebc .. 0x140650ebe (2 bytes changed)
+   original:
+     140650eb8: 48899cc7e8000000         mov qword ptr [rdi + rax*8 + 0xe8], rbx                      
+   patched:
+     140650eb8: 48899cc700010000         mov qword ptr [rdi + rax*8 + 0x100], rbx                     
+
+-- site 0x140651150 .. 0x140651161 (17 bytes changed)
+   original:
+     14065114c: 488984d1e8000000         mov qword ptr [rcx + rdx*8 + 0xe8], rax                      
+     140651154: 48638934010000           movsxd rcx, dword ptr [rcx + 0x134]                          
+     14065115b: 4c8baccbe8000000         mov r13, qword ptr [rbx + rcx*8 + 0xe8]                      
+   patched:
+     14065114c: 488984d100010000         mov qword ptr [rcx + rdx*8 + 0x100], rax                     
+     140651154: 48638934010000           movsxd rcx, dword ptr [rcx + 0x134]                          
+     14065115b: 4c8baccb00010000         mov r13, qword ptr [rbx + rcx*8 + 0x100]                     
+
+-- site 0x14065126e .. 0x14065127f (17 bytes changed)
+   original:
+     14065126a: 488984cbe8000000         mov qword ptr [rbx + rcx*8 + 0xe8], rax                      
+     140651272: 4c638334010000           movsxd r8, dword ptr [rbx + 0x134]                           
+     140651279: 4a8b8cc3e8000000         mov rcx, qword ptr [rbx + r8*8 + 0xe8]                       
+   patched:
+     14065126a: 488984cb00010000         mov qword ptr [rbx + rcx*8 + 0x100], rax                     
+     140651272: 4c638334010000           movsxd r8, dword ptr [rbx + 0x134]                           
+     140651279: 4a8b8cc300010000         mov rcx, qword ptr [rbx + r8*8 + 0x100]                      
+
+-- site 0x1406512ce .. 0x1406512d0 (2 bytes changed)
+   original:
+     1406512ca: 4a8b8cc3e8000000         mov rcx, qword ptr [rbx + r8*8 + 0xe8]                       
+   patched:
+     1406512ca: 4a8b8cc300010000         mov rcx, qword ptr [rbx + r8*8 + 0x100]                      
+
+-- site 0x140651306 .. 0x140651308 (2 bytes changed)
+   original:
+     140651302: 4c8b84c3e8000000         mov r8, qword ptr [rbx + rax*8 + 0xe8]                       
+   patched:
+     140651302: 4c8b84c300010000         mov r8, qword ptr [rbx + rax*8 + 0x100]                      
+
+-- site 0x14065139d .. 0x1406513ae (17 bytes changed)
+   original:
+     140651399: 488994c3e8000000         mov qword ptr [rbx + rax*8 + 0xe8], rdx                      
+     1406513a1: 4c638334010000           movsxd r8, dword ptr [rbx + 0x134]                           
+     1406513a8: 4e8bacc3e8000000         mov r13, qword ptr [rbx + r8*8 + 0xe8]                       
+   patched:
+     140651399: 488994c300010000         mov qword ptr [rbx + rax*8 + 0x100], rdx                     
+     1406513a1: 4c638334010000           movsxd r8, dword ptr [rbx + 0x134]                           
+     1406513a8: 4e8bacc300010000         mov r13, qword ptr [rbx + r8*8 + 0x100]                      
+
+-- site 0x14065155a .. 0x14065155b (1 bytes changed)
+   original:
+     140651557: 849418e0000000           test byte ptr [rax + rbx + 0xe0], dl                         
+   patched:
+     140651557: 849418f8000000           test byte ptr [rax + rbx + 0xf8], dl                         
+
+-- site 0x1406515a8 .. 0x1406515a9 (1 bytes changed)
+   original:
+     1406515a5: 849418e0000000           test byte ptr [rax + rbx + 0xe0], dl                         
+   patched:
+     1406515a5: 849418f8000000           test byte ptr [rax + rbx + 0xf8], dl                         
+
+-- site 0x1406515c1 .. 0x1406515c2 (1 bytes changed)
+   original:
+     1406515be: 4183fe08                 cmp r14d, 8                                                  
+   patched:
+     1406515be: 4183fe09                 cmp r14d, 9                                                  
+
+-- site 0x14065199e .. 0x1406519a0 (2 bytes changed)
+   original:
+     14065199a: 488b94c5e8000000         mov rdx, qword ptr [rbp + rax*8 + 0xe8]                      
+   patched:
+     14065199a: 488b94c500010000         mov rdx, qword ptr [rbp + rax*8 + 0x100]                     
+
+-- site 0x140651aeb .. 0x140651aec (1 bytes changed)
+   original:
+     140651aea: b908000000               mov ecx, 8                                                   
+   patched:
+     140651aea: b909000000               mov ecx, 9                                                   
+
+-- site 0x140651b7f .. 0x140651b80 (1 bytes changed)
+   original:
+     140651b7d: 83f908                   cmp ecx, 8                                                   
+   patched:
+     140651b7d: 83f909                   cmp ecx, 9                                                   
+
+-- site 0x140651f97 .. 0x140651f99 (2 bytes changed)
+   original:
+     140651f94: 488b97e8000000           mov rdx, qword ptr [rdi + 0xe8]                              
+   patched:
+     140651f94: 488b9700010000           mov rdx, qword ptr [rdi + 0x100]                             
+
+-- site 0x1406520ea .. 0x1406520ec (2 bytes changed)
+   original:
+     1406520e7: 488d9fe8000000           lea rbx, [rdi + 0xe8]                                        
+   patched:
+     1406520e7: 488d9f00010000           lea rbx, [rdi + 0x100]                                       
+
+-- site 0x140652690 .. 0x140652692 (2 bytes changed)
+   original:
+     14065268c: 488984cee8000000         mov qword ptr [rsi + rcx*8 + 0xe8], rax                      
+   patched:
+     14065268c: 488984ce00010000         mov qword ptr [rsi + rcx*8 + 0x100], rax                     
+
+-- site 0x1406526cd .. 0x1406526cf (2 bytes changed)
+   original:
+     1406526c9: 488b94c6e8000000         mov rdx, qword ptr [rsi + rax*8 + 0xe8]                      
+   patched:
+     1406526c9: 488b94c600010000         mov rdx, qword ptr [rsi + rax*8 + 0x100]                     
+
+-- site 0x1406526e9 .. 0x1406526eb (2 bytes changed)
+   original:
+     1406526e5: 488b94c6e8000000         mov rdx, qword ptr [rsi + rax*8 + 0xe8]                      
+   patched:
+     1406526e5: 488b94c600010000         mov rdx, qword ptr [rsi + rax*8 + 0x100]                     
+
+-- site 0x140652997 .. 0x1406529a6 (15 bytes changed)
+   original:
+     140652993: 488b84d3e8000000         mov rax, qword ptr [rbx + rdx*8 + 0xe8]                      
+     14065299b: 493900                   cmp qword ptr [r8], rax                                      
+     14065299e: 7514                     jne 0x1406529b4                                              
+     1406529a0: 4883a4d3e800000000       and qword ptr [rbx + rdx*8 + 0xe8], 0                        
+   patched:
+     140652993: 488b84d300010000         mov rax, qword ptr [rbx + rdx*8 + 0x100]                     
+     14065299b: 493900                   cmp qword ptr [r8], rax                                      
+     14065299e: 7514                     jne 0x1406529b4                                              
+     1406529a0: 4883a4d30001000000       and qword ptr [rbx + rdx*8 + 0x100], 0                       
+
+-- site 0x1406529d6 .. 0x1406529d7 (1 bytes changed)
+   original:
+     1406529d3: 4183f908                 cmp r9d, 8                                                   
+   patched:
+     1406529d3: 4183f909                 cmp r9d, 9                                                   
+
+-- site 0x140652cf1 .. 0x140652cf3 (2 bytes changed)
+   original:
+     140652ced: 488b94c3e8000000         mov rdx, qword ptr [rbx + rax*8 + 0xe8]                      
+   patched:
+     140652ced: 488b94c300010000         mov rdx, qword ptr [rbx + rax*8 + 0x100]                     
+
+-- site 0x140652d0d .. 0x140652d0f (2 bytes changed)
+   original:
+     140652d09: 488b94c3e8000000         mov rdx, qword ptr [rbx + rax*8 + 0xe8]                      
+   patched:
+     140652d09: 488b94c300010000         mov rdx, qword ptr [rbx + rax*8 + 0x100]                     
+
+-- site 0x140653bfc .. 0x140653c00 (4 bytes changed)
+   original:
+     140653bf9: 488d1d908ce700           lea rbx, [0x1414cc890]                                       
+   patched:
+     140653bf9: 488d1de0c40501           lea rbx, [0x1416b00e0]                                       
+
+-- site 0x140653cd6 .. 0x140653cda (4 bytes changed)
+   original:
+     140653cd3: 488d1db68be700           lea rbx, [0x1414cc890]                                       
+   patched:
+     140653cd3: 488d1d06c40501           lea rbx, [0x1416b00e0]                                       
+
+-- site 0x140653d56 .. 0x140653d57 (1 bytes changed)
+   original:
+     140653d53: 4183fe08                 cmp r14d, 8                                                  
+   patched:
+     140653d53: 4183fe09                 cmp r14d, 9                                                  
+
+-- site 0x1406547d2 .. 0x1406547d6 (4 bytes changed)
+   original:
+     1406547cf: 4c8d2dba80e700           lea r13, [0x1414cc890]                                       
+   patched:
+     1406547cf: 4c8d2d0ab90501           lea r13, [0x1416b00e0]                                       
+
+-- site 0x140654922 .. 0x140654923 (1 bytes changed)
+   original:
+     140654920: 83fd08                   cmp ebp, 8                                                   
+   patched:
+     140654920: 83fd09                   cmp ebp, 9                                                   
+
+-- site 0x140655458 .. 0x14065545c (4 bytes changed)
+   original:
+     140655455: 4c8d3d3474e700           lea r15, [0x1414cc890]                                       
+   patched:
+     140655455: 4c8d3d84ac0501           lea r15, [0x1416b00e0]                                       
+
+-- site 0x140655787 .. 0x14065578b (4 bytes changed)
+   original:
+     140655784: 488d150571e700           lea rdx, [0x1414cc890]                                       
+   patched:
+     140655784: 488d1555a90501           lea rdx, [0x1416b00e0]                                       
+
+-- site 0x1406557ba .. 0x1406557be (4 bytes changed)
+   original:
+     1406557b7: 488d15d270e700           lea rdx, [0x1414cc890]                                       
+   patched:
+     1406557b7: 488d1522a90501           lea rdx, [0x1416b00e0]                                       
+
+-- site 0x1406558cc .. 0x1406558d0 (4 bytes changed)
+   original:
+     1406558c9: 488d05e06fe700           lea rax, [0x1414cc8b0]                                       
+   patched:
+     1406558c9: 488d0530a80501           lea rax, [0x1416b0100]                                       
+
+-- site 0x140655918 .. 0x140655919 (1 bytes changed)
+   original:
+     140655915: 4183ff08                 cmp r15d, 8                                                  
+   patched:
+     140655915: 4183ff09                 cmp r15d, 9                                                  
+
+-- site 0x140655bb1 .. 0x140655bba (9 bytes changed)
+   original:
+     140655bb1: 83fb01                   cmp ebx, 1                                                   
+     140655bb4: 0f85e6000000             jne 0x140655ca0                                              
+   patched:
+     140655bb1: e90a8d2101               jmp 0x14186e8c0                                              ; ENTRY_14186e8c0
+     140655bb6: 90                       nop                                                          
+     140655bb7: 90                       nop                                                          
+     140655bb8: 90                       nop                                                          
+     140655bb9: 90                       nop                                                          
+
+-- site 0x140683667 .. 0x140683670 (9 bytes changed)
+   original:
+     140683667: 4c8b7238                 mov r14, qword ptr [rdx + 0x38]                              
+     14068366b: 4c89742428               mov qword ptr [rsp + 0x28], r14                              
+   patched:
+     140683667: e914be1e01               jmp 0x14186f480                                              ; ENTRY_14186f480
+     14068366c: 90                       nop                                                          
+     14068366d: 90                       nop                                                          
+     14068366e: 90                       nop                                                          
+     14068366f: 90                       nop                                                          
+
+-- site 0x140683b03 .. 0x140683b07 (4 bytes changed)
+   original:
+     140683b00: 488d15a1a0ab00           lea rdx, [0x14113dba8]                                       ; 'abilitybutton_rebirth_skill'
+   patched:
+     140683b00: 488d1599bb1e01           lea rdx, [0x14186f6a0]                                       ; ENTRY_14186f6a0
+
+-- site 0x140683ba7 .. 0x140683bab (4 bytes changed)
+   original:
+     140683ba4: 488d15d5abad00           lea rdx, [0x14115e780]                                       ; 'abilitybutton_rebirth_dash'
+   patched:
+     140683ba4: 488d15f5ba1e01           lea rdx, [0x14186f6a0]                                       ; ENTRY_14186f6a0
+
+-- site 0x140683fd9 .. 0x140683fdd (4 bytes changed)
+   original:
+     140683fd6: 488d15a395ab00           lea rdx, [0x14113d580]                                       ; 'abilitybutton_rebirth_special'
+   patched:
+     140683fd6: 488d15c3b61e01           lea rdx, [0x14186f6a0]                                       ; ENTRY_14186f6a0
+
+-- site 0x1406a66b9 .. 0x1406a66c6 (13 bytes changed)
+   original:
+     1406a66b7: 83b9a800000000           cmp dword ptr [rcx + 0xa8], 0                                
+     1406a66be: 488bd9                   mov rbx, rcx                                                 
+     1406a66c1: 7409                     je 0x1406a66cc                                               
+     1406a66c3: 8381a8000000ff           add dword ptr [rcx + 0xa8], -1                               
+   patched:
+     1406a66b7: 83b9b800000000           cmp dword ptr [rcx + 0xb8], 0                                
+     1406a66be: 488bd9                   mov rbx, rcx                                                 
+     1406a66c1: 7409                     je 0x1406a66cc                                               
+     1406a66c3: 8381b8000000ff           add dword ptr [rcx + 0xb8], -1                               
+
+-- site 0x1406a6762 .. 0x1406a6764 (2 bytes changed)
+   original:
+     1406a6761: bbd0000000               mov ebx, 0xd0                                                
+   patched:
+     1406a6761: bb00010000               mov ebx, 0x100                                               
+
+-- site 0x1406a67de .. 0x1406a67df (1 bytes changed)
+   original:
+     1406a67db: 4489bea8000000           mov dword ptr [rsi + 0xa8], r15d                             
+   patched:
+     1406a67db: 4489beb8000000           mov dword ptr [rsi + 0xb8], r15d                             
+
+-- site 0x1406a67ff .. 0x1406a6800 (1 bytes changed)
+   original:
+     1406a67fd: 41bc08000000             mov r12d, 8                                                  
+   patched:
+     1406a67fd: 41bc09000000             mov r12d, 9                                                  
+
+-- site 0x1406a682d .. 0x1406a6843 (22 bytes changed)
+   original:
+     1406a682b: 8b86a8000000             mov eax, dword ptr [rsi + 0xa8]                              
+     1406a6831: 4489bc86b0000000         mov dword ptr [rsi + rax*4 + 0xb0], r15d                     
+     1406a6839: ff86a8000000             inc dword ptr [rsi + 0xa8]                                   
+     1406a683f: 4439a6a8000000           cmp dword ptr [rsi + 0xa8], r12d                             
+   patched:
+     1406a682b: 8b86b8000000             mov eax, dword ptr [rsi + 0xb8]                              
+     1406a6831: 4489bc86bc000000         mov dword ptr [rsi + rax*4 + 0xbc], r15d                     
+     1406a6839: ff86b8000000             inc dword ptr [rsi + 0xb8]                                   
+     1406a683f: 4439a6b8000000           cmp dword ptr [rsi + 0xb8], r12d                             
+
+-- site 0x1406a6c54 .. 0x1406a6c55 (1 bytes changed)
+   original:
+     1406a6c51: 89848eb0000000           mov dword ptr [rsi + rcx*4 + 0xb0], eax                      
+   patched:
+     1406a6c51: 89848ebc000000           mov dword ptr [rsi + rcx*4 + 0xbc], eax                      
+
+-- site 0x1406acbdc .. 0x1406acbe6 (10 bytes changed)
+   original:
+     1406acbdc: 4c8bc8                   mov r9, rax                                                  
+     1406acbdf: 4488b5b8000000           mov byte ptr [rbp + 0xb8], r14b                              
+   patched:
+     1406acbdc: e9632b1c01               jmp 0x14186f744                                              ; ENTRY_14186f744
+     1406acbe1: 90                       nop                                                          
+     1406acbe2: 90                       nop                                                          
+     1406acbe3: 90                       nop                                                          
+     1406acbe4: 90                       nop                                                          
+     1406acbe5: 90                       nop                                                          
+
+-- site 0x14072e3e4 .. 0x14072e3ec (8 bytes changed)
+   original:
+     14072e3e4: 3bc3                     cmp eax, ebx                                                 
+     14072e3e6: 0f85a1060000             jne 0x14072ea8d                                              
+   patched:
+     14072e3e4: e917061401               jmp 0x14186ea00                                              ; ENTRY_14186ea00
+     14072e3e9: 90                       nop                                                          
+     14072e3ea: 90                       nop                                                          
+     14072e3eb: 90                       nop                                                          
+
+-- site 0x14074278c .. 0x140742794 (8 bytes changed)
+   original:
+     14074278c: 4053                     push rbx                                                     
+     14074278e: 4883ec20                 sub rsp, 0x20                                                
+     140742792: 8bd9                     mov ebx, ecx                                                 
+   patched:
+     14074278c: e96fc61201               jmp 0x14186ee00                                              ; ENTRY_14186ee00
+     140742791: 90                       nop                                                          
+     140742792: 90                       nop                                                          
+     140742793: 90                       nop                                                          
+
+-- site 0x1409fd309 .. 0x1409fd311 (8 bytes changed)
+   original:
+     1409fd309: f30f103d370e8700         movss xmm7, dword ptr [0x14126e148]                          ; float 4.5
+   patched:
+     1409fd309: e99226e700               jmp 0x14186f9a0                                              ; ENTRY_14186f9a0
+     1409fd30e: 90                       nop                                                          
+     1409fd30f: 90                       nop                                                          
+     1409fd310: 90                       nop                                                          
+
+-- site 0x1409fd6a1 .. 0x1409fd6ac (11 bytes changed)
+   original:
+     1409fd6a1: 48c785c003000000200000   mov qword ptr [rbp + 0x3c0], 0x2000                          
+   patched:
+     1409fd6a1: e99a23e700               jmp 0x14186fa40                                              ; ENTRY_14186fa40
+     1409fd6a6: 90                       nop                                                          
+     1409fd6a7: 90                       nop                                                          
+     1409fd6a8: 90                       nop                                                          
+     1409fd6a9: 90                       nop                                                          
+     1409fd6aa: 90                       nop                                                          
+     1409fd6ab: 90                       nop                                                          
+
+-- site 0x1409fd848 .. 0x1409fd84f (7 bytes changed)
+   original:
+     1409fd848: 488d05c1757200           lea rax, [0x141124e10]                                       ; 'build://Effects/Characters/Enemies/Karai/Karai_Cleave_OnSword/Karai_Cleave_OnSword.pfx'
+   patched:
+     1409fd848: e97323e700               jmp 0x14186fbc0                                              ; ENTRY_14186fbc0
+     1409fd84d: 90                       nop                                                          
+     1409fd84e: 90                       nop                                                          
+
+-- site 0x1409fd8a9 .. 0x1409fd8b0 (7 bytes changed)
+   original:
+     1409fd8a9: 488d05c0757200           lea rax, [0x141124e70]                                       ; 'build://Effects/Characters/Enemies/Karai/Karai_Cleave/Karai_Cleave.pfx'
+   patched:
+     1409fd8a9: e9a222e700               jmp 0x14186fb50                                              ; ENTRY_14186fb50
+     1409fd8ae: 90                       nop                                                          
+     1409fd8af: 90                       nop                                                          
+
+-- site 0x1409fd919 .. 0x1409fd920 (7 bytes changed)
+   original:
+     1409fd919: 488d0d083d7c00           lea rcx, [0x1411c1628]                                       ; 'OnMeleeAction'
+   patched:
+     1409fd919: e96221e700               jmp 0x14186fa80                                              ; ENTRY_14186fa80
+     1409fd91e: 90                       nop                                                          
+     1409fd91f: 90                       nop                                                          
+
+-- site 0x1409fd9a2 .. 0x1409fd9aa (8 bytes changed)
+   original:
+     1409fd9a2: f30f100d06038700         movss xmm1, dword ptr [0x14126dcb0]                          ; float 0.6
+   patched:
+     1409fd9a2: e95921e700               jmp 0x14186fb00                                              ; ENTRY_14186fb00
+     1409fd9a7: 90                       nop                                                          
+     1409fd9a8: 90                       nop                                                          
+     1409fd9a9: 90                       nop                                                          
+
+-- site 0x1409fe530 .. 0x1409fe538 (8 bytes changed)
+   original:
+     1409fe530: f30f100dbcf98600         movss xmm1, dword ptr [0x14126def4]                          ; float 1.5
+   patched:
+     1409fe530: e94b16e700               jmp 0x14186fb80                                              ; ENTRY_14186fb80
+     1409fe535: 90                       nop                                                          
+     1409fe536: 90                       nop                                                          
+     1409fe537: 90                       nop                                                          
+
+-- site 0x140a05bb8 .. 0x140a05bbf (7 bytes changed)
+   original:
+     140a05bb8: 488d05b1c77b00           lea rax, [0x1411c2370]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Exertion_Casey_Stunned'
+   patched:
+     140a05bb8: e9f388e600               jmp 0x14186e4b0                                              ; ENTRY_14186e4b0
+     140a05bbd: 90                       nop                                                          
+     140a05bbe: 90                       nop                                                          
+
+-- site 0x140a06994 .. 0x140a0699b (7 bytes changed)
+   original:
+     140a06994: 488d0535b77b00           lea rax, [0x1411c20d0]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Exertion_Casey_Damage_Taken'
+   patched:
+     140a06994: e9377be600               jmp 0x14186e4d0                                              ; ENTRY_14186e4d0
+     140a06999: 90                       nop                                                          
+     140a0699a: 90                       nop                                                          
+
+-- site 0x140a8ff26 .. 0x140a8ff2d (7 bytes changed)
+   original:
+     140a8ff26: 488d152b27c000           lea rdx, [0x141692658]                                       
+   patched:
+     140a8ff26: e9d5fcdd00               jmp 0x14186fc00                                              ; ENTRY_14186fc00
+     140a8ff2b: 90                       nop                                                          
+     140a8ff2c: 90                       nop                                                          
+
+-- site 0x140b368dd .. 0x140b368e4 (7 bytes changed)
+   original:
+     140b368dd: 488d15e4c96900           lea rdx, [0x1411d32c8]                                       ; 'CaseyJones_Attack_Chain1'
+   patched:
+     140b368dd: e92e7ad300               jmp 0x14186e310                                              ; ENTRY_14186e310
+     140b368e2: 90                       nop                                                          
+     140b368e3: 90                       nop                                                          
+
+-- site 0x140b36933 .. 0x140b3693a (7 bytes changed)
+   original:
+     140b36933: 488d0d6ec96900           lea rcx, [0x1411d32a8]                                       ; 'CaseyJones_Attack_Chain2'
+   patched:
+     140b36933: e9f879d300               jmp 0x14186e330                                              ; ENTRY_14186e330
+     140b36938: 90                       nop                                                          
+     140b36939: 90                       nop                                                          
+
+-- site 0x140b36982 .. 0x140b36989 (7 bytes changed)
+   original:
+     140b36982: 488d0dffc86900           lea rcx, [0x1411d3288]                                       ; 'CaseyJones_Attack_Chain3'
+   patched:
+     140b36982: e9c979d300               jmp 0x14186e350                                              ; ENTRY_14186e350
+     140b36987: 90                       nop                                                          
+     140b36988: 90                       nop                                                          
+
+-- site 0x140b369d1 .. 0x140b369d8 (7 bytes changed)
+   original:
+     140b369d1: 488d0d98c86900           lea rcx, [0x1411d3270]                                       ; 'CaseyJones_DashAttack'
+   patched:
+     140b369d1: e99a79d300               jmp 0x14186e370                                              ; ENTRY_14186e370
+     140b369d6: 90                       nop                                                          
+     140b369d7: 90                       nop                                                          
+
+-- site 0x140b3710b .. 0x140b37112 (7 bytes changed)
+   original:
+     140b3710b: 488d05eec06900           lea rax, [0x1411d3200]                                       ; 'build://Effects/Characters/Turtles/CaseyJones/BasicAttacks/CaseyJones_Attack_01/CaseyJones_Attack_01.pfx'
+   patched:
+     140b3710b: e98072d300               jmp 0x14186e390                                              ; ENTRY_14186e390
+     140b37110: 90                       nop                                                          
+     140b37111: 90                       nop                                                          
+
+-- site 0x140b371be .. 0x140b371c5 (7 bytes changed)
+   original:
+     140b371be: 488d0dcbbf6900           lea rcx, [0x1411d3190]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Light_Play'
+   patched:
+     140b371be: e94d72d300               jmp 0x14186e410                                              ; ENTRY_14186e410
+     140b371c3: 90                       nop                                                          
+     140b371c4: 90                       nop                                                          
+
+-- site 0x140b37d58 .. 0x140b37d5f (7 bytes changed)
+   original:
+     140b37d58: 488d05c1b36900           lea rax, [0x1411d3120]                                       ; 'build://Effects/Characters/Turtles/CaseyJones/BasicAttacks/CaseyJones_Attack_02/CaseyJones_Attack_02.pfx'
+   patched:
+     140b37d58: e95366d300               jmp 0x14186e3b0                                              ; ENTRY_14186e3b0
+     140b37d5d: 90                       nop                                                          
+     140b37d5e: 90                       nop                                                          
+
+-- site 0x140b37e0c .. 0x140b37e13 (7 bytes changed)
+   original:
+     140b37e0c: 488d0d7db36900           lea rcx, [0x1411d3190]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Light_Play'
+   patched:
+     140b37e0c: e91f66d300               jmp 0x14186e430                                              ; ENTRY_14186e430
+     140b37e11: 90                       nop                                                          
+     140b37e12: 90                       nop                                                          
+
+-- site 0x140b388df .. 0x140b388e6 (7 bytes changed)
+   original:
+     140b388df: 488d0dcaa76900           lea rcx, [0x1411d30b0]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Heavy_Impact_Play'
+   patched:
+     140b388df: e98c5bd300               jmp 0x14186e470                                              ; ENTRY_14186e470
+     140b388e4: 90                       nop                                                          
+     140b388e5: 90                       nop                                                          
+
+-- site 0x140b38a88 .. 0x140b38a8f (7 bytes changed)
+   original:
+     140b38a88: 488d05b1a56900           lea rax, [0x1411d3040]                                       ; 'build://Effects/Characters/Turtles/CaseyJones/BasicAttacks/CaseyJones_Attack_03/CaseyJones_Attack_03.pfx'
+   patched:
+     140b38a88: e94359d300               jmp 0x14186e3d0                                              ; ENTRY_14186e3d0
+     140b38a8d: 90                       nop                                                          
+     140b38a8e: 90                       nop                                                          
+
+-- site 0x140b38b39 .. 0x140b38b40 (7 bytes changed)
+   original:
+     140b38b39: 488d0d90a46900           lea rcx, [0x1411d2fd0]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Heavy_Leap_Play'
+   patched:
+     140b38b39: e95259d300               jmp 0x14186e490                                              ; ENTRY_14186e490
+     140b38b3e: 90                       nop                                                          
+     140b38b3f: 90                       nop                                                          
+
+-- site 0x140b398de .. 0x140b398e5 (7 bytes changed)
+   original:
+     140b398de: 488d0dab986900           lea rcx, [0x1411d3190]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Light_Play'
+   patched:
+     140b398de: e96d4bd300               jmp 0x14186e450                                              ; ENTRY_14186e450
+     140b398e3: 90                       nop                                                          
+     140b398e4: 90                       nop                                                          
+
+-- site 0x140b39a8a .. 0x140b39a91 (7 bytes changed)
+   original:
+     140b39a8a: 488d05cf9e6900           lea rax, [0x1411d3960]                                       ; 'build://Effects/Characters/Turtles/CaseyJones/BasicAttacks/CaseyJones_Attack_04/CaseyJones_Attack_04.pfx'
+   patched:
+     140b39a8a: e96149d300               jmp 0x14186e3f0                                              ; ENTRY_14186e3f0
+     140b39a8f: 90                       nop                                                          
+     140b39a90: 90                       nop                                                          
+
+-- site 0x140cded8f .. 0x140cded98 (9 bytes changed)
+   original:
+     140cded8f: 418b4e70                 mov ecx, dword ptr [r14 + 0x70]                              
+     140cded93: e8d4810200               call 0x140d06f6c                                             ; buff definition lookup
+   patched:
+     140cded8f: e90c11b900               jmp 0x14186fea0                                              ; ENTRY_14186fea0
+     140cded94: 90                       nop                                                          
+     140cded95: 90                       nop                                                          
+     140cded96: 90                       nop                                                          
+     140cded97: 90                       nop                                                          
+
+-- site 0x140d0cb8e .. 0x140d0cb96 (8 bytes changed)
+   original:
+     140d0cb8e: 458b4814                 mov r9d, dword ptr [r8 + 0x14]                               
+     140d0cb92: 458b4010                 mov r8d, dword ptr [r8 + 0x10]                               
+   patched:
+     140d0cb8e: e94d33b600               jmp 0x14186fee0                                              ; ENTRY_14186fee0
+     140d0cb93: 90                       nop                                                          
+     140d0cb94: 90                       nop                                                          
+     140d0cb95: 90                       nop                                                          
+
+-- site 0x140e2b945 .. 0x140e2b9e4 (159 bytes changed)
+   original:
+     140e2b942: 488d0d470f6a00           lea rcx, [0x1414cc890]                                       
+     140e2b949: e9ae8e70ff               jmp 0x1405347fc                                              
+     140e2b94e: 488d0d5b0f6a00           lea rcx, [0x1414cc8b0]                                       
+     140e2b955: e9a28e70ff               jmp 0x1405347fc                                              
+     140e2b95a: 488d0d6f0f6a00           lea rcx, [0x1414cc8d0]                                       
+     140e2b961: e9968e70ff               jmp 0x1405347fc                                              
+     140e2b966: 488d0d830f6a00           lea rcx, [0x1414cc8f0]                                       
+     140e2b96d: e98a8e70ff               jmp 0x1405347fc                                              
+     140e2b972: 488d0d970f6a00           lea rcx, [0x1414cc910]                                       
+     140e2b979: e97e8e70ff               jmp 0x1405347fc                                              
+     140e2b97e: 488d0dab0f6a00           lea rcx, [0x1414cc930]                                       
+     140e2b985: e9728e70ff               jmp 0x1405347fc                                              
+     140e2b98a: 488d0dff0e6a00           lea rcx, [0x1414cc890]                                       
+     140e2b991: e9fa7a82ff               jmp 0x140653490                                              
+     140e2b996: 488d0dd30f6a00           lea rcx, [0x1414cc970]                                       
+     140e2b99d: e95a8e70ff               jmp 0x1405347fc                                              
+     140e2b9a2: 488d0de70f6a00           lea rcx, [0x1414cc990]                                       
+     140e2b9a9: e94e8e70ff               jmp 0x1405347fc                                              
+     140e2b9ae: 488d0dfb0f6a00           lea rcx, [0x1414cc9b0]                                       
+     140e2b9b5: e9428e70ff               jmp 0x1405347fc                                              
+     140e2b9ba: 488d0d0f106a00           lea rcx, [0x1414cc9d0]                                       
+     140e2b9c1: e9368e70ff               jmp 0x1405347fc                                              
+     140e2b9c6: 488d0d23106a00           lea rcx, [0x1414cc9f0]                                       
+     140e2b9cd: e92a8e70ff               jmp 0x1405347fc                                              
+     140e2b9d2: 488d0d37106a00           lea rcx, [0x1414cca10]                                       
+     140e2b9d9: e91e8e70ff               jmp 0x1405347fc                                              
+     140e2b9de: 488d0dab0e6a00           lea rcx, [0x1414cc890]                                       
+   patched:
+     140e2b942: 488d0d97478800           lea rcx, [0x1416b00e0]                                       
+     140e2b949: e9ae8e70ff               jmp 0x1405347fc                                              
+     140e2b94e: 488d0dab478800           lea rcx, [0x1416b0100]                                       
+     140e2b955: e9a28e70ff               jmp 0x1405347fc                                              
+     140e2b95a: 488d0dbf478800           lea rcx, [0x1416b0120]                                       
+     140e2b961: e9968e70ff               jmp 0x1405347fc                                              
+     140e2b966: 488d0dd3478800           lea rcx, [0x1416b0140]                                       
+     140e2b96d: e98a8e70ff               jmp 0x1405347fc                                              
+     140e2b972: 488d0de7478800           lea rcx, [0x1416b0160]                                       
+     140e2b979: e97e8e70ff               jmp 0x1405347fc                                              
+     140e2b97e: 488d0dfb478800           lea rcx, [0x1416b0180]                                       
+     140e2b985: e9728e70ff               jmp 0x1405347fc                                              
+     140e2b98a: 488d0d4f478800           lea rcx, [0x1416b00e0]                                       
+     140e2b991: e9fa7a82ff               jmp 0x140653490                                              
+     140e2b996: 488d0d23488800           lea rcx, [0x1416b01c0]                                       
+     140e2b99d: e95a8e70ff               jmp 0x1405347fc                                              
+     140e2b9a2: 488d0d37488800           lea rcx, [0x1416b01e0]                                       
+     140e2b9a9: e94e8e70ff               jmp 0x1405347fc                                              
+     140e2b9ae: 488d0d4b488800           lea rcx, [0x1416b0200]                                       
+     140e2b9b5: e9428e70ff               jmp 0x1405347fc                                              
+     140e2b9ba: 488d0d5f488800           lea rcx, [0x1416b0220]                                       
+     140e2b9c1: e9368e70ff               jmp 0x1405347fc                                              
+     140e2b9c6: 488d0d73488800           lea rcx, [0x1416b0240]                                       
+     140e2b9cd: e92a8e70ff               jmp 0x1405347fc                                              
+     140e2b9d2: 488d0d87488800           lea rcx, [0x1416b0260]                                       
+     140e2b9d9: e91e8e70ff               jmp 0x1405347fc                                              
+     140e2b9de: 488d0dfb468800           lea rcx, [0x1416b00e0]                                       
+
+-- site 0x140e2b9f4 .. 0x140e2ba3f (75 bytes changed)
+   original:
+     140e2b9f1: 488d0d58106a00           lea rcx, [0x1414cca50]                                       
+     140e2b9f8: e9ff8d70ff               jmp 0x1405347fc                                              
+     140e2b9fd: 488d0d6c106a00           lea rcx, [0x1414cca70]                                       
+     140e2ba04: e9f38d70ff               jmp 0x1405347fc                                              
+     140e2ba09: 488d0d80106a00           lea rcx, [0x1414cca90]                                       
+     140e2ba10: e9e78d70ff               jmp 0x1405347fc                                              
+     140e2ba15: 488d0d94106a00           lea rcx, [0x1414ccab0]                                       
+     140e2ba1c: e9db8d70ff               jmp 0x1405347fc                                              
+     140e2ba21: 488d0da8106a00           lea rcx, [0x1414ccad0]                                       
+     140e2ba28: e9cf8d70ff               jmp 0x1405347fc                                              
+     140e2ba2d: 488d0dbc106a00           lea rcx, [0x1414ccaf0]                                       
+     140e2ba34: e9c38d70ff               jmp 0x1405347fc                                              
+     140e2ba39: 488d0d500e6a00           lea rcx, [0x1414cc890]                                       
+   patched:
+     140e2b9f1: 488d0da8488800           lea rcx, [0x1416b02a0]                                       
+     140e2b9f8: e9ff8d70ff               jmp 0x1405347fc                                              
+     140e2b9fd: 488d0dbc488800           lea rcx, [0x1416b02c0]                                       
+     140e2ba04: e9f38d70ff               jmp 0x1405347fc                                              
+     140e2ba09: 488d0dd0488800           lea rcx, [0x1416b02e0]                                       
+     140e2ba10: e9e78d70ff               jmp 0x1405347fc                                              
+     140e2ba15: 488d0de4488800           lea rcx, [0x1416b0300]                                       
+     140e2ba1c: e9db8d70ff               jmp 0x1405347fc                                              
+     140e2ba21: 488d0df8488800           lea rcx, [0x1416b0320]                                       
+     140e2ba28: e9cf8d70ff               jmp 0x1405347fc                                              
+     140e2ba2d: 488d0d0c498800           lea rcx, [0x1416b0340]                                       
+     140e2ba34: e9c38d70ff               jmp 0x1405347fc                                              
+     140e2ba39: 488d0da0468800           lea rcx, [0x1416b00e0]                                       
+
+-- site 0x140e2ba4f .. 0x140e2ba9a (75 bytes changed)
+   original:
+     140e2ba4c: 488d0ddd106a00           lea rcx, [0x1414ccb30]                                       
+     140e2ba53: e9a48d70ff               jmp 0x1405347fc                                              
+     140e2ba58: 488d0df1106a00           lea rcx, [0x1414ccb50]                                       
+     140e2ba5f: e9988d70ff               jmp 0x1405347fc                                              
+     140e2ba64: 488d0d05116a00           lea rcx, [0x1414ccb70]                                       
+     140e2ba6b: e98c8d70ff               jmp 0x1405347fc                                              
+     140e2ba70: 488d0d19116a00           lea rcx, [0x1414ccb90]                                       
+     140e2ba77: e9808d70ff               jmp 0x1405347fc                                              
+     140e2ba7c: 488d0d2d116a00           lea rcx, [0x1414ccbb0]                                       
+     140e2ba83: e9748d70ff               jmp 0x1405347fc                                              
+     140e2ba88: 488d0d41116a00           lea rcx, [0x1414ccbd0]                                       
+     140e2ba8f: e9688d70ff               jmp 0x1405347fc                                              
+     140e2ba94: 488d0df50d6a00           lea rcx, [0x1414cc890]                                       
+   patched:
+     140e2ba4c: 488d0d2d498800           lea rcx, [0x1416b0380]                                       
+     140e2ba53: e9a48d70ff               jmp 0x1405347fc                                              
+     140e2ba58: 488d0d41498800           lea rcx, [0x1416b03a0]                                       
+     140e2ba5f: e9988d70ff               jmp 0x1405347fc                                              
+     140e2ba64: 488d0d55498800           lea rcx, [0x1416b03c0]                                       
+     140e2ba6b: e98c8d70ff               jmp 0x1405347fc                                              
+     140e2ba70: 488d0d69498800           lea rcx, [0x1416b03e0]                                       
+     140e2ba77: e9808d70ff               jmp 0x1405347fc                                              
+     140e2ba7c: 488d0d7d498800           lea rcx, [0x1416b0400]                                       
+     140e2ba83: e9748d70ff               jmp 0x1405347fc                                              
+     140e2ba88: 488d0d91498800           lea rcx, [0x1416b0420]                                       
+     140e2ba8f: e9688d70ff               jmp 0x1405347fc                                              
+     140e2ba94: 488d0d45468800           lea rcx, [0x1416b00e0]                                       
+
+-- site 0x140e2baaa .. 0x140e2baf5 (75 bytes changed)
+   original:
+     140e2baa7: 488d0d62116a00           lea rcx, [0x1414ccc10]                                       
+     140e2baae: e9498d70ff               jmp 0x1405347fc                                              
+     140e2bab3: 488d0d76116a00           lea rcx, [0x1414ccc30]                                       
+     140e2baba: e93d8d70ff               jmp 0x1405347fc                                              
+     140e2babf: 488d0d8a116a00           lea rcx, [0x1414ccc50]                                       
+     140e2bac6: e9318d70ff               jmp 0x1405347fc                                              
+     140e2bacb: 488d0d9e116a00           lea rcx, [0x1414ccc70]                                       
+     140e2bad2: e9258d70ff               jmp 0x1405347fc                                              
+     140e2bad7: 488d0db2116a00           lea rcx, [0x1414ccc90]                                       
+     140e2bade: e9198d70ff               jmp 0x1405347fc                                              
+     140e2bae3: 488d0dc6116a00           lea rcx, [0x1414cccb0]                                       
+     140e2baea: e90d8d70ff               jmp 0x1405347fc                                              
+     140e2baef: 488d0d9a0d6a00           lea rcx, [0x1414cc890]                                       
+   patched:
+     140e2baa7: 488d0db2498800           lea rcx, [0x1416b0460]                                       
+     140e2baae: e9498d70ff               jmp 0x1405347fc                                              
+     140e2bab3: 488d0dc6498800           lea rcx, [0x1416b0480]                                       
+     140e2baba: e93d8d70ff               jmp 0x1405347fc                                              
+     140e2babf: 488d0dda498800           lea rcx, [0x1416b04a0]                                       
+     140e2bac6: e9318d70ff               jmp 0x1405347fc                                              
+     140e2bacb: 488d0dee498800           lea rcx, [0x1416b04c0]                                       
+     140e2bad2: e9258d70ff               jmp 0x1405347fc                                              
+     140e2bad7: 488d0d024a8800           lea rcx, [0x1416b04e0]                                       
+     140e2bade: e9198d70ff               jmp 0x1405347fc                                              
+     140e2bae3: 488d0d164a8800           lea rcx, [0x1416b0500]                                       
+     140e2baea: e90d8d70ff               jmp 0x1405347fc                                              
+     140e2baef: 488d0dea458800           lea rcx, [0x1416b00e0]                                       
+
+-- site 0x140e2bb05 .. 0x140e2bb50 (75 bytes changed)
+   original:
+     140e2bb02: 488d0de7116a00           lea rcx, [0x1414cccf0]                                       
+     140e2bb09: e9ee8c70ff               jmp 0x1405347fc                                              
+     140e2bb0e: 488d0dfb116a00           lea rcx, [0x1414ccd10]                                       
+     140e2bb15: e9e28c70ff               jmp 0x1405347fc                                              
+     140e2bb1a: 488d0d0f126a00           lea rcx, [0x1414ccd30]                                       
+     140e2bb21: e9d68c70ff               jmp 0x1405347fc                                              
+     140e2bb26: 488d0d23126a00           lea rcx, [0x1414ccd50]                                       
+     140e2bb2d: e9ca8c70ff               jmp 0x1405347fc                                              
+     140e2bb32: 488d0d37126a00           lea rcx, [0x1414ccd70]                                       
+     140e2bb39: e9be8c70ff               jmp 0x1405347fc                                              
+     140e2bb3e: 488d0d4b126a00           lea rcx, [0x1414ccd90]                                       
+     140e2bb45: e9b28c70ff               jmp 0x1405347fc                                              
+     140e2bb4a: 488d0d3f0d6a00           lea rcx, [0x1414cc890]                                       
+   patched:
+     140e2bb02: 488d0d374a8800           lea rcx, [0x1416b0540]                                       
+     140e2bb09: e9ee8c70ff               jmp 0x1405347fc                                              
+     140e2bb0e: 488d0d4b4a8800           lea rcx, [0x1416b0560]                                       
+     140e2bb15: e9e28c70ff               jmp 0x1405347fc                                              
+     140e2bb1a: 488d0d5f4a8800           lea rcx, [0x1416b0580]                                       
+     140e2bb21: e9d68c70ff               jmp 0x1405347fc                                              
+     140e2bb26: 488d0d734a8800           lea rcx, [0x1416b05a0]                                       
+     140e2bb2d: e9ca8c70ff               jmp 0x1405347fc                                              
+     140e2bb32: 488d0d874a8800           lea rcx, [0x1416b05c0]                                       
+     140e2bb39: e9be8c70ff               jmp 0x1405347fc                                              
+     140e2bb3e: 488d0d9b4a8800           lea rcx, [0x1416b05e0]                                       
+     140e2bb45: e9b28c70ff               jmp 0x1405347fc                                              
+     140e2bb4a: 488d0d8f458800           lea rcx, [0x1416b00e0]                                       
+
+-- site 0x140e2bb60 .. 0x140e2bbab (75 bytes changed)
+   original:
+     140e2bb5d: 488d0d6c126a00           lea rcx, [0x1414ccdd0]                                       
+     140e2bb64: e9938c70ff               jmp 0x1405347fc                                              
+     140e2bb69: 488d0d80126a00           lea rcx, [0x1414ccdf0]                                       
+     140e2bb70: e9878c70ff               jmp 0x1405347fc                                              
+     140e2bb75: 488d0d94126a00           lea rcx, [0x1414cce10]                                       
+     140e2bb7c: e97b8c70ff               jmp 0x1405347fc                                              
+     140e2bb81: 488d0da8126a00           lea rcx, [0x1414cce30]                                       
+     140e2bb88: e96f8c70ff               jmp 0x1405347fc                                              
+     140e2bb8d: 488d0dbc126a00           lea rcx, [0x1414cce50]                                       
+     140e2bb94: e9638c70ff               jmp 0x1405347fc                                              
+     140e2bb99: 488d0dd0126a00           lea rcx, [0x1414cce70]                                       
+     140e2bba0: e9578c70ff               jmp 0x1405347fc                                              
+     140e2bba5: 488d0de40c6a00           lea rcx, [0x1414cc890]                                       
+   patched:
+     140e2bb5d: 488d0dbc4a8800           lea rcx, [0x1416b0620]                                       
+     140e2bb64: e9938c70ff               jmp 0x1405347fc                                              
+     140e2bb69: 488d0dd04a8800           lea rcx, [0x1416b0640]                                       
+     140e2bb70: e9878c70ff               jmp 0x1405347fc                                              
+     140e2bb75: 488d0de44a8800           lea rcx, [0x1416b0660]                                       
+     140e2bb7c: e97b8c70ff               jmp 0x1405347fc                                              
+     140e2bb81: 488d0df84a8800           lea rcx, [0x1416b0680]                                       
+     140e2bb88: e96f8c70ff               jmp 0x1405347fc                                              
+     140e2bb8d: 488d0d0c4b8800           lea rcx, [0x1416b06a0]                                       
+     140e2bb94: e9638c70ff               jmp 0x1405347fc                                              
+     140e2bb99: 488d0d204b8800           lea rcx, [0x1416b06c0]                                       
+     140e2bba0: e9578c70ff               jmp 0x1405347fc                                              
+     140e2bba5: 488d0d34458800           lea rcx, [0x1416b00e0]                                       
+
+-- site 0x140e2bbbb .. 0x140e2bbfa (63 bytes changed)
+   original:
+     140e2bbb8: 488d0df1126a00           lea rcx, [0x1414cceb0]                                       
+     140e2bbbf: e9388c70ff               jmp 0x1405347fc                                              
+     140e2bbc4: 488d0d05136a00           lea rcx, [0x1414cced0]                                       
+     140e2bbcb: e92c8c70ff               jmp 0x1405347fc                                              
+     140e2bbd0: 488d0d19136a00           lea rcx, [0x1414ccef0]                                       
+     140e2bbd7: e9208c70ff               jmp 0x1405347fc                                              
+     140e2bbdc: 488d0d2d136a00           lea rcx, [0x1414ccf10]                                       
+     140e2bbe3: e9148c70ff               jmp 0x1405347fc                                              
+     140e2bbe8: 488d0d41136a00           lea rcx, [0x1414ccf30]                                       
+     140e2bbef: e9088c70ff               jmp 0x1405347fc                                              
+     140e2bbf4: 488d0d55136a00           lea rcx, [0x1414ccf50]                                       
+   patched:
+     140e2bbb8: 488d0d414b8800           lea rcx, [0x1416b0700]                                       
+     140e2bbbf: e9388c70ff               jmp 0x1405347fc                                              
+     140e2bbc4: 488d0d554b8800           lea rcx, [0x1416b0720]                                       
+     140e2bbcb: e92c8c70ff               jmp 0x1405347fc                                              
+     140e2bbd0: 488d0d694b8800           lea rcx, [0x1416b0740]                                       
+     140e2bbd7: e9208c70ff               jmp 0x1405347fc                                              
+     140e2bbdc: 488d0d7d4b8800           lea rcx, [0x1416b0760]                                       
+     140e2bbe3: e9148c70ff               jmp 0x1405347fc                                              
+     140e2bbe8: 488d0d914b8800           lea rcx, [0x1416b0780]                                       
+     140e2bbef: e9088c70ff               jmp 0x1405347fc                                              
+     140e2bbf4: 488d0da54b8800           lea rcx, [0x1416b07a0]                                       
+
+-- site 0x140ea0f15 .. 0x140ea0f18 (3 bytes changed)
+   original:
+     140ea0f12: 488d0d77b96200           lea rcx, [0x1414cc890]                                       
+   patched:
+     140ea0f12: 488d0dc7f18000           lea rcx, [0x1416b00e0]                                       
+
+====================================================================================================
+NEW CODE (caves) 0x140f6ac80..0x140f6acb5, 0x140f6ad00..0x140f6add9, 0x14186e000..0x141871547
+====================================================================================================
+Disassembled by following every jump/call/lea from the changed sites. Bytes that are not reached as
+code are listed afterwards as data (strings, numbers, tables).
+
+L_140f6ac80:
+     140f6ac80: 56                       push rsi                                                     
+     140f6ac81: 57                       push rdi                                                     
+     140f6ac82: 51                       push rcx                                                     
+     140f6ac83: 488d3576000000           lea rsi, [0x140f6ad00]                                       ; 'SP8'
+     140f6ac8a: 488d3d4f5b7400           lea rdi, [0x1416b07e0]                                       
+     140f6ac91: b9e0000000               mov ecx, 0xe0                                                
+     140f6ac96: f3a4                     rep movsb byte ptr [rdi], byte ptr [rsi]                     
+     140f6ac98: 59                       pop rcx                                                      
+     140f6ac99: 5f                       pop rdi                                                      
+     140f6ac9a: 5e                       pop rsi                                                      
+     140f6ac9b: e9bcfeeaff               jmp 0x140e1ab5c                                              
+
+ENTRY_140f6aca0:
+     140f6aca0: 8a4530                   mov al, byte ptr [rbp + 0x30]                                
+     140f6aca3: 88836c010000             mov byte ptr [rbx + 0x16c], al                               
+     140f6aca9: c6836d01000001           mov byte ptr [rbx + 0x16d], 1                                
+     140f6acb0: e96b516eff               jmp 0x14064fe20                                              
+     ...
+
+ENTRY_14186e310:
+     14186e310: 9c                       pushfq                                                       
+     14186e311: 488d15b04f96ff           lea rdx, [0x1411d32c8]                                       ; 'CaseyJones_Attack_Chain1'
+     14186e318: 803de1fcffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e31f: 7407                     je 0x14186e328                                               ; L_14186e328
+     14186e321: 488d15e8fcffff           lea rdx, [0x14186e010]                                       ; 'CKarai_Attack_Chain1'
+
+L_14186e328:
+     14186e328: 9d                       popfq                                                        
+     14186e329: e9b6852cff               jmp 0x140b368e4                                              
+     ...
+
+ENTRY_14186e330:
+     14186e330: 9c                       pushfq                                                       
+     14186e331: 488d0d704f96ff           lea rcx, [0x1411d32a8]                                       ; 'CaseyJones_Attack_Chain2'
+     14186e338: 803dc1fcffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e33f: 7407                     je 0x14186e348                                               ; L_14186e348
+     14186e341: 488d0de0fcffff           lea rcx, [0x14186e028]                                       ; 'CKarai_Attack_Chain2'
+
+L_14186e348:
+     14186e348: 9d                       popfq                                                        
+     14186e349: e9ec852cff               jmp 0x140b3693a                                              
+     ...
+
+ENTRY_14186e350:
+     14186e350: 9c                       pushfq                                                       
+     14186e351: 488d0d304f96ff           lea rcx, [0x1411d3288]                                       ; 'CaseyJones_Attack_Chain3'
+     14186e358: 803da1fcffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e35f: 7407                     je 0x14186e368                                               ; L_14186e368
+     14186e361: 488d0dd8fcffff           lea rcx, [0x14186e040]                                       ; 'CKarai_Attack_Chain3'
+
+L_14186e368:
+     14186e368: 9d                       popfq                                                        
+     14186e369: e91b862cff               jmp 0x140b36989                                              
+     ...
+
+ENTRY_14186e370:
+     14186e370: 9c                       pushfq                                                       
+     14186e371: 488d0df84e96ff           lea rcx, [0x1411d3270]                                       ; 'CaseyJones_DashAttack'
+     14186e378: 803d81fcffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e37f: 7407                     je 0x14186e388                                               ; L_14186e388
+     14186e381: 488d0dd0fcffff           lea rcx, [0x14186e058]                                       ; 'CKarai_DashAttack'
+
+L_14186e388:
+     14186e388: 9d                       popfq                                                        
+     14186e389: e94a862cff               jmp 0x140b369d8                                              
+     ...
+
+ENTRY_14186e390:
+     14186e390: 9c                       pushfq                                                       
+     14186e391: 488d05684e96ff           lea rax, [0x1411d3200]                                       ; 'build://Effects/Characters/Turtles/CaseyJones/BasicAttacks/CaseyJones_Attack_01/CaseyJones_Attack_01.pfx'
+     14186e398: 803d61fcffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e39f: 7407                     je 0x14186e3a8                                               ; L_14186e3a8
+     14186e3a1: 488d0500fdffff           lea rax, [0x14186e0a8]                                       ; 'build://Effects/Characters/Turtles/Leonardo/BasicAttacks/Leonardo_Attack_01/Leonardo_Attack_01.pfx'
+
+L_14186e3a8:
+     14186e3a8: 9d                       popfq                                                        
+     14186e3a9: e9648d2cff               jmp 0x140b37112                                              
+     ...
+
+ENTRY_14186e3b0:
+     14186e3b0: 9c                       pushfq                                                       
+     14186e3b1: 488d05684d96ff           lea rax, [0x1411d3120]                                       ; 'build://Effects/Characters/Turtles/CaseyJones/BasicAttacks/CaseyJones_Attack_02/CaseyJones_Attack_02.pfx'
+     14186e3b8: 803d41fcffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e3bf: 7407                     je 0x14186e3c8                                               ; L_14186e3c8
+     14186e3c1: 488d0548fdffff           lea rax, [0x14186e110]                                       ; 'build://Effects/Characters/Turtles/Leonardo/BasicAttacks/Leonardo_Attack_02/Leonardo_Attack_02.pfx'
+
+L_14186e3c8:
+     14186e3c8: 9d                       popfq                                                        
+     14186e3c9: e991992cff               jmp 0x140b37d5f                                              
+     ...
+
+ENTRY_14186e3d0:
+     14186e3d0: 9c                       pushfq                                                       
+     14186e3d1: 488d05684c96ff           lea rax, [0x1411d3040]                                       ; 'build://Effects/Characters/Turtles/CaseyJones/BasicAttacks/CaseyJones_Attack_03/CaseyJones_Attack_03.pfx'
+     14186e3d8: 803d21fcffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e3df: 7407                     je 0x14186e3e8                                               ; L_14186e3e8
+     14186e3e1: 488d0590fdffff           lea rax, [0x14186e178]                                       ; 'build://Effects/Characters/Turtles/Leonardo/BasicAttacks/Leonardo_Attack_03/Leonardo_Attack_03.pfx'
+
+L_14186e3e8:
+     14186e3e8: 9d                       popfq                                                        
+     14186e3e9: e9a1a62cff               jmp 0x140b38a8f                                              
+     ...
+
+ENTRY_14186e3f0:
+     14186e3f0: 9c                       pushfq                                                       
+     14186e3f1: 488d05685596ff           lea rax, [0x1411d3960]                                       ; 'build://Effects/Characters/Turtles/CaseyJones/BasicAttacks/CaseyJones_Attack_04/CaseyJones_Attack_04.pfx'
+     14186e3f8: 803d01fcffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e3ff: 7407                     je 0x14186e408                                               ; L_14186e408
+     14186e401: 488d05d8fdffff           lea rax, [0x14186e1e0]                                       ; 'build://Effects/Characters/Enemies/Karai/Karai_Dash_Slash/Karai_Dash_Slash.pfx'
+
+L_14186e408:
+     14186e408: 9d                       popfq                                                        
+     14186e409: e983b62cff               jmp 0x140b39a91                                              
+     ...
+
+ENTRY_14186e410:
+     14186e410: 9c                       pushfq                                                       
+     14186e411: 488d0d784d96ff           lea rcx, [0x1411d3190]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Light_Play'
+     14186e418: 803de1fbffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e41f: 7407                     je 0x14186e428                                               ; L_14186e428
+     14186e421: 488d0d08feffff           lea rcx, [0x14186e230]                                       ; 'event:/Combat/BOSSES/Karai/Combat_Karai_Attack_Light'
+
+L_14186e428:
+     14186e428: 9d                       popfq                                                        
+     14186e429: e9978d2cff               jmp 0x140b371c5                                              
+     ...
+
+ENTRY_14186e430:
+     14186e430: 9c                       pushfq                                                       
+     14186e431: 488d0d584d96ff           lea rcx, [0x1411d3190]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Light_Play'
+     14186e438: 803dc1fbffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e43f: 7407                     je 0x14186e448                                               ; L_14186e448
+     14186e441: 488d0de8fdffff           lea rcx, [0x14186e230]                                       ; 'event:/Combat/BOSSES/Karai/Combat_Karai_Attack_Light'
+
+L_14186e448:
+     14186e448: 9d                       popfq                                                        
+     14186e449: e9c5992cff               jmp 0x140b37e13                                              
+     ...
+
+ENTRY_14186e450:
+     14186e450: 9c                       pushfq                                                       
+     14186e451: 488d0d384d96ff           lea rcx, [0x1411d3190]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Light_Play'
+     14186e458: 803da1fbffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e45f: 7407                     je 0x14186e468                                               ; L_14186e468
+     14186e461: 488d0dc8fdffff           lea rcx, [0x14186e230]                                       ; 'event:/Combat/BOSSES/Karai/Combat_Karai_Attack_Light'
+
+L_14186e468:
+     14186e468: 9d                       popfq                                                        
+     14186e469: e977b42cff               jmp 0x140b398e5                                              
+     ...
+
+ENTRY_14186e470:
+     14186e470: 9c                       pushfq                                                       
+     14186e471: 488d0d384c96ff           lea rcx, [0x1411d30b0]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Heavy_Impact_Play'
+     14186e478: 803d81fbffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e47f: 7407                     je 0x14186e488                                               ; L_14186e488
+     14186e481: 488d0de0fdffff           lea rcx, [0x14186e268]                                       ; 'event:/Combat/BOSSES/Karai/Combat_Karai_Attack_Heavy_01'
+
+L_14186e488:
+     14186e488: 9d                       popfq                                                        
+     14186e489: e958a42cff               jmp 0x140b388e6                                              
+     ...
+
+ENTRY_14186e490:
+     14186e490: 9c                       pushfq                                                       
+     14186e491: 488d0d384b96ff           lea rcx, [0x1411d2fd0]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Abi_Plr_CJ_Basic_Attack_Heavy_Leap_Play'
+     14186e498: 803d61fbffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e49f: 7407                     je 0x14186e4a8                                               ; L_14186e4a8
+     14186e4a1: 488d0df8fdffff           lea rcx, [0x14186e2a0]                                       ; 'event:/Combat/BOSSES/Karai/Combat_Karai_Dash_Prep_01'
+
+L_14186e4a8:
+     14186e4a8: 9d                       popfq                                                        
+     14186e4a9: e992a62cff               jmp 0x140b38b40                                              
+     ...
+
+ENTRY_14186e4b0:
+     14186e4b0: 9c                       pushfq                                                       
+     14186e4b1: 488d05b83e95ff           lea rax, [0x1411c2370]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Exertion_Casey_Stunned'
+     14186e4b8: 803d41fbffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e4bf: 7407                     je 0x14186e4c8                                               ; L_14186e4c8
+     14186e4c1: 488d0510feffff           lea rax, [0x14186e2d8]                                       ; 'event:/Combat/BOSSES/Karai/Exertions_Karai_DamageTaken'
+
+L_14186e4c8:
+     14186e4c8: 9d                       popfq                                                        
+     14186e4c9: e9f17619ff               jmp 0x140a05bbf                                              
+     ...
+
+ENTRY_14186e4d0:
+     14186e4d0: 9c                       pushfq                                                       
+     14186e4d1: 488d05f83b95ff           lea rax, [0x1411c20d0]                                       ; 'event:/Combat/Abilities/Abilities_Player/Abi_Player_Casey_Jones/Exertion_Casey_Damage_Taken'
+     14186e4d8: 803d21fbffff00           cmp byte ptr [0x14186e000], 0                                
+     14186e4df: 7407                     je 0x14186e4e8                                               ; L_14186e4e8
+     14186e4e1: 488d05f0fdffff           lea rax, [0x14186e2d8]                                       ; 'event:/Combat/BOSSES/Karai/Exertions_Karai_DamageTaken'
+
+L_14186e4e8:
+     14186e4e8: 9d                       popfq                                                        
+     14186e4e9: e9ad8419ff               jmp 0x140a0699b                                              
+     ...
+     14186e510: 4883ec28                 sub rsp, 0x28                                                
+     14186e514: c605e5faffff01           mov byte ptr [0x14186e000], 1                                
+     14186e51b: e874832cff               call 0x140b36894                                             
+     14186e520: c605d9faffff00           mov byte ptr [0x14186e000], 0                                
+     14186e527: 4883c428                 add rsp, 0x28                                                
+     14186e52b: c3                       ret                                                          
+     ...
+     14186e560: 4883ec28                 sub rsp, 0x28                                                
+     14186e564: c60595faffff01           mov byte ptr [0x14186e000], 1                                
+     14186e56b: e8e4842cff               call 0x140b36a54                                             
+     14186e570: c60589faffff00           mov byte ptr [0x14186e000], 0                                
+     14186e577: 4883c428                 add rsp, 0x28                                                
+     14186e57b: c3                       ret                                                          
+     ...
+     14186e5b0: 4883ec28                 sub rsp, 0x28                                                
+     14186e5b4: c60545faffff01           mov byte ptr [0x14186e000], 1                                
+     14186e5bb: e83c912cff               call 0x140b376fc                                             
+     14186e5c0: c60539faffff00           mov byte ptr [0x14186e000], 0                                
+     14186e5c7: 4883c428                 add rsp, 0x28                                                
+     14186e5cb: c3                       ret                                                          
+     ...
+     14186e600: 4883ec28                 sub rsp, 0x28                                                
+     14186e604: c605f5f9ffff01           mov byte ptr [0x14186e000], 1                                
+     14186e60b: e8289d2cff               call 0x140b38338                                             
+     14186e610: c605e9f9ffff00           mov byte ptr [0x14186e000], 0                                
+     14186e617: 4883c428                 add rsp, 0x28                                                
+     14186e61b: c3                       ret                                                          
+     ...
+     14186e650: 4883ec28                 sub rsp, 0x28                                                
+     14186e654: c605a5f9ffff01           mov byte ptr [0x14186e000], 1                                
+     14186e65b: e820ac2cff               call 0x140b39280                                             
+     14186e660: c60599f9ffff00           mov byte ptr [0x14186e000], 0                                
+     14186e667: 4883c428                 add rsp, 0x28                                                
+     14186e66b: c3                       ret                                                          
+     ...
+     14186e6a0: 4883ec28                 sub rsp, 0x28                                                
+     14186e6a4: c60555f9ffff01           mov byte ptr [0x14186e000], 1                                
+     14186e6ab: e8e07e19ff               call 0x140a06590                                             
+     14186e6b0: c60549f9ffff00           mov byte ptr [0x14186e000], 0                                
+     14186e6b7: 4883c428                 add rsp, 0x28                                                
+     14186e6bb: c3                       ret                                                          
+     ...
+     14186e6f0: 4883ec28                 sub rsp, 0x28                                                
+     14186e6f4: c60505f9ffff01           mov byte ptr [0x14186e000], 1                                
+     14186e6fb: e8b47019ff               call 0x140a057b4                                             
+     14186e700: c605f9f8ffff00           mov byte ptr [0x14186e000], 0                                
+     14186e707: 4883c428                 add rsp, 0x28                                                
+     14186e70b: c3                       ret                                                          
+     ...
+
+ENTRY_14186e730:
+     14186e730: 488d05b9fdffff           lea rax, [0x14186e4f0]                                       ; 'CKarai_Attack_Chain'
+     14186e737: 488905f2fdffff           mov qword ptr [0x14186e530], rax                             
+     14186e73e: 488d05cbfdffff           lea rax, [0x14186e510]                                       
+     14186e745: 488905ecfdffff           mov qword ptr [0x14186e538], rax                             
+     14186e74c: 488b053d84d8ff           mov rax, qword ptr [0x1415f6b90]                             ; behavior registry list head (name -> factory)
+     14186e753: 488905e6fdffff           mov qword ptr [0x14186e540], rax                             
+     14186e75a: 488d05cffdffff           lea rax, [0x14186e530]                                       
+     14186e761: 4889052884d8ff           mov qword ptr [0x1415f6b90], rax                             ; behavior registry list head (name -> factory)
+     14186e768: 488d05d9fdffff           lea rax, [0x14186e548]                                       ; 'CKarai_Attack_Chain1'
+     14186e76f: 4889050afeffff           mov qword ptr [0x14186e580], rax                             
+     14186e776: 488d05e3fdffff           lea rax, [0x14186e560]                                       
+     14186e77d: 48890504feffff           mov qword ptr [0x14186e588], rax                             
+     14186e784: 488b050584d8ff           mov rax, qword ptr [0x1415f6b90]                             ; behavior registry list head (name -> factory)
+     14186e78b: 488905fefdffff           mov qword ptr [0x14186e590], rax                             
+     14186e792: 488d05e7fdffff           lea rax, [0x14186e580]                                       
+     14186e799: 488905f083d8ff           mov qword ptr [0x1415f6b90], rax                             ; behavior registry list head (name -> factory)
+     14186e7a0: 488d05f1fdffff           lea rax, [0x14186e598]                                       ; 'CKarai_Attack_Chain2'
+     14186e7a7: 48890522feffff           mov qword ptr [0x14186e5d0], rax                             
+     14186e7ae: 488d05fbfdffff           lea rax, [0x14186e5b0]                                       
+     14186e7b5: 4889051cfeffff           mov qword ptr [0x14186e5d8], rax                             
+     14186e7bc: 488b05cd83d8ff           mov rax, qword ptr [0x1415f6b90]                             ; behavior registry list head (name -> factory)
+     14186e7c3: 48890516feffff           mov qword ptr [0x14186e5e0], rax                             
+     14186e7ca: 488d05fffdffff           lea rax, [0x14186e5d0]                                       
+     14186e7d1: 488905b883d8ff           mov qword ptr [0x1415f6b90], rax                             ; behavior registry list head (name -> factory)
+     14186e7d8: 488d0509feffff           lea rax, [0x14186e5e8]                                       ; 'CKarai_Attack_Chain3'
+     14186e7df: 4889053afeffff           mov qword ptr [0x14186e620], rax                             
+     14186e7e6: 488d0513feffff           lea rax, [0x14186e600]                                       
+     14186e7ed: 48890534feffff           mov qword ptr [0x14186e628], rax                             
+     14186e7f4: 488b059583d8ff           mov rax, qword ptr [0x1415f6b90]                             ; behavior registry list head (name -> factory)
+     14186e7fb: 4889052efeffff           mov qword ptr [0x14186e630], rax                             
+     14186e802: 488d0517feffff           lea rax, [0x14186e620]                                       
+     14186e809: 4889058083d8ff           mov qword ptr [0x1415f6b90], rax                             ; behavior registry list head (name -> factory)
+     14186e810: 488d0521feffff           lea rax, [0x14186e638]                                       ; 'CKarai_DashAttack'
+     14186e817: 48890552feffff           mov qword ptr [0x14186e670], rax                             
+     14186e81e: 488d052bfeffff           lea rax, [0x14186e650]                                       
+     14186e825: 4889054cfeffff           mov qword ptr [0x14186e678], rax                             
+     14186e82c: 488b055d83d8ff           mov rax, qword ptr [0x1415f6b90]                             ; behavior registry list head (name -> factory)
+     14186e833: 48890546feffff           mov qword ptr [0x14186e680], rax                             
+     14186e83a: 488d052ffeffff           lea rax, [0x14186e670]                                       
+     14186e841: 4889054883d8ff           mov qword ptr [0x1415f6b90], rax                             ; behavior registry list head (name -> factory)
+     14186e848: 488d0539feffff           lea rax, [0x14186e688]                                       ; 'Karai_Hit_Reaction'
+     14186e84f: 4889056afeffff           mov qword ptr [0x14186e6c0], rax                             
+     14186e856: 488d0543feffff           lea rax, [0x14186e6a0]                                       
+     14186e85d: 48890564feffff           mov qword ptr [0x14186e6c8], rax                             
+     14186e864: 488b052583d8ff           mov rax, qword ptr [0x1415f6b90]                             ; behavior registry list head (name -> factory)
+     14186e86b: 4889055efeffff           mov qword ptr [0x14186e6d0], rax                             
+     14186e872: 488d0547feffff           lea rax, [0x14186e6c0]                                       
+     14186e879: 4889051083d8ff           mov qword ptr [0x1415f6b90], rax                             ; behavior registry list head (name -> factory)
+     14186e880: 488d0551feffff           lea rax, [0x14186e6d8]                                       ; 'Karai_Stun'
+     14186e887: 48890582feffff           mov qword ptr [0x14186e710], rax                             
+     14186e88e: 488d055bfeffff           lea rax, [0x14186e6f0]                                       
+     14186e895: 4889057cfeffff           mov qword ptr [0x14186e718], rax                             
+     14186e89c: 488b05ed82d8ff           mov rax, qword ptr [0x1415f6b90]                             ; behavior registry list head (name -> factory)
+     14186e8a3: 48890576feffff           mov qword ptr [0x14186e720], rax                             
+     14186e8aa: 488d055ffeffff           lea rax, [0x14186e710]                                       
+     14186e8b1: 488905d882d8ff           mov qword ptr [0x1415f6b90], rax                             ; behavior registry list head (name -> factory)
+     14186e8b8: e923110000               jmp 0x14186f9e0                                              ; L_14186f9e0
+     ...
+
+ENTRY_14186e8c0:
+     14186e8c0: e93b140000               jmp 0x14186fd00                                              ; L_14186fd00
+     ...
+
+ENTRY_14186ea00:
+     14186ea00: 3bc3                     cmp eax, ebx                                                 
+     14186ea02: 0f84e4f9ebfe             je 0x14072e3ec                                               
+     14186ea08: 83f802                   cmp eax, 2                                                   
+     14186ea0b: 0f857c00ecfe             jne 0x14072ea8d                                              
+     14186ea11: 8b86a0000000             mov eax, dword ptr [rsi + 0xa0]                              
+     14186ea17: 4d8d7e28                 lea r15, [r14 + 0x28]                                        
+     14186ea1b: 8b15df010000             mov edx, dword ptr [0x14186ec00]                             
+     14186ea21: 4c8d85f0000000           lea r8, [rbp + 0xf0]                                         
+     14186ea28: 498bcf                   mov rcx, r15                                                 
+     14186ea2b: 8985f0000000             mov dword ptr [rbp + 0xf0], eax                              
+     14186ea31: 448bcb                   mov r9d, ebx                                                 
+     14186ea34: e87bd64cff               call 0x140d3c0b4                                             
+     14186ea39: 80bee000000000           cmp byte ptr [rsi + 0xe0], 0                                 
+     14186ea40: 7505                     jne 0x14186ea47                                              ; L_14186ea47
+     14186ea42: 0f28d6                   movaps xmm2, xmm6                                            
+     14186ea45: eb03                     jmp 0x14186ea4a                                              ; L_14186ea4a
+
+L_14186ea47:
+     14186ea47: 0f57d2                   xorps xmm2, xmm2                                             
+
+L_14186ea4a:
+     14186ea4a: 8b15b4010000             mov edx, dword ptr [0x14186ec04]                             
+     14186ea50: 448bcb                   mov r9d, ebx                                                 
+     14186ea53: 498bcf                   mov rcx, r15                                                 
+     14186ea56: e8fdd54cff               call 0x140d3c058                                             
+     14186ea5b: 8b15a7010000             mov edx, dword ptr [0x14186ec08]                             
+     14186ea61: 448bcb                   mov r9d, ebx                                                 
+     14186ea64: 0f28d6                   movaps xmm2, xmm6                                            
+     14186ea67: 498bcf                   mov rcx, r15                                                 
+     14186ea6a: e8e9d54cff               call 0x140d3c058                                             
+     14186ea6f: 4c8b4f08                 mov r9, qword ptr [rdi + 8]                                  
+     14186ea73: 492bb998020000           sub rdi, qword ptr [r9 + 0x298]                              
+     14186ea7a: 418b497c                 mov ecx, dword ptr [r9 + 0x7c]                               
+     14186ea7e: 488bc7                   mov rax, rdi                                                 
+     14186ea81: 4899                     cqo                                                          
+     14186ea83: 48f7f9                   idiv rcx                                                     
+     14186ea86: 418b5178                 mov edx, dword ptr [r9 + 0x78]                               
+     14186ea8a: 4c8bc0                   mov r8, rax                                                  
+     14186ea8d: 488b0504e2e3ff           mov rax, qword ptr [0x1416acc98]                             
+     14186ea94: 488b4858                 mov rcx, qword ptr [rax + 0x58]                              
+     14186ea98: 488b4010                 mov rax, qword ptr [rax + 0x10]                              
+     14186ea9c: 44030491                 add r8d, dword ptr [rcx + rdx*4]                             
+     14186eaa0: 428b14c0                 mov edx, dword ptr [rax + r8*8]                              
+     14186eaa4: 48c1ea0b                 shr rdx, 0xb                                                 
+     14186eaa8: 84d3                     test bl, dl                                                  
+     14186eaaa: 7405                     je 0x14186eab1                                               ; L_14186eab1
+     14186eaac: 0f28d6                   movaps xmm2, xmm6                                            
+     14186eaaf: eb03                     jmp 0x14186eab4                                              ; L_14186eab4
+
+L_14186eab1:
+     14186eab1: 0f57d2                   xorps xmm2, xmm2                                             
+
+L_14186eab4:
+     14186eab4: 8b1552010000             mov edx, dword ptr [0x14186ec0c]                             
+     14186eaba: 448bcb                   mov r9d, ebx                                                 
+     14186eabd: 498bcf                   mov rcx, r15                                                 
+     14186eac0: e893d54cff               call 0x140d3c058                                             
+     14186eac5: 4584e4                   test r12b, r12b                                              
+     14186eac8: 0f84bcffebfe             je 0x14072ea8a                                               
+     14186eace: 8b153c010000             mov edx, dword ptr [0x14186ec10]                             
+     14186ead4: e9a3ffebfe               jmp 0x14072ea7c                                              
+     ...
+
+ENTRY_14186ee00:
+     14186ee00: 81f9550a1eb1             cmp ecx, 0xb11e0a55                                          
+     14186ee06: 0f8425000000             je 0x14186ee31                                               ; L_14186ee31
+     14186ee0c: 81f9d0db72de             cmp ecx, 0xde72dbd0                                          
+     14186ee12: 0f842f000000             je 0x14186ee47                                               ; L_14186ee47
+     14186ee18: 81f9c6a2acdc             cmp ecx, 0xdcaca2c6                                          
+     14186ee1e: 0f8439000000             je 0x14186ee5d                                               ; L_14186ee5d
+     14186ee24: 4053                     push rbx                                                     
+     14186ee26: 4883ec20                 sub rsp, 0x20                                                
+     14186ee2a: 8bd9                     mov ebx, ecx                                                 
+     14186ee2c: e96339edfe               jmp 0x140742794                                              
+
+L_14186ee31:
+     14186ee31: 488d0548010000           lea rax, [0x14186ef80]                                       
+     14186ee38: 488905c9000000           mov qword ptr [0x14186ef08], rax                             
+     14186ee3f: 488d05ba000000           lea rax, [0x14186ef00]                                       
+     14186ee46: c3                       ret                                                          
+
+L_14186ee47:
+     14186ee47: 488d0552020000           lea rax, [0x14186f0a0]                                       
+     14186ee4e: 488905c3000000           mov qword ptr [0x14186ef18], rax                             
+     14186ee55: 488d05b4000000           lea rax, [0x14186ef10]                                       
+     14186ee5c: c3                       ret                                                          
+
+L_14186ee5d:
+     14186ee5d: 488d054c020000           lea rax, [0x14186f0b0]                                       
+     14186ee64: 488905bd000000           mov qword ptr [0x14186ef28], rax                             
+     14186ee6b: 488d05ae000000           lea rax, [0x14186ef20]                                       
+     14186ee72: c3                       ret                                                          
+     ...
+
+ENTRY_14186f480:
+     14186f480: 4c8b7238                 mov r14, qword ptr [rdx + 0x38]                              
+     14186f484: 4d85f6                   test r14, r14                                                
+     14186f487: 0f84b7000000             je 0x14186f544                                               ; L_14186f544
+     14186f48d: 4989d2                   mov r10, rdx                                                 
+     14186f490: 498b06                   mov rax, qword ptr [r14]                                     
+     14186f493: 4885c0                   test rax, rax                                                
+     14186f496: 0f84a5000000             je 0x14186f541                                               ; L_14186f541
+     14186f49c: 488d0d9d010000           lea rcx, [0x14186f640]                                       ; 'Ability_Common_007_Kunai'
+
+L_14186f4a3:
+     14186f4a3: 448a00                   mov r8b, byte ptr [rax]                                      
+     14186f4a6: 443a01                   cmp r8b, byte ptr [rcx]                                      
+     14186f4a9: 0f8592000000             jne 0x14186f541                                              ; L_14186f541
+     14186f4af: 4584c0                   test r8b, r8b                                                
+     14186f4b2: 7408                     je 0x14186f4bc                                               ; L_14186f4bc
+     14186f4b4: 48ffc0                   inc rax                                                      
+     14186f4b7: 48ffc1                   inc rcx                                                      
+     14186f4ba: ebe7                     jmp 0x14186f4a3                                              ; L_14186f4a3
+
+L_14186f4bc:
+     14186f4bc: 488d4d10                 lea rcx, [rbp + 0x10]                                        
+     14186f4c0: e883c8cffe               call 0x14056bd48                                             
+     14186f4c5: 4885c0                   test rax, rax                                                
+     14186f4c8: 7477                     je 0x14186f541                                               ; L_14186f541
+     14186f4ca: 817878a29dc507           cmp dword ptr [rax + 0x78], 0x7c59da2                        
+     14186f4d1: 756e                     jne 0x14186f541                                              ; L_14186f541
+     14186f4d3: 488d0d26010000           lea rcx, [0x14186f600]                                       
+     14186f4da: 498b4600                 mov rax, qword ptr [r14]                                     
+     14186f4de: 48894100                 mov qword ptr [rcx], rax                                     
+     14186f4e2: 498b4608                 mov rax, qword ptr [r14 + 8]                                 
+     14186f4e6: 48894108                 mov qword ptr [rcx + 8], rax                                 
+     14186f4ea: 498b4610                 mov rax, qword ptr [r14 + 0x10]                              
+     14186f4ee: 48894110                 mov qword ptr [rcx + 0x10], rax                              
+     14186f4f2: 498b4618                 mov rax, qword ptr [r14 + 0x18]                              
+     14186f4f6: 48894118                 mov qword ptr [rcx + 0x18], rax                              
+     14186f4fa: 498b4620                 mov rax, qword ptr [r14 + 0x20]                              
+     14186f4fe: 48894120                 mov qword ptr [rcx + 0x20], rax                              
+     14186f502: 498b4628                 mov rax, qword ptr [r14 + 0x28]                              
+     14186f506: 48894128                 mov qword ptr [rcx + 0x28], rax                              
+     14186f50a: 498b4630                 mov rax, qword ptr [r14 + 0x30]                              
+     14186f50e: 48894130                 mov qword ptr [rcx + 0x30], rax                              
+     14186f512: 498b4638                 mov rax, qword ptr [r14 + 0x38]                              
+     14186f516: 48894138                 mov qword ptr [rcx + 0x38], rax                              
+     14186f51a: 488d053f010000           lea rax, [0x14186f660]                                       ; 'Boss_Karai'
+     14186f521: 48894118                 mov qword ptr [rcx + 0x18], rax                              
+     14186f525: 488d0544010000           lea rax, [0x14186f670]                                       ; 'karai_kunai_hud'
+     14186f52c: 48894120                 mov qword ptr [rcx + 0x20], rax                              
+     14186f530: 48894128                 mov qword ptr [rcx + 0x28], rax                              
+     14186f534: 488d0545010000           lea rax, [0x14186f680]                                       ; 'Ability_Karai_Kunai'
+     14186f53b: 488901                   mov qword ptr [rcx], rax                                     
+     14186f53e: 4989ce                   mov r14, rcx                                                 
+
+L_14186f541:
+     14186f541: 4c89d2                   mov rdx, r10                                                 
+
+L_14186f544:
+     14186f544: 4c89742428               mov qword ptr [rsp + 0x28], r14                              
+     14186f549: e92241e1fe               jmp 0x140683670                                              
+     ...
+     14186f700: 53                       push rbx                                                     
+     14186f701: 56                       push rsi                                                     
+     14186f702: 4883ec38                 sub rsp, 0x38                                                
+     14186f706: 4889cb                   mov rbx, rcx                                                 
+     14186f709: 4889d6                   mov rsi, rdx                                                 
+     14186f70c: e89322e4fe               call 0x1406b19a4                                             ; actor condition eval
+     14186f711: 84c0                     test al, al                                                  
+     14186f713: 7528                     jne 0x14186f73d                                              ; L_14186f73d
+     14186f715: 488d4b30                 lea rcx, [rbx + 0x30]                                        
+     14186f719: 488d542420               lea rdx, [rsp + 0x20]                                        
+     14186f71e: 4989f0                   mov r8, rsi                                                  
+     14186f721: 4531c9                   xor r9d, r9d                                                 
+     14186f724: 48c744242000000000       mov qword ptr [rsp + 0x20], 0                                
+     14186f72d: e84e2ee4fe               call 0x1406b2580                                             
+     14186f732: 817c2420a29dc507         cmp dword ptr [rsp + 0x20], 0x7c59da2                        
+     14186f73a: 0f94c0                   sete al                                                      
+
+L_14186f73d:
+     14186f73d: 4883c438                 add rsp, 0x38                                                
+     14186f741: 5e                       pop rsi                                                      
+     14186f742: 5b                       pop rbx                                                      
+     14186f743: c3                       ret                                                          
+
+ENTRY_14186f744:
+     14186f744: 4c8bc8                   mov r9, rax                                                  
+     14186f747: 4488b5b8000000           mov byte ptr [rbp + 0xb8], r14b                              
+     14186f74e: 488b08                   mov rcx, qword ptr [rax]                                     
+     14186f751: 488b15e0618fff           mov rdx, qword ptr [0x141165938]                             
+     14186f758: 48891581000000           mov qword ptr [0x14186f7e0], rdx                             
+     14186f75f: 488b15da618fff           mov rdx, qword ptr [0x141165940]                             
+     14186f766: 4889157b000000           mov qword ptr [0x14186f7e8], rdx                             
+     14186f76d: 488d158cffffff           lea rdx, [0x14186f700]                                       
+     14186f774: 48891575000000           mov qword ptr [0x14186f7f0], rdx                             
+     14186f77b: 488d1566000000           lea rdx, [0x14186f7e8]                                       
+     14186f782: 488911                   mov qword ptr [rcx], rdx                                     
+     14186f785: e95cd4e3fe               jmp 0x1406acbe6                                              
+     ...
+     14186f960: 4883ec28                 sub rsp, 0x28                                                
+     14186f964: c60595ffffff01           mov byte ptr [0x14186f900], 1                                
+     14186f96b: e858ec18ff               call 0x1409fe5c8                                             
+     14186f970: c60589ffffff00           mov byte ptr [0x14186f900], 0                                
+     14186f977: 4883c428                 add rsp, 0x28                                                
+     14186f97b: c3                       ret                                                          
+     ...
+
+ENTRY_14186f9a0:
+     14186f9a0: f30f103da0e79fff         movss xmm7, dword ptr [0x14126e148]                          ; float 4.5
+     14186f9a8: 803d51ffffff00           cmp byte ptr [0x14186f900], 0                                
+     14186f9af: 7408                     je 0x14186f9b9                                               ; L_14186f9b9
+     14186f9b1: f30f593d57ffffff         mulss xmm7, dword ptr [0x14186f910]                          ; float 1
+
+L_14186f9b9:
+     14186f9b9: e953d918ff               jmp 0x1409fd311                                              
+     ...
+
+L_14186f9e0:
+     14186f9e0: 488d0539ffffff           lea rax, [0x14186f920]                                       ; 'Karai_HeroCleave'
+     14186f9e7: 48890552ffffff           mov qword ptr [0x14186f940], rax                             
+     14186f9ee: 488d056bffffff           lea rax, [0x14186f960]                                       
+     14186f9f5: 4889054cffffff           mov qword ptr [0x14186f948], rax                             
+     14186f9fc: 488b058d71d8ff           mov rax, qword ptr [0x1415f6b90]                             ; behavior registry list head (name -> factory)
+     14186fa03: 48890546ffffff           mov qword ptr [0x14186f950], rax                             
+     14186fa0a: 488d052fffffff           lea rax, [0x14186f940]                                       
+     14186fa11: 4889057871d8ff           mov qword ptr [0x1415f6b90], rax                             ; behavior registry list head (name -> factory)
+     14186fa18: e963b26fff               jmp 0x140f6ac80                                              ; L_140f6ac80
+     ...
+
+ENTRY_14186fa40:
+     14186fa40: 48c785c003000000200000   mov qword ptr [rbp + 0x3c0], 0x2000                          
+     14186fa4b: 803daefeffff00           cmp byte ptr [0x14186f900], 0                                
+     14186fa52: 7427                     je 0x14186fa7b                                               ; L_14186fa7b
+     14186fa54: 488d05ede4e3fe           lea rax, [0x1406adf48]                                       ; hero stat fn 0x1a (special damage)
+     14186fa5b: 48898570030000           mov qword ptr [rbp + 0x370], rax                             
+     14186fa62: c6857803000004           mov byte ptr [rbp + 0x378], 4                                
+     14186fa69: c6858803000000           mov byte ptr [rbp + 0x388], 0                                
+     14186fa70: 48c785c003000004200000   mov qword ptr [rbp + 0x3c0], 0x2004                          
+
+L_14186fa7b:
+     14186fa7b: e92cdc18ff               jmp 0x1409fd6ac                                              
+
+ENTRY_14186fa80:
+     14186fa80: 803d79feffff00           cmp byte ptr [0x14186f900], 0                                
+     14186fa87: 741c                     je 0x14186faa5                                               ; L_14186faa5
+     14186fa89: 488d05e0bf01ff           lea rax, [0x14088ba70]                                       ; hero stat fn 0x1d (special effect damage)
+     14186fa90: 48898580080000           mov qword ptr [rbp + 0x880], rax                             
+     14186fa97: c6858808000004           mov byte ptr [rbp + 0x888], 4                                
+     14186fa9e: c6859808000000           mov byte ptr [rbp + 0x898], 0                                
+
+L_14186faa5:
+     14186faa5: 488d0d7c1b95ff           lea rcx, [0x1411c1628]                                       ; 'OnMeleeAction'
+     14186faac: e96fde18ff               jmp 0x1409fd920                                              
+     ...
+
+ENTRY_14186fb00:
+     14186fb00: f30f100da8e19fff         movss xmm1, dword ptr [0x14126dcb0]                          ; float 0.6
+     14186fb08: 803df1fdffff00           cmp byte ptr [0x14186f900], 0                                
+     14186fb0f: 7408                     je 0x14186fb19                                               ; L_14186fb19
+     14186fb11: f30f590d27000000         mulss xmm1, dword ptr [0x14186fb40]                          ; float 0.454545
+
+L_14186fb19:
+     14186fb19: e98cde18ff               jmp 0x1409fd9aa                                              
+     ...
+
+ENTRY_14186fb50:
+     14186fb50: 488d0519538bff           lea rax, [0x141124e70]                                       ; 'build://Effects/Characters/Enemies/Karai/Karai_Cleave/Karai_Cleave.pfx'
+     14186fb57: 803da2fdffff00           cmp byte ptr [0x14186f900], 0                                
+     14186fb5e: 740a                     je 0x14186fb6a                                               ; L_14186fb6a
+     14186fb60: c785700800003333933f     mov dword ptr [rbp + 0x870], 0x3f933333                      
+
+L_14186fb6a:
+     14186fb6a: e941dd18ff               jmp 0x1409fd8b0                                              
+     ...
+
+ENTRY_14186fb80:
+     14186fb80: f30f100d6ce39fff         movss xmm1, dword ptr [0x14126def4]                          ; float 1.5
+     14186fb88: 803d71fdffff00           cmp byte ptr [0x14186f900], 0                                
+     14186fb8f: 7408                     je 0x14186fb99                                               ; L_14186fb99
+     14186fb91: f30f100d17000000         movss xmm1, dword ptr [0x14186fbb0]                          ; float 0.1
+
+L_14186fb99:
+     14186fb99: e99ae918ff               jmp 0x1409fe538                                              
+     ...
+
+ENTRY_14186fbc0:
+     14186fbc0: 488d0549528bff           lea rax, [0x141124e10]                                       ; 'build://Effects/Characters/Enemies/Karai/Karai_Cleave_OnSword/Karai_Cleave_OnSword.pfx'
+     14186fbc7: 803d32fdffff00           cmp byte ptr [0x14186f900], 0                                
+     14186fbce: 740a                     je 0x14186fbda                                               ; L_14186fbda
+     14186fbd0: c785580b00003333933f     mov dword ptr [rbp + 0xb58], 0x3f933333                      
+
+L_14186fbda:
+     14186fbda: e970dc18ff               jmp 0x1409fd84f                                              
+     ...
+
+ENTRY_14186fc00:
+     14186fc00: 4889f1                   mov rcx, rsi                                                 
+     14186fc03: 488d1566000000           lea rdx, [0x14186fc70]                                       ; '*Karai_Hero*'
+     14186fc0a: e8a9aefdfe               call 0x14084aab8                                             ; level logic: NewRule
+     14186fc0f: 4989c4                   mov r12, rax                                                 
+     14186fc12: c74580388679a6           mov dword ptr [rbp - 0x80], 0xa6798638                       
+     14186fc19: c6458801                 mov byte ptr [rbp - 0x78], 1                                 
+     14186fc1d: 488d5580                 lea rdx, [rbp - 0x80]                                        
+     14186fc21: 488d8da8040000           lea rcx, [rbp + 0x4a8]                                       
+     14186fc28: e89b7048ff               call 0x140cf6cc8                                             ; level logic: response-trigger param
+     14186fc2d: 4889c3                   mov rbx, rax                                                 
+     14186fc30: baa29dc507               mov edx, 0x7c59da2                                           
+     14186fc35: 488d4dc0                 lea rcx, [rbp - 0x40]                                        
+     14186fc39: e87eac20ff               call 0x140a7a8bc                                             ; level logic: swap player hero action
+     14186fc3e: 4989d8                   mov r8, rbx                                                  
+     14186fc41: 4889c2                   mov rdx, rax                                                 
+     14186fc44: 4c89e1                   mov rcx, r12                                                 
+     14186fc47: e8e40e16ff               call 0x1409d0b30                                             ; level logic: add actions to rule
+     14186fc4c: 488d4dc0                 lea rcx, [rbp - 0x40]                                        
+     14186fc50: e8c70447ff               call 0x140ce011c                                             ; destroy temp
+     14186fc55: 488d15fc29e2ff           lea rdx, [0x141692658]                                       
+     14186fc5c: e9cc0222ff               jmp 0x140a8ff2d                                              
+     ...
+
+L_14186fd00:
+     14186fd00: 83fb01                   cmp ebx, 1                                                   
+     14186fd03: 0f85975fdefe             jne 0x140655ca0                                              
+     14186fd09: ff1541c86fff             call qword ptr [0x140f6c550]                                 ; rand (import)
+     14186fd0f: 31d2                     xor edx, edx                                                 
+     14186fd11: b906000000               mov ecx, 6                                                   
+     14186fd16: f7f1                     div ecx                                                      
+     14186fd18: 488d0d11000000           lea rcx, [0x14186fd30]                                       
+     14186fd1f: 48630491                 movsxd rax, dword ptr [rcx + rdx*4]                          
+     14186fd23: 488d3c01                 lea rdi, [rcx + rax]                                         
+     14186fd27: e9745fdefe               jmp 0x140655ca0                                              
+     ...
+
+ENTRY_14186fea0:
+     14186fea0: 418b4e70                 mov ecx, dword ptr [r14 + 0x70]                              
+     14186fea4: 8b4378                   mov eax, dword ptr [rbx + 0x78]                              
+     14186fea7: 3da29dc507               cmp eax, 0x7c59da2                                           
+     14186feac: 7525                     jne 0x14186fed3                                              ; L_14186fed3
+     14186feae: 81f9b858bfcb             cmp ecx, 0xcbbf58b8                                          
+     14186feb4: 751d                     jne 0x14186fed3                                              ; L_14186fed3
+     14186feb6: b96cefbd1d               mov ecx, 0x1dbdef6c                                          
+     14186febb: 41894e70                 mov dword ptr [r14 + 0x70], ecx                              
+     14186febf: 41817e74a6ffab83         cmp dword ptr [r14 + 0x74], 0x83abffa6                       
+     14186fec7: 750a                     jne 0x14186fed3                                              ; L_14186fed3
+     14186fec9: 41c74674af1306db         mov dword ptr [r14 + 0x74], 0xdb0613af                       
+     14186fed1: eb00                     jmp 0x14186fed3                                              ; L_14186fed3
+
+L_14186fed3:
+     14186fed3: e8947049ff               call 0x140d06f6c                                             ; buff definition lookup
+     14186fed8: e9bbee46ff               jmp 0x140cded98                                              
+     ...
+
+ENTRY_14186fee0:
+     14186fee0: 458b4814                 mov r9d, dword ptr [r8 + 0x14]                               
+     14186fee4: 458b4010                 mov r8d, dword ptr [r8 + 0x10]                               
+     14186fee8: 4181f8c70e7551           cmp r8d, 0x51750ec7                                          
+     14186feef: 7525                     jne 0x14186ff16                                              ; L_14186ff16
+     14186fef1: 488b442420               mov rax, qword ptr [rsp + 0x20]                              
+     14186fef6: 4885c0                   test rax, rax                                                
+     14186fef9: 741b                     je 0x14186ff16                                               ; L_14186ff16
+     14186fefb: 8b4050                   mov eax, dword ptr [rax + 0x50]                              
+     14186fefe: 3da29dc507               cmp eax, 0x7c59da2                                           
+     14186ff03: 7511                     jne 0x14186ff16                                              ; L_14186ff16
+     14186ff05: 4181f9c7d5a9da           cmp r9d, 0xdaa9d5c7                                          
+     14186ff0c: 7508                     jne 0x14186ff16                                              ; L_14186ff16
+     14186ff0e: 41b9edd8a9dc             mov r9d, 0xdca9d8ed                                          
+     14186ff14: eb00                     jmp 0x14186ff16                                              ; L_14186ff16
+
+L_14186ff16:
+     14186ff16: e97bcc49ff               jmp 0x140d0cb96                                              
+
+====================================================================================================
+DATA IN THE NEW SECTIONS (everything not decoded as code above)
+====================================================================================================
+
+-- 0x140f6ad00 .. 0x140f6add9 (217 bytes)   <- referenced by code
+     string  0x140f6ad20: 'SP8/Lit'
+     string  0x140f6ad40: 'SP8/Used'
+     string  0x140f6ad60: 'SP8/Locked'
+     string  0x140f6ad80: 'SP8/Image'
+     string  0x140f6ada0: 'SP8/HeroColor'
+     string  0x140f6adc0: 'SP8/Glow'
+     140f6ad00  53 50 38 00 00 00 00 00 00 00 00 00 00 00 00 00   SP8.............
+     140f6ad10  03 00 00 00 00 00 00 00 0f 00 00 00 00 00 00 00   ................
+     140f6ad20  53 50 38 2f 4c 69 74 00 00 00 00 00 00 00 00 00   SP8/Lit.........
+     140f6ad30  07 00 00 00 00 00 00 00 0f 00 00 00 00 00 00 00   ................
+     140f6ad40  53 50 38 2f 55 73 65 64 00 00 00 00 00 00 00 00   SP8/Used........
+     140f6ad50  08 00 00 00 00 00 00 00 0f 00 00 00 00 00 00 00   ................
+     140f6ad60  53 50 38 2f 4c 6f 63 6b 65 64 00 00 00 00 00 00   SP8/Locked......
+     140f6ad70  0a 00 00 00 00 00 00 00 0f 00 00 00 00 00 00 00   ................
+     140f6ad80  53 50 38 2f 49 6d 61 67 65 00 00 00 00 00 00 00   SP8/Image.......
+     140f6ad90  09 00 00 00 00 00 00 00 0f 00 00 00 00 00 00 00   ................
+     140f6ada0  53 50 38 2f 48 65 72 6f 43 6f 6c 6f 72 00 00 00   SP8/HeroColor...
+     140f6adb0  0d 00 00 00 00 00 00 00 0f 00 00 00 00 00 00 00   ................
+     140f6adc0  53 50 38 2f 47 6c 6f 77 00 00 00 00 00 00 00 00   SP8/Glow........
+     140f6add0  08 00 00 00 00 00 00 00 0f                        .........
+
+-- 0x14186e010 .. 0x14186e30e (766 bytes)   <- referenced by code
+     string  0x14186e010: 'CKarai_Attack_Chain1'
+     string  0x14186e028: 'CKarai_Attack_Chain2'
+     string  0x14186e040: 'CKarai_Attack_Chain3'
+     string  0x14186e058: 'CKarai_DashAttack'
+     string  0x14186e070: 'event:/VO/BOSSES/KARAI/BANTER_KAR_GLOBAL_DASHPREP_001'
+     string  0x14186e0a8: 'build://Effects/Characters/Turtles/Leonardo/BasicAttacks/Leonardo_Attack_01/Leonardo_Attack_01.pfx'
+     string  0x14186e110: 'build://Effects/Characters/Turtles/Leonardo/BasicAttacks/Leonardo_Attack_02/Leonardo_Attack_02.pfx'
+     string  0x14186e178: 'build://Effects/Characters/Turtles/Leonardo/BasicAttacks/Leonardo_Attack_03/Leonardo_Attack_03.pfx'
+     string  0x14186e1e0: 'build://Effects/Characters/Enemies/Karai/Karai_Dash_Slash/Karai_Dash_Slash.pfx'
+     string  0x14186e230: 'event:/Combat/BOSSES/Karai/Combat_Karai_Attack_Light'
+     string  0x14186e268: 'event:/Combat/BOSSES/Karai/Combat_Karai_Attack_Heavy_01'
+     string  0x14186e2a0: 'event:/Combat/BOSSES/Karai/Combat_Karai_Dash_Prep_01'
+     string  0x14186e2d8: 'event:/Combat/BOSSES/Karai/Exertions_Karai_DamageTaken'
+     14186e010  43 4b 61 72 61 69 5f 41 74 74 61 63 6b 5f 43 68   CKarai_Attack_Ch
+     14186e020  61 69 6e 31 00 00 00 00 43 4b 61 72 61 69 5f 41   ain1....CKarai_A
+     14186e030  74 74 61 63 6b 5f 43 68 61 69 6e 32 00 00 00 00   ttack_Chain2....
+     14186e040  43 4b 61 72 61 69 5f 41 74 74 61 63 6b 5f 43 68   CKarai_Attack_Ch
+     14186e050  61 69 6e 33 00 00 00 00 43 4b 61 72 61 69 5f 44   ain3....CKarai_D
+     14186e060  61 73 68 41 74 74 61 63 6b 00 00 00 00 00 00 00   ashAttack.......
+     14186e070  65 76 65 6e 74 3a 2f 56 4f 2f 42 4f 53 53 45 53   event:/VO/BOSSES
+     14186e080  2f 4b 41 52 41 49 2f 42 41 4e 54 45 52 5f 4b 41   /KARAI/BANTER_KA
+     14186e090  52 5f 47 4c 4f 42 41 4c 5f 44 41 53 48 50 52 45   R_GLOBAL_DASHPRE
+     14186e0a0  50 5f 30 30 31 00 00 00 62 75 69 6c 64 3a 2f 2f   P_001...build://
+     14186e0b0  45 66 66 65 63 74 73 2f 43 68 61 72 61 63 74 65   Effects/Characte
+     14186e0c0  72 73 2f 54 75 72 74 6c 65 73 2f 4c 65 6f 6e 61   rs/Turtles/Leona
+     14186e0d0  72 64 6f 2f 42 61 73 69 63 41 74 74 61 63 6b 73   rdo/BasicAttacks
+     14186e0e0  2f 4c 65 6f 6e 61 72 64 6f 5f 41 74 74 61 63 6b   /Leonardo_Attack
+     14186e0f0  5f 30 31 2f 4c 65 6f 6e 61 72 64 6f 5f 41 74 74   _01/Leonardo_Att
+     14186e100  61 63 6b 5f 30 31 2e 70 66 78 00 00 00 00 00 00   ack_01.pfx......
+     14186e110  62 75 69 6c 64 3a 2f 2f 45 66 66 65 63 74 73 2f   build://Effects/
+     14186e120  43 68 61 72 61 63 74 65 72 73 2f 54 75 72 74 6c   Characters/Turtl
+     14186e130  65 73 2f 4c 65 6f 6e 61 72 64 6f 2f 42 61 73 69   es/Leonardo/Basi
+     14186e140  63 41 74 74 61 63 6b 73 2f 4c 65 6f 6e 61 72 64   cAttacks/Leonard
+     14186e150  6f 5f 41 74 74 61 63 6b 5f 30 32 2f 4c 65 6f 6e   o_Attack_02/Leon
+     14186e160  61 72 64 6f 5f 41 74 74 61 63 6b 5f 30 32 2e 70   ardo_Attack_02.p
+     14186e170  66 78 00 00 00 00 00 00 62 75 69 6c 64 3a 2f 2f   fx......build://
+     14186e180  45 66 66 65 63 74 73 2f 43 68 61 72 61 63 74 65   Effects/Characte
+     14186e190  72 73 2f 54 75 72 74 6c 65 73 2f 4c 65 6f 6e 61   rs/Turtles/Leona
+     14186e1a0  72 64 6f 2f 42 61 73 69 63 41 74 74 61 63 6b 73   rdo/BasicAttacks
+     14186e1b0  2f 4c 65 6f 6e 61 72 64 6f 5f 41 74 74 61 63 6b   /Leonardo_Attack
+     14186e1c0  5f 30 33 2f 4c 65 6f 6e 61 72 64 6f 5f 41 74 74   _03/Leonardo_Att
+     14186e1d0  61 63 6b 5f 30 33 2e 70 66 78 00 00 00 00 00 00   ack_03.pfx......
+     14186e1e0  62 75 69 6c 64 3a 2f 2f 45 66 66 65 63 74 73 2f   build://Effects/
+     14186e1f0  43 68 61 72 61 63 74 65 72 73 2f 45 6e 65 6d 69   Characters/Enemi
+     14186e200  65 73 2f 4b 61 72 61 69 2f 4b 61 72 61 69 5f 44   es/Karai/Karai_D
+     14186e210  61 73 68 5f 53 6c 61 73 68 2f 4b 61 72 61 69 5f   ash_Slash/Karai_
+     14186e220  44 61 73 68 5f 53 6c 61 73 68 2e 70 66 78 00 00   Dash_Slash.pfx..
+     14186e230  65 76 65 6e 74 3a 2f 43 6f 6d 62 61 74 2f 42 4f   event:/Combat/BO
+     14186e240  53 53 45 53 2f 4b 61 72 61 69 2f 43 6f 6d 62 61   SSES/Karai/Comba
+     14186e250  74 5f 4b 61 72 61 69 5f 41 74 74 61 63 6b 5f 4c   t_Karai_Attack_L
+     14186e260  69 67 68 74 00 00 00 00 65 76 65 6e 74 3a 2f 43   ight....event:/C
+     14186e270  6f 6d 62 61 74 2f 42 4f 53 53 45 53 2f 4b 61 72   ombat/BOSSES/Kar
+     14186e280  61 69 2f 43 6f 6d 62 61 74 5f 4b 61 72 61 69 5f   ai/Combat_Karai_
+     14186e290  41 74 74 61 63 6b 5f 48 65 61 76 79 5f 30 31 00   Attack_Heavy_01.
+     14186e2a0  65 76 65 6e 74 3a 2f 43 6f 6d 62 61 74 2f 42 4f   event:/Combat/BO
+     14186e2b0  53 53 45 53 2f 4b 61 72 61 69 2f 43 6f 6d 62 61   SSES/Karai/Comba
+     14186e2c0  74 5f 4b 61 72 61 69 5f 44 61 73 68 5f 50 72 65   t_Karai_Dash_Pre
+     14186e2d0  70 5f 30 31 00 00 00 00 65 76 65 6e 74 3a 2f 43   p_01....event:/C
+     14186e2e0  6f 6d 62 61 74 2f 42 4f 53 53 45 53 2f 4b 61 72   ombat/BOSSES/Kar
+     14186e2f0  61 69 2f 45 78 65 72 74 69 6f 6e 73 5f 4b 61 72   ai/Exertions_Kar
+     14186e300  61 69 5f 44 61 6d 61 67 65 54 61 6b 65 6e         ai_DamageTaken
+
+-- 0x14186e4f0 .. 0x14186e503 (19 bytes)   <- referenced by code
+     string  0x14186e4f0: 'CKarai_Attack_Chain'
+     14186e4f0  43 4b 61 72 61 69 5f 41 74 74 61 63 6b 5f 43 68   CKarai_Attack_Ch
+     14186e500  61 69 6e                                          ain
+
+-- 0x14186e548 .. 0x14186e55c (20 bytes)   <- referenced by code
+     string  0x14186e548: 'CKarai_Attack_Chain1'
+     14186e548  43 4b 61 72 61 69 5f 41 74 74 61 63 6b 5f 43 68   CKarai_Attack_Ch
+     14186e558  61 69 6e 31                                       ain1
+
+-- 0x14186e598 .. 0x14186e5ac (20 bytes)   <- referenced by code
+     string  0x14186e598: 'CKarai_Attack_Chain2'
+     14186e598  43 4b 61 72 61 69 5f 41 74 74 61 63 6b 5f 43 68   CKarai_Attack_Ch
+     14186e5a8  61 69 6e 32                                       ain2
+
+-- 0x14186e5e8 .. 0x14186e5fc (20 bytes)   <- referenced by code
+     string  0x14186e5e8: 'CKarai_Attack_Chain3'
+     14186e5e8  43 4b 61 72 61 69 5f 41 74 74 61 63 6b 5f 43 68   CKarai_Attack_Ch
+     14186e5f8  61 69 6e 33                                       ain3
+
+-- 0x14186e638 .. 0x14186e649 (17 bytes)   <- referenced by code
+     string  0x14186e638: 'CKarai_DashAttack'
+     14186e638  43 4b 61 72 61 69 5f 44 61 73 68 41 74 74 61 63   CKarai_DashAttac
+     14186e648  6b                                                k
+
+-- 0x14186e688 .. 0x14186e69a (18 bytes)   <- referenced by code
+     string  0x14186e688: 'Karai_Hit_Reaction'
+     14186e688  4b 61 72 61 69 5f 48 69 74 5f 52 65 61 63 74 69   Karai_Hit_Reacti
+     14186e698  6f 6e                                             on
+
+-- 0x14186e6d8 .. 0x14186e6e2 (10 bytes)   <- referenced by code
+     string  0x14186e6d8: 'Karai_Stun'
+     14186e6d8  4b 61 72 61 69 5f 53 74 75 6e                     Karai_Stun
+
+-- 0x14186ec00 .. 0x14186ec14 (20 bytes)   <- referenced by code
+     14186ec00  29 c1 d2 a1 5d fb 57 1d c3 23 8b 6f d1 43 90 c0   )...].W..#.o.C..
+     14186ec10  31 53 e7 ce                                       1S..
+
+-- 0x14186ef00 .. 0x14186f14b (587 bytes)   <- referenced by code
+     utf-16  0x14186ef80: "The Foot Clan's deadliest kunoichi, trained by the Shredder himself. Karai fights with swift, precise blade work and never misses an opening."
+     utf-16  0x14186f0a0: 'Cleave'
+     utf-16  0x14186f0b0: 'Unleash a sweeping sword strike that cuts through every enemy in front of you'
+     14186ef00  8d 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+     14186ef10  06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+     14186ef20  4e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   N...............
+     14186ef30  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+     14186ef40  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+     14186ef50  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+     14186ef60  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+     14186ef70  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+     14186ef80  54 00 68 00 65 00 20 00 46 00 6f 00 6f 00 74 00   T.h.e. .F.o.o.t.
+     14186ef90  20 00 43 00 6c 00 61 00 6e 00 27 00 73 00 20 00    .C.l.a.n.'.s. .
+     14186efa0  64 00 65 00 61 00 64 00 6c 00 69 00 65 00 73 00   d.e.a.d.l.i.e.s.
+     14186efb0  74 00 20 00 6b 00 75 00 6e 00 6f 00 69 00 63 00   t. .k.u.n.o.i.c.
+     14186efc0  68 00 69 00 2c 00 20 00 74 00 72 00 61 00 69 00   h.i.,. .t.r.a.i.
+     14186efd0  6e 00 65 00 64 00 20 00 62 00 79 00 20 00 74 00   n.e.d. .b.y. .t.
+     14186efe0  68 00 65 00 20 00 53 00 68 00 72 00 65 00 64 00   h.e. .S.h.r.e.d.
+     14186eff0  64 00 65 00 72 00 20 00 68 00 69 00 6d 00 73 00   d.e.r. .h.i.m.s.
+     14186f000  65 00 6c 00 66 00 2e 00 20 00 4b 00 61 00 72 00   e.l.f... .K.a.r.
+     14186f010  61 00 69 00 20 00 66 00 69 00 67 00 68 00 74 00   a.i. .f.i.g.h.t.
+     14186f020  73 00 20 00 77 00 69 00 74 00 68 00 20 00 73 00   s. .w.i.t.h. .s.
+     14186f030  77 00 69 00 66 00 74 00 2c 00 20 00 70 00 72 00   w.i.f.t.,. .p.r.
+     14186f040  65 00 63 00 69 00 73 00 65 00 20 00 62 00 6c 00   e.c.i.s.e. .b.l.
+     14186f050  61 00 64 00 65 00 20 00 77 00 6f 00 72 00 6b 00   a.d.e. .w.o.r.k.
+     14186f060  20 00 61 00 6e 00 64 00 20 00 6e 00 65 00 76 00    .a.n.d. .n.e.v.
+     14186f070  65 00 72 00 20 00 6d 00 69 00 73 00 73 00 65 00   e.r. .m.i.s.s.e.
+     14186f080  73 00 20 00 61 00 6e 00 20 00 6f 00 70 00 65 00   s. .a.n. .o.p.e.
+     14186f090  6e 00 69 00 6e 00 67 00 2e 00 00 00 00 00 00 00   n.i.n.g.........
+     14186f0a0  43 00 6c 00 65 00 61 00 76 00 65 00 00 00 00 00   C.l.e.a.v.e.....
+     14186f0b0  55 00 6e 00 6c 00 65 00 61 00 73 00 68 00 20 00   U.n.l.e.a.s.h. .
+     14186f0c0  61 00 20 00 73 00 77 00 65 00 65 00 70 00 69 00   a. .s.w.e.e.p.i.
+     14186f0d0  6e 00 67 00 20 00 73 00 77 00 6f 00 72 00 64 00   n.g. .s.w.o.r.d.
+     14186f0e0  20 00 73 00 74 00 72 00 69 00 6b 00 65 00 20 00    .s.t.r.i.k.e. .
+     14186f0f0  74 00 68 00 61 00 74 00 20 00 63 00 75 00 74 00   t.h.a.t. .c.u.t.
+     14186f100  73 00 20 00 74 00 68 00 72 00 6f 00 75 00 67 00   s. .t.h.r.o.u.g.
+     14186f110  68 00 20 00 65 00 76 00 65 00 72 00 79 00 20 00   h. .e.v.e.r.y. .
+     14186f120  65 00 6e 00 65 00 6d 00 79 00 20 00 69 00 6e 00   e.n.e.m.y. .i.n.
+     14186f130  20 00 66 00 72 00 6f 00 6e 00 74 00 20 00 6f 00    .f.r.o.n.t. .o.
+     14186f140  66 00 20 00 79 00 6f 00 75 00 2e                  f. .y.o.u..
+
+-- 0x14186f640 .. 0x14186f6c0 (128 bytes)   <- referenced by code
+     string  0x14186f640: 'Ability_Common_007_Kunai'
+     string  0x14186f660: 'Boss_Karai'
+     string  0x14186f670: 'karai_kunai_hud'
+     string  0x14186f680: 'Ability_Karai_Kunai'
+     string  0x14186f6a0: 'abilitybutton_rebirth_karai_none'
+     14186f640  41 62 69 6c 69 74 79 5f 43 6f 6d 6d 6f 6e 5f 30   Ability_Common_0
+     14186f650  30 37 5f 4b 75 6e 61 69 00 00 00 00 00 00 00 00   07_Kunai........
+     14186f660  42 6f 73 73 5f 4b 61 72 61 69 00 00 00 00 00 00   Boss_Karai......
+     14186f670  6b 61 72 61 69 5f 6b 75 6e 61 69 5f 68 75 64 00   karai_kunai_hud.
+     14186f680  41 62 69 6c 69 74 79 5f 4b 61 72 61 69 5f 4b 75   Ability_Karai_Ku
+     14186f690  6e 61 69 00 00 00 00 00 00 00 00 00 00 00 00 00   nai.............
+     14186f6a0  61 62 69 6c 69 74 79 62 75 74 74 6f 6e 5f 72 65   abilitybutton_re
+     14186f6b0  62 69 72 74 68 5f 6b 61 72 61 69 5f 6e 6f 6e 65   birth_karai_none
+
+-- 0x14186f912 .. 0x14186f930 (30 bytes)   <- referenced by code
+     string  0x14186f920: 'Karai_HeroCleave'
+     14186f912  80 3f 00 00 00 00 00 00 00 00 00 00 00 00 4b 61   .?............Ka
+     14186f922  72 61 69 5f 48 65 72 6f 43 6c 65 61 76 65         rai_HeroCleave
+
+-- 0x14186fb40 .. 0x14186fb44 (4 bytes)   <- referenced by code
+     as floats: 0.454545
+     14186fb40  2f ba e8 3e                                       /..>
+
+-- 0x14186fbb0 .. 0x14186fbb4 (4 bytes)   <- referenced by code
+     as floats: 0.1
+     14186fbb0  cd cc cc 3d                                       ...=
+
+-- 0x14186fc70 .. 0x14186fc7c (12 bytes)   <- referenced by code
+     string  0x14186fc70: '*Karai_Hero*'
+     14186fc70  2a 4b 61 72 61 69 5f 48 65 72 6f 2a               *Karai_Hero*
+
+-- 0x14186fd30 .. 0x14186fe97 (359 bytes)   <- referenced by code
+     string  0x14186fd48: 'event:/VO/BOSSES/KARAI/BANTER_KAR_GLOBAL_DASHPREP_001'
+     string  0x14186fd7e: 'event:/VO/BOSSES/KARAI/BANTER_KAR_GLOBAL_DASHPREP_002'
+     string  0x14186fdb4: 'event:/VO/BOSSES/KARAI/BANTER_KAR_GLOBAL_DASHPREP_003'
+     string  0x14186fdea: 'event:/VO/BOSSES/KARAI/BANTER_KAR_GLOBAL_TELEPORTPREP_001'
+     string  0x14186fe24: 'event:/VO/BOSSES/KARAI/BANTER_KAR_GLOBAL_TELEPORTPREP_002'
+     string  0x14186fe5e: 'event:/VO/BOSSES/KARAI/BANTER_KAR_GLOBAL_TELEPORTPREP_003'
+     14186fd30  18 00 00 00 4e 00 00 00 84 00 00 00 ba 00 00 00   ....N...........
+     14186fd40  f4 00 00 00 2e 01 00 00 65 76 65 6e 74 3a 2f 56   ........event:/V
+     14186fd50  4f 2f 42 4f 53 53 45 53 2f 4b 41 52 41 49 2f 42   O/BOSSES/KARAI/B
+     14186fd60  41 4e 54 45 52 5f 4b 41 52 5f 47 4c 4f 42 41 4c   ANTER_KAR_GLOBAL
+     14186fd70  5f 44 41 53 48 50 52 45 50 5f 30 30 31 00 65 76   _DASHPREP_001.ev
+     14186fd80  65 6e 74 3a 2f 56 4f 2f 42 4f 53 53 45 53 2f 4b   ent:/VO/BOSSES/K
+     14186fd90  41 52 41 49 2f 42 41 4e 54 45 52 5f 4b 41 52 5f   ARAI/BANTER_KAR_
+     14186fda0  47 4c 4f 42 41 4c 5f 44 41 53 48 50 52 45 50 5f   GLOBAL_DASHPREP_
+     14186fdb0  30 30 32 00 65 76 65 6e 74 3a 2f 56 4f 2f 42 4f   002.event:/VO/BO
+     14186fdc0  53 53 45 53 2f 4b 41 52 41 49 2f 42 41 4e 54 45   SSES/KARAI/BANTE
+     14186fdd0  52 5f 4b 41 52 5f 47 4c 4f 42 41 4c 5f 44 41 53   R_KAR_GLOBAL_DAS
+     14186fde0  48 50 52 45 50 5f 30 30 33 00 65 76 65 6e 74 3a   HPREP_003.event:
+     14186fdf0  2f 56 4f 2f 42 4f 53 53 45 53 2f 4b 41 52 41 49   /VO/BOSSES/KARAI
+     14186fe00  2f 42 41 4e 54 45 52 5f 4b 41 52 5f 47 4c 4f 42   /BANTER_KAR_GLOB
+     14186fe10  41 4c 5f 54 45 4c 45 50 4f 52 54 50 52 45 50 5f   AL_TELEPORTPREP_
+     14186fe20  30 30 31 00 65 76 65 6e 74 3a 2f 56 4f 2f 42 4f   001.event:/VO/BO
+     14186fe30  53 53 45 53 2f 4b 41 52 41 49 2f 42 41 4e 54 45   SSES/KARAI/BANTE
+     14186fe40  52 5f 4b 41 52 5f 47 4c 4f 42 41 4c 5f 54 45 4c   R_KAR_GLOBAL_TEL
+     14186fe50  45 50 4f 52 54 50 52 45 50 5f 30 30 32 00 65 76   EPORTPREP_002.ev
+     14186fe60  65 6e 74 3a 2f 56 4f 2f 42 4f 53 53 45 53 2f 4b   ent:/VO/BOSSES/K
+     14186fe70  41 52 41 49 2f 42 41 4e 54 45 52 5f 4b 41 52 5f   ARAI/BANTER_KAR_
+     14186fe80  47 4c 4f 42 41 4c 5f 54 45 4c 45 50 4f 52 54 50   GLOBAL_TELEPORTP
+     14186fe90  52 45 50 5f 30 30 33                              REP_003
+
+====================================================================================================
+OTHER CHANGED BYTES (headers, data sections)
+====================================================================================================
+-- file offset 0x16e..0x16f  PE header / end of file
+   old:
+    0000016e  08                                                .
+   new:
+    0000016e  09                                                .
+-- file offset 0x1b9..0x1c2  PE header / end of file
+   old:
+    000001b9  e0 86 01 00 04 00 00 9f c0                        .........
+   new:
+    000001b9  00 87 01 00 04 00 00 76 dc                        .......v.
+-- file offset 0x211..0x216  PE header / end of file
+   old:
+    00000211  f2 7a 01 48 35                                    .z.H5
+   new:
+    00000211  00 00 00 00 00                                    .....
+-- file offset 0x278..0x27a  PE header / end of file
+   old:
+    00000278  7e 9c                                             ~.
+   new:
+    00000278  00 9e                                             ..
+-- file offset 0x2c8..0x2ca  PE header / end of file
+   old:
+    000002c8  e0 30                                             .0
+   new:
+    000002c8  00 40                                             .@
+-- file offset 0x3b0..0x3d8  PE header / end of file
+   old:
+    000003b0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+    000003c0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+    000003d0  00 00 00 00 00 00 00 00                           ........
+   new:
+    000003b0  2e 6b 61 72 61 69 00 00 00 20 00 00 00 e0 86 01   .karai... ......
+    000003c0  00 20 00 00 00 f2 7a 01 00 00 00 00 00 00 00 00   . ....z.........
+    000003d0  00 00 00 00 20 00 00 e0                           .... ...
