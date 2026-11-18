@@ -18,9 +18,21 @@ original sandbox paths (`/home/claude/...`) hard-coded at the top.
 
 `docs/KARAI_MOD_NOTES.md` is the build log from that period: what was tried, what failed and why.
 
+## `karai/`: the rest of the Karai v1.0 build
+These scripts are as written, with the same hard-coded sandbox paths.
+
+| Scripts | What they do |
+|---|---|
+| `build_slot9_data.py`, `build_step3a`…`3t.py` | Karai's hero, cards, actor reps, animation graph and moves, step by step, in Casey's record |
+| `patch_exe_slot9.py`, `patch_exe_step2`…`3x.py` | the exe changes: 9th slot (hero model, select-screen table and loops), Karai's move hooks, banter facts, hover voice, text, HUD, Inspirations, and the hero-only Cleave damage and timing |
+| `build_layout9.py`, `build_layout_banner.py` | the select-screen layout (UIML) for the 9th slot |
+| `build_karai_atlas.py`, `set_karai_*.py`, `recolor_red.py`, `leo_*.py`, `gold_red*.py`, `draw_*.py`, `keyart.py` | Karai's select art and icons, recoloured from game art |
+| `kpatch.py`, `sim_installer.py` | patch maker and the installer rehearsal from that period |
+| `annot.py`, `fulldis.py`, `fdis.py`, `xr.py`, `callers.py`, `ripref.py`, `rangeref.py`, `leascan.py`, `leastr.py`, `regmap.py`, `scanmc.py`, `trackmc.py`, `dis_at.py`, … | the analysis helpers used to find each hook site |
+
 ## Not here
-- **The later v1.0 builders.** Karai's step-3 record, art and slot-9 exe scripts, and the Shredder
-  builders, were made in later sessions that aren't in this archive. `docs/HISTORY.md` and
-  `docs/FORMATS.md` describe what they change.
+- **The Shredder v1.0 builders** (`sf.py`, `recedit.py`, `build_shred_data/atlas/banter/exe.py`) were lost.
+  What they change is described in `docs/HISTORY.md`. The v1.0 Shredder patches can be read range by
+  range with `src/kpatch.py`.
 - **Game data.** Records and textures pulled from the paks are not included. Extract them from your own
   game files with the tools above.
